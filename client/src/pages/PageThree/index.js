@@ -2,6 +2,9 @@ import React from "react";
 // import model from "../../tfjs-models/model.json"
 import $ from "jquery"
 import * as tf from '@tensorflow/tfjs';
+import '@tensorflow/tfjs-backend-webgl';
+// import * as tfvis from '@tensorflow/tfjs-vis';
+// import * as tf from '@tensorflow/tfjs-core';
 
 
 
@@ -38,6 +41,7 @@ const PageThree = () => {
         $(".progress-bar").show();
         model = undefined;
         model = await tf.loadLayersModel('../../tfjs-models/model.json');
+        console.log(model)
         $(".progress-bar").hide();
     }
     
@@ -45,6 +49,7 @@ const PageThree = () => {
         let image = $("#selected-image").get(0);
         console.log("clicked button")
         console.log(image)
+        console.log(model)
         let modelName = $("#model-selector").val();
         // let tensor = tf.fromPixels(image)
         let tensor = tf.browser.fromPixels(image)
