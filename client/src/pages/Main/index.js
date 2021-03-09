@@ -171,6 +171,11 @@ function Main() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/pageTwo' component={PageTwo} />
+        </Switch>
+        <Footer />
       </main>
     </div>
   );
