@@ -1,7 +1,7 @@
-// Imports ------------------------------------------------
 import React from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
@@ -15,35 +15,21 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import CameraAltIcon from "@material-ui/icons/CameraAlt";
-import CodeIcon from "@material-ui/icons/Code";
-import InfoIcon from "@material-ui/icons/Info";
-import VideocamIcon from "@material-ui/icons/Videocam";
-import EmailIcon from "@material-ui/icons/Email";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import { Route, Switch, Link } from "react-router-dom";
-import Home from "../Home";
-import { SwipeableDrawer } from "@material-ui/core";
-import colors from "../../components/colors";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail";
+import { Route, Switch } from "react-router-dom";
 import Footer from "../../components/Footer";
+import Home from "../Home";
 import PageTwo from "../PageTwo";
-
-// import { AccessAlarm, ThreeDRotation } from "@material-ui/icons";
 
 const drawerWidth = 240;
 
-// Use Styles ---------------------------------------------
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: colors.orange,
-
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -70,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerOpen: {
     width: drawerWidth,
-    backgroundColor: colors.paleOrange,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -101,8 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// export -------------------------------------------------
-export default function Main() {
+function Main() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -115,16 +99,10 @@ export default function Main() {
     setOpen(false);
   };
 
-  // const sideBarLink = () => {
-  //   if (key === "About Me")
-  // };
-
   return (
     <div className={classes.root}>
-      <CssBaseline />
       <AppBar
         position='fixed'
-        // color="lightBlue"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
@@ -142,13 +120,12 @@ export default function Main() {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' noWrap>
-            Zac Edens Portfolio
+            Mini variant drawer
           </Typography>
         </Toolbar>
       </AppBar>
-      <SwipeableDrawer
+      <Drawer
         variant='permanent'
-        onClick={handleDrawerClose}
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
           [classes.drawerClose]: !open,
@@ -171,87 +148,29 @@ export default function Main() {
         </div>
         <Divider />
         <List>
-          <Link to={"/"}>
-            <ListItem button key={"About Me"}>
+          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+            <ListItem button key={text}>
               <ListItemIcon>
-                <InfoIcon />
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
-              <ListItemText primary={"About Me"} />
+              <ListItemText primary={text} />
             </ListItem>
-          </Link>
+          ))}
         </List>
         <Divider />
         <List>
-          <Link to={"/photography"}>
-            <ListItem button key={"Photography"}>
+          {["All mail", "Trash", "Spam"].map((text, index) => (
+            <ListItem button key={text}>
               <ListItemIcon>
-                <CameraAltIcon />
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
-              <ListItemText primary={"Photography"} />
+              <ListItemText primary={text} />
             </ListItem>
-          </Link>
-          <Link to={"/coding"}>
-            <ListItem button key={"Web Dev"}>
-              <ListItemIcon>
-                <CodeIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Web Dev"} />
-            </ListItem>
-          </Link>
-          <ListItem button key={"Videography"}>
-            <ListItemIcon>
-              <VideocamIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Videography"} />
-          </ListItem>
+          ))}
         </List>
-        <Divider />
-        <List>
-          <ListItem
-            button
-            key={"Email"}
-            onClick={() => {
-              navigator.clipboard.writeText("edens.zac@gmail.com");
-            }}
-          >
-            <ListItemIcon>
-              <EmailIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Email"} />
-          </ListItem>
-          <ListItem button key={"Github"}>
-            <ListItemIcon>
-              <GitHubIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Github"} />
-          </ListItem>
-          <ListItem button key={"LinkedIn"}>
-            <ListItemIcon>
-              <LinkedInIcon />
-            </ListItemIcon>
-            <ListItemText primary={"LinkedIn"} />
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem button key={"Instagram"}>
-            <ListItemIcon>
-              <InstagramIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Instagram"} />
-          </ListItem>
-          <ListItem button key={"Twitter"}>
-            <ListItemIcon>
-              <TwitterIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Twitter"} />
-          </ListItem>
-        </List>
-        <Divider />
-      </SwipeableDrawer>
+      </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/pageTwo' component={PageTwo} />
@@ -261,3 +180,5 @@ export default function Main() {
     </div>
   );
 }
+
+export default Main;
