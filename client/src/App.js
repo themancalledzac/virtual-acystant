@@ -11,12 +11,7 @@ function App() {
   return (
     <Router>
       <UserProvider>
-        {/*<Main />*/}
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/pageTwo' component={PageTwo} />
-        </Switch>
-        <Footer />
+        <Main />
       </UserProvider>
     </Router>
   );
