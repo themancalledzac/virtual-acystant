@@ -1,9 +1,25 @@
 const express = require("express");
 
+// authentication
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
 const mongoose = require("mongoose");
 // const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+var corsOptions = {
+  origin: "http://localhost:8081"
+};
+
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
