@@ -7,9 +7,10 @@ const userSchema = new Schema({
   email: { type: String, required: true, unique: true },
   // How do we do a check on city/state to make sure they exist? Some check on an API?
   location: {
-    city: { type: String },
-    state: { type: String },
+    type: isValidObjectId,
+    ref: City,
   },
+  image: {},
 });
 
 const User = mongoose.model("User", userSchema);
