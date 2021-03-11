@@ -1,4 +1,5 @@
 import React from "react";
+import HeaderCard from "../../components/HeaderCard";
 
 const addUser = () => {
   // send data to backend
@@ -12,7 +13,7 @@ const addUser = () => {
 const Home = () => {
   return (
     <div>
-      <h1>HomePage</h1>
+      <HeaderCard />
       <form onSubmit={addUser}>
         <input></input>
       </form>
