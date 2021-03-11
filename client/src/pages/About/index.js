@@ -1,9 +1,14 @@
 import React from "react";
+import HeaderCard from "../../components/HeaderCard";
+import headerCardData from "../../utils/headerCardData.json";
 
-const About = () => {
+const About = (props) => {
   return (
     <div>
-      <h1>About Page</h1>
+      <HeaderCard
+        title={headerCardData.about.title}
+        paragraph={headerCardData.about.paragraph}
+      />
     </div>
   );
 };

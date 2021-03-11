@@ -55,6 +55,14 @@ const UserProvider = ({ value = [], ...props }) => {
         },
         images: [],
       },
+      headerCard: {
+        home: {
+          title: "state title yo",
+          paragraph: "state paragraph yo",
+        },
+        about: {},
+        doctor: {},
+      },
     })
   );
   return <Provider value={[state, dispatch]} {...props} />;
