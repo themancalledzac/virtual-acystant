@@ -21,14 +21,10 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import { Route, Switch, Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import Home from "../Home";
-<<<<<<< HEAD
-import PageTwo from "../PageTwo";
 import FileUpload from "../FileUpload/FileUpload";
-=======
 import colors from "../../components/colors";
 import Doctor from "../Doctor";
 import About from "../About";
->>>>>>> main
 
 const drawerWidth = 240;
 
@@ -202,7 +198,7 @@ export default function Main() {
           <Route exact path='/doctor' component={Doctor} />
           <Route exact path='/about' component={About} />
           {/* <Route exact path='/fileUpload' component={FileUpload} /> */}
-          <Route exact path="/fileUpload" component={FileUpload} />
+          <Route exact path='/fileUpload' component={FileUpload} />
         </Switch>
         <Footer />
       </main>
