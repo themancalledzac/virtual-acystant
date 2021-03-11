@@ -21,6 +21,7 @@ import { Route, Switch } from "react-router-dom";
 import Footer from "../../components/Footer";
 import Home from "../Home";
 import PageTwo from "../PageTwo";
+import FileUpload from "../FileUpload/FileUpload";
 
 const drawerWidth = 240;
 
@@ -174,6 +175,7 @@ function Main() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/pageTwo' component={PageTwo} />
+          <Route exact path='/fileUpload' component={FileUpload} />
         </Switch>
         <Footer />
       </main>
