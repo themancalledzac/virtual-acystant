@@ -174,6 +174,7 @@ function Main() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/pageTwo' component={PageTwo} />
+          {/* <Route exact path='/fileUpload' component={FileUpload} /> */}
         </Switch>
         <Footer />
       </main>
