@@ -195,11 +195,6 @@ export default function Main() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-<<<<<<< HEAD
-          <Route exact path='/' component={Home} />
-          <Route exact path='/pageTwo' component={PageTwo} />
-          <Route exact path='/fileUpload' component={FileUpload} />
-=======
           <Route exact path='/'>
             {" "}
             <Home />
@@ -207,7 +202,7 @@ export default function Main() {
           <Route exact path='/doctor' component={Doctor} />
           <Route exact path='/about' component={About} />
           {/* <Route exact path='/fileUpload' component={FileUpload} /> */}
->>>>>>> main
+          <Route exact path="/fileUpload" component={FileUpload} />
         </Switch>
         <Footer />
       </main>
