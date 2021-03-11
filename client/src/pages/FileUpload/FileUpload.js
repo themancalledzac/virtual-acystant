@@ -4,74 +4,19 @@ import * as tf from "@tensorflow/tfjs"
 // import * from "../../../tfjs-models/model.json"
 
 
-  
-// class FileUpload extends Component { 
-   
-    // state = { 
-    //     selectedFile: null,
-        // status: false
-    // }; 
-     
-    // onFileChange = event => { 
-    //       this.setState({ 
-    //         selectedFile: URL.createObjectURL(event.target.files[0])
-            
-    //       }); 
-    // }; 
-    
-
-    // onFileUpload = () => { 
-
-
-    //   const data = new FormData(); 
-
-    //   data.append( 
-    //       "myFile", 
-    //       this.state.selectedFile, 
-          // this.state.selectedFile.name
-        // ); 
-     
-
-    //   var file = document.getElementById('fileItem').files[0];
-
-    //   console.log(this.state.selectedFile); 
-    //   console.log(file);
-    //   this.setState({status: true})
-    //   console.log(data)
-     
-
-    //   axios.post("/image", data); 
-    // }; 
-     
-     
-  //   render() { 
-  //     return ( 
-  //         <div>
-  //             <div>
-  //               <br/>
-  //                 <input
-  //                     id="fileItem"
-  //                     type="file"
-  //                     label="Upload your skin lesion!"
-  //                     custom
-  //                     onChange={this.onFileChange} 
-  //                     />
-  //                 <button onClick={this.onFileUpload}>
-  //                     Upload!
-  //               </button>
-  //               <img id="target" src = {this.state.selectedFile}/>
-
-  //             </div>
-  //         </div> 
-  //     ); 
-  //   } 
-  // } 
-  
-
-
-  // export default FileUpload; 
 
   export default function FileUpload() {
+    const CLASSES ={
+      0: 'Actinic Keratoses (Solar Keratoses) or intraepithelial Carcinoma (Bowenâ€™s disease)',
+      1: 'Basal Cell Carcinoma',
+      2: 'Benign Keratosis',
+      3: 'Dermatofibroma',
+      4: 'Melanoma',
+      5: 'Melanocytic Nevi',
+      6: 'Vascular skin lesion'
+    }
+
+
     const [image, setImage] = React.useState("");
     const imageRef = React.useRef();
     console.log("imageRef.current: "+ imageRef.current)
@@ -85,17 +30,6 @@ import * as tf from "@tensorflow/tfjs"
         const reader = new FileReader();
         reader.addEventListener("load", (e) => {
           setResult(e.target.result);
-          // imageRef.current.src = e.target.result
-
-          // let tensor = tf.browser.fromPixels(imageRef.current)
-          //   .resizeNearestNeighbor([224,224])
-          //   .toFloat();
-          //   console.log("Tensor " + tensor)
-            // let offset = tf.scalar(127.5);
-    
-            // tensor = tensor.sub(offset)
-            // .div(offset)
-            // .expandDims();
 
         });
         reader.readAsDataURL(imageFile);
@@ -105,7 +39,6 @@ import * as tf from "@tensorflow/tfjs"
 
        
     async function predict() {
-
 
           let tensor = tf.browser.fromPixels(imageRef.current)
             .resizeNearestNeighbor([224,224])
@@ -119,15 +52,21 @@ import * as tf from "@tensorflow/tfjs"
             const  model = await tf.loadLayersModel(`/tfjs-models/model.json`);
             let predictions = await model.predict(tensor).data();
             console.log(predictions)
+            let top5 = Array.from(predictions)
+            .map(function (p, i) {
+                return {
+                    probability: p,
+                    className: CLASSES[i]
+                };
+            }).sort(function (a, b) {
+                return b.probability - a.probability;
+            }).slice(0, 3);
+            console.log(top5)
+
 
     }
 
-    // let model;
-    // async function loadModel(name) {
-    //     model = undefined;
-    //     model = await tf.loadLayersModel(`../../../tfjs-models/model.json`);
-    //     console.log(model)
-    // }
+
   
     return (
       <div className="image">
