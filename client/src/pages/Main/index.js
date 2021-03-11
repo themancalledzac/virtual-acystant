@@ -5,7 +5,6 @@ import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
@@ -19,12 +18,12 @@ import HomeIcon from "@material-ui/icons/Home";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import GroupIcon from "@material-ui/icons/Group";
 import GitHubIcon from "@material-ui/icons/GitHub";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import Home from "../Home";
-import PageTwo from "../PageTwo";
 import colors from "../../components/colors";
-import { Link } from "@material-ui/core";
+import Doctor from "../Doctor";
+import About from "../About";
 
 const drawerWidth = 240;
 
@@ -91,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Main() {
+export default function Main() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -191,8 +190,12 @@ function Main() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/pageTwo' component={PageTwo} />
+          <Route exact path='/'>
+            {" "}
+            <Home />
+          </Route>
+          <Route exact path='/doctor' component={Doctor} />
+          <Route exact path='/about' component={About} />
           {/* <Route exact path='/fileUpload' component={FileUpload} /> */}
         </Switch>
         <Footer />
@@ -200,5 +203,3 @@ function Main() {
     </div>
   );
 }
-
-export default Main;
