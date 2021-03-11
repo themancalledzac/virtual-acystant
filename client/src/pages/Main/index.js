@@ -5,7 +5,6 @@ import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
@@ -15,12 +14,16 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-import { Route, Switch } from "react-router-dom";
+import HomeIcon from "@material-ui/icons/Home";
+import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
+import GroupIcon from "@material-ui/icons/Group";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import { Route, Switch, Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import Home from "../Home";
-import PageTwo from "../PageTwo";
+import colors from "../../components/colors";
+import Doctor from "../Doctor";
+import About from "../About";
 
 const drawerWidth = 240;
 
@@ -29,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
   },
   appBar: {
+    backgroundColor: colors.orange,
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -86,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Main() {
+export default function Main() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -120,7 +124,7 @@ function Main() {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' noWrap>
-            Mini variant drawer
+            Virtual Acystant
           </Typography>
         </Toolbar>
       </AppBar>
@@ -148,37 +152,54 @@ function Main() {
         </div>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
+          <Link to={"/"}>
+            <ListItem button key={"Home"}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <HomeIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={"Home"} />
             </ListItem>
-          ))}
+          </Link>
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
+          <Link to={"/about"}>
+            <ListItem button key={"About"}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <GroupIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={"About"} />
             </ListItem>
-          ))}
+          </Link>
+          <Link to={"/doctor"}>
+            <ListItem button key={"Find A Doctor"}>
+              <ListItemIcon>
+                <LocalHospitalIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Find A Doctor"} />
+            </ListItem>
+          </Link>
+          <ListItem button key={"Github"}>
+            <ListItemIcon>
+              <GitHubIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Github"} />
+          </ListItem>
         </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/pageTwo' component={PageTwo} />
+          <Route exact path='/'>
+            {" "}
+            <Home />
+          </Route>
+          <Route exact path='/doctor' component={Doctor} />
+          <Route exact path='/about' component={About} />
+          {/* <Route exact path='/fileUpload' component={FileUpload} /> */}
         </Switch>
         <Footer />
       </main>
     </div>
   );
 }
-
-export default Main;
