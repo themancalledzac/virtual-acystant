@@ -37,7 +37,6 @@ import * as tf from "@tensorflow/tfjs"
 
       }
 
-       
     async function predict() {
 
           let tensor = tf.browser.fromPixels(imageRef.current)
