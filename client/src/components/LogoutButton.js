@@ -1,4 +1,4 @@
-import React, { useLogout } from "react";
+import { useLogout } from "../utils/auth";
 
 function LogoutButton() {
 

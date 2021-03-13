@@ -1,4 +1,3 @@
-import React from "react";
 import HeaderCard from "../../components/HeaderCard";
 import headerCardData from "../../utils/headerCardData.json";
 import LoginForm from "../../components/LoginForm";
