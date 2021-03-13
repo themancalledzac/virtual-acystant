@@ -6,6 +6,10 @@ import api from "./api";
 import { useStoreContext } from "../store";
 import { LOGIN_USER, LOGOUT_USER } from "../store/actions";
 
+// TODO
+// If you have already implemented your own global store, you will need to merge the two actions, LOGIN_USER and LOGOUT_USER, into your implementation. 
+// You will also then need to make sure that the dispatch calls in utils/auth.js match how your store is set up.
+
 const setAuthToken = token => {
 
     storeAuthToken( token );
