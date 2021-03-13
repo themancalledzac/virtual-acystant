@@ -3,7 +3,7 @@ const db = require("../models");
 // we define methods for the userController
 // preliminary controller, just a few thoughts to go towards
 
-module.exports = {
+module.exports = {  
   // Our initial login will most likely find our user by our login ID, find our user, and res.json our user
   findById: function (req, res) {
     db.User.findById(req.params.id)
@@ -29,4 +29,5 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+
 };

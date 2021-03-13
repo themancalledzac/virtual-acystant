@@ -9,8 +9,7 @@ const userSchema = new Schema({
   location: {
     type: isValidObjectId,
     ref: City,
-  },
-  image: {},
+  }
 });
 
 const User = mongoose.model("User", userSchema);
