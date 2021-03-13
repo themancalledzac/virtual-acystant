@@ -13,9 +13,9 @@ function App() {
 
   return (
     <Router>
-      <UserProvider>
+      <StoreProvider>
         <Main />
-      </UserProvider>
+      </StoreProvider>
     </Router>
   );
 }
