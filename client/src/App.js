@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Main from "./pages/Main";
-import { UserProvider } from "./store/index";
+import { StoreProvider } from "./store/index";
 // Import the useAuthTokenStore hook.
 import { useAuthTokenStore } from "./utils/auth";
 

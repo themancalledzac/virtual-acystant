@@ -79,3 +79,5 @@ export const useStoreContext = () => {
     return useContext( StoreContext );
 
 }
+
+export default StoreProvider;
