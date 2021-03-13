@@ -21,7 +21,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^4.1.0",
+    "concurrently": "^6.0.0",
     "eslint": "^7.21.0",
     "nodemon": "^1.18.7"
   },
@@ -35,12 +35,12 @@
     "fastest-validator": "^1.10.0",
     "formidable": "^1.2.2",
     "if-env": "^1.0.4",
-    "mongoose": "^5.3.16",
-    "seedrandom": "^3.0.5",
     "jwt-decode": "^3.1.2",
+    "mongoose": "^5.3.16",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "seedrandom": "^3.0.5"
   },
   "bugs": {
     "url": "https://github.com/themancalledzac/virtual-acystant/issues"
