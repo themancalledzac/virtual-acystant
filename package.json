@@ -27,13 +27,20 @@
   },
   "dependencies": {
     "@tensorflow/tfjs": "^3.2.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.16.3",
+    "fastest-validator": "^1.10.0",
     "formidable": "^1.2.2",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
-    "seedrandom": "^3.0.5"
+    "seedrandom": "^3.0.5",
+    "jwt-decode": "^3.1.2",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "react-router-dom": "^5.2.0"
   },
   "bugs": {
     "url": "https://github.com/themancalledzac/virtual-acystant/issues"
