@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const userRoutes = require("./user");
-// const imageProcessing = require("./imageProcessing");
+const FileUpload = require("./FileUpload");
 
-// router.use("/users", userRoutes);
-// router.use("/imageProcessing", imageProcessing);
+router.use("/users", userRoutes);
+router.use("/FileUpload", FileUpload);
 
 module.exports = router;
