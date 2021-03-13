@@ -28,7 +28,7 @@ app.use( "/api", require("./routes/authentication") );
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/virtualAcystant"
+  process.env.MONGODB_URI || "mongodb://localhost:27017/virtualAcystant", { useNewUrlParser: true, useUnifiedTopology: true}
 );
 
 // Start the API server
