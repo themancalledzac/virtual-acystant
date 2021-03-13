@@ -76,7 +76,8 @@ router.post("/login", validateBodyWith( loginValidator ), async (req, res) => {
     return res.json({
       success: true,
       token: "Bearer " + token,
-      user: secureUser
+      user: secureUser,
+      default: "great success"
     })
   
 
@@ -117,6 +118,9 @@ router.post("/register", validateBodyWith( registerValidator ), async (req, res)
       // User object without the password
       ...secureUser
     } = newUser._doc;
+
+    res.status(200).json({default: "You have successfully registered, please login!"});
+    // render login page -> how does this work with Redux???
 
     res.json( secureUser );
 
