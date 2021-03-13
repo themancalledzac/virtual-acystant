@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 
-import api from "./api";
+import api from "./API";
 import { useStoreContext } from "../store";
 import { LOGIN_USER, LOGOUT_USER } from "../store/action";
 
