@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import api from "./api";
 import { useStoreContext } from "../store";
-import { LOGIN_USER, LOGOUT_USER } from "../store/actions";
+import { LOGIN_USER, LOGOUT_USER } from "../store/action";
 
 // TODO
 // If you have already implemented your own global store, you will need to merge the two actions, LOGIN_USER and LOGOUT_USER, into your implementation. 
