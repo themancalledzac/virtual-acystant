@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  imageId: { type: String, required: true },
   email: {
     type: String,
     required: true
@@ -14,11 +17,6 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now
   }
-  // location: {
-  //   type: isValidObjectId,
-  //   ref: City,
-  // },
-  // image: {},
 });
 
 const User = mongoose.model("users", userSchema);
