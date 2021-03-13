@@ -7,10 +7,7 @@ const userSchema = new Schema({
   password: {},
   email: { type: String, required: true, unique: true },
   // How do we do a check on city/state to make sure they exist? Some check on an API?
-  location: {
-    type: isValidObjectId,
-    ref: City,
-  },
+  location: {},
   imageId: { type: String, required: true }
 });
 
