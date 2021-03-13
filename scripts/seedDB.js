@@ -9,14 +9,8 @@ const userSeed = [
   {
     firstName: "fakeFName",
     lastName: "fakeLName",
+    password: "123",
     email: "fake@fake.com",
-    location: "Seattle",
-
-  },
-  {
-    firstName: "fakeFName1",
-    lastName: "fakeLName1",
-    email: "fake1@fake.com",
     location: "Seattle",
     date: new Date(Date.now())
   }

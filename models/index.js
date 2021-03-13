@@ -1,3 +1,3 @@
-modeule.exports = {
+module.exports = {
   User: require("./user"),
 };
