@@ -1,3 +1,7 @@
+require("dotenv").config();
+
+const passport = require("passport");
+
 const express = require("express");
 const routes = require("./routes/api")
 
@@ -14,14 +18,17 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+app.use(passport.initialize());
+// Passport config
+passport.use( require("./config/jwtPassportStrategy") );
+
 // Add routes, both API and view
-// app.use("/api", routes);
-
-
+app.use( "/api", require("./routes/authentication") );
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/virtualAcystant"
+  process.env.MONGODB_URI || "mongodb://localhost:27017/virtualAcystant", { useNewUrlParser: true, useUnifiedTopology: true}
 );
 
 // Start the API server
