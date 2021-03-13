@@ -32,7 +32,8 @@
     "express": "^4.16.3",
     "formidable": "^1.2.2",
     "if-env": "^1.0.4",
-    "mongoose": "^5.3.16"
+    "mongoose": "^5.3.16",
+    "seedrandom": "^3.0.5"
   },
   "bugs": {
     "url": "https://github.com/themancalledzac/virtual-acystant/issues"
