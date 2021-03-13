@@ -74,7 +74,7 @@ export const useAuthTokenStore = () => {
             dispatch({ type: LOGOUT_USER });
             
             // Redirect to login
-            history.push("/");
+            history.push('/');
 
         }
         
