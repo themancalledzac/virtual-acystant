@@ -1,6 +1,7 @@
 import React from "react";
 import HeaderCard from "../../components/HeaderCard";
 import headerCardData from "../../utils/headerCardData.json";
+import LoginForm from "../../components/LoginForm";
 
 const addUser = () => {
   // send data to backend
@@ -18,6 +19,7 @@ const Home = () => {
         title={headerCardData.home.title}
         paragraph={headerCardData.home.paragraph}
       />
+      <LoginForm />
       <form onSubmit={addUser}>
         <input></input>
       </form>
