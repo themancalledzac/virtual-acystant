@@ -80,8 +80,12 @@ import * as tf from "@tensorflow/tfjs"
 
           }}
         />
+        <br></br>
+        <br></br>
         {result && <img ref={imageRef} src={result} alt="" />}
         {result &&<button onClick = {predict}> Predict</button>}
+        {result &&<button> Save Predictions</button>}
+        {result &&<button> Save Image</button>}
       </div>
     );
   }
