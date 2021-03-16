@@ -3,9 +3,11 @@ const Schema = mongoose.Schema;
 
 const imageSchema = new Schema({
   imageUrl: { type: Number, required: true },
-  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-  date: { type: Date, default: Date.now }
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  date: { type: Date, default: Date.now },
 });
+
+// restructure based off our data
 
 const Image = mongoose.model("Image", imageSchema);
 
