@@ -1,6 +1,6 @@
 import React from "react";
-import HeaderCard from "../../components/HeaderCard";
-import headerCardData from "../../utils/headerCardData.json";
+import HeaderCard from "../components/HeaderCard";
+import headerCardData from "../utils/headerCardData.json";
 
 const About = (props) => {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
-import LoginSignUp from "./pages/LoginSignUp.js";
-import Main from "./pages/Main.js";
+import LoginSignUp from "./components/LoginSignUp";
+import Main from "./pages/NavContainer";
 import { StoreProvider } from "./store/index";
 // Import the useAuthTokenStore hook.
 import { useAuthTokenStore } from "./utils/auth";
@@ -11,6 +11,7 @@ function App() {
   // Use the hook to reauthenticate stored tokens.
   useAuthTokenStore();
 
+  // TODO remove StoreProvider?
   return (
     <Router>
       <StoreProvider>
