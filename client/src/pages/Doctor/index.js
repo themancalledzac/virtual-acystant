@@ -9,7 +9,8 @@ const Doctor = () => {
         title={headerCardData.doctor.title}
         paragraph={headerCardData.doctor.paragraph}
       />
-      <h1>Doctor Page</h1>
+      {/* <RESULTS /> */}
+      {/* <MAP /> */}
     </div>
   );
 };
