@@ -11,6 +11,7 @@ function App() {
   // Use the hook to reauthenticate stored tokens.
   useAuthTokenStore();
 
+  // TODO remove StoreProvider?
   return (
     <Router>
       <StoreProvider>
