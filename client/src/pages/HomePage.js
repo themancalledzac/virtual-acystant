@@ -1,9 +1,9 @@
-import HeaderCard from "../../components/HeaderCard";
-import headerCardData from "../../utils/headerCardData.json";
-import LoginForm from "../../components/LoginForm";
-import LogoutButton from "../../components/LogoutButton";
-import SignupForm from "../../components/SignupForm";
-import FileUpload from "../FileUpload/FileUpload";
+import HeaderCard from "../components/HeaderCard";
+import headerCardData from "../utils/headerCardData.json";
+import LoginForm from "../components/LoginForm";
+import LogoutButton from "../components/LogoutButton";
+import SignupForm from "../components/SignupForm";
+import FileUpload from "../components/FileUpload";
 
 const addUser = () => {
   // send data to backend

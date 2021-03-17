@@ -20,11 +20,11 @@ import GroupIcon from "@material-ui/icons/Group";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import { Route, Switch, Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import Home from "./Home.js";
-import FileUpload from "./FileUpload/FileUpload";
+import Home from "./HomePage";
+import FileUpload from "../components/FileUpload";
 import colors from "../components/colors";
-import Doctor from "./Doctor";
-import About from "./About";
+import Doctor from "./DoctorPage";
+import About from "./AboutPage";
 
 const drawerWidth = 240;
 

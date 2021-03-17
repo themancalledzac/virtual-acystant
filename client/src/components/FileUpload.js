@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { Component } from "react";
+import React from "react";
 import * as tf from "@tensorflow/tfjs";
 // import * from "../../../tfjs-models/model.json"
 
