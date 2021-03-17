@@ -27,9 +27,12 @@ export default function FileUpload() {
     reader.addEventListener("load", (e) => {
       setResult(e.target.result);
     });
-    // db image save
+    // save to cloudinary or aws
+    // db image url save
+    // create and pass down image ID
+    // result
     reader.readAsDataURL(imageFile);
-
+    // console.log(result);
     console.log("Image file " + imageFile);
   }
 
@@ -45,7 +48,7 @@ export default function FileUpload() {
     const model = await tf.loadLayersModel(`/tfjs-models/model.json`);
     let predictions = await model.predict(tensor).data();
     console.log(predictions);
-    let top5 = Array.from(predictions)
+    let top3 = Array.from(predictions)
       .map(function (p, i) {
         return {
           probability: p,
@@ -57,10 +60,23 @@ export default function FileUpload() {
       })
       .slice(0, 3);
     // db save
-    // .then
+    // loadData(top3, result);
+    // db(top5)
     // state save
-    console.log(top5);
+    console.log(top3);
   }
+
+  // db function that takes in predict data and then
+  // calls state function to save data
+
+  // function loadData(top3, result) {
+  //   API.uploadData(top3, result)
+  //     .then((res) => stateChange())
+  //     .catch((err) => console.log(err));
+  // }
+
+  // call to update local state
+  // function stateChange() {};
 
   return (
     <>

@@ -19,12 +19,12 @@ import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import GroupIcon from "@material-ui/icons/Group";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import { Route, Switch, Link } from "react-router-dom";
-import Footer from "../../components/Footer";
-import Home from "../Home";
-import FileUpload from "../FileUpload/FileUpload";
-import colors from "../../components/colors";
-import Doctor from "../Doctor";
-import About from "../About";
+import Footer from "../components/Footer";
+import Home from "./Home.js";
+import FileUpload from "./FileUpload/FileUpload";
+import colors from "../components/colors";
+import Doctor from "./Doctor";
+import About from "./About";
 
 const drawerWidth = 240;
 
@@ -125,7 +125,8 @@ export default function Main() {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' noWrap>
-            Virtual Acystant
+            Virtual A
+            <span style={{ color: "#0000a0", fontSize: "50px" }}>cyst</span> ant
           </Typography>
         </Toolbar>
       </AppBar>
