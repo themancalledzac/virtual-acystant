@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,6 +13,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import doctorImage from "../assets/images/pexels-thirdman-53276471.jpg";
+import { useLogin } from "../utils/auth";
+import API from "../utils/API";
 
 function Copyright() {
   return (
@@ -71,6 +73,32 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
 
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  // Get the helper login function from the `useLogin` hook.
+  const login = useLogin();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    try {
+      // Register the user.
+      await API.register({ email, password });
+
+      // User has been successfully registered, now log them in with the same information.
+      await login({ email, password });
+
+      // User has been successfully registered, logged in and added to state. Perform any additional actions you need here such as redirecting to a new page.
+    } catch (err) {
+      // Handle error responses from the API. This will include
+      if (err.response && err.response.data) console.log(err.response.data);
+    }
+  };
+
   return (
     <Grid container component='main' className={classes.root}>
       <CssBaseline />
@@ -93,9 +121,9 @@ export default function SignUp() {
           <Typography component='h1' variant='h5'>
             Sign up
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} onSubmit={handleSubmit}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete='fname'
                   name='firstName'
@@ -105,6 +133,7 @@ export default function SignUp() {
                   id='firstName'
                   label='First Name'
                   autoFocus
+                  ref={firstNameRef}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -116,21 +145,24 @@ export default function SignUp() {
                   label='Last Name'
                   name='lastName'
                   autoComplete='lname'
+                  ref={lastNameRef}
                 />
-              </Grid>
+  </Grid> */}
               <Grid item xs={12}>
-                <TextField
+                <input
                   variant='outlined'
+                  type='text'
                   required
                   fullWidth
                   id='email'
                   label='Email Address'
                   name='email'
                   autoComplete='email'
+                  ref={emailRef}
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <input
                   variant='outlined'
                   required
                   fullWidth
@@ -139,6 +171,7 @@ export default function SignUp() {
                   type='password'
                   id='password'
                   autoComplete='current-password'
+                  ref={passwordRef}
                 />
               </Grid>
               <Grid item xs={12}>
