@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 require("dotenv").config();
 
 const passport = require("passport");
 
 const express = require("express");
-const routes = require("./routes/api")
+const routes = require("./routes/api");
 
 const mongoose = require("mongoose");
 const formidable = require("formidable");
@@ -22,14 +23,15 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(passport.initialize());
 // Passport config
-passport.use( require("./config/jwtPassportStrategy") );
+passport.use(require("./config/jwtPassportStrategy"));
 
 // Add routes, both API and view
-app.use( "/api", require("./routes/authentication") );
+app.use("/api", require("./routes/authentication"));
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost:27017/virtualAcystant", { useNewUrlParser: true, useUnifiedTopology: true}
+  process.env.MONGODB_URI || "mongodb://localhost:27017/virtualAcystant",
+  { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
 // Start the API server

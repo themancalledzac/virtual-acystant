@@ -16,30 +16,24 @@ const { loginValidator, registerValidator } = require("./validation");
 // Load User model
 const { User } = require("../models");
 
-const jwtSign = util.promisify( jwt.sign );
+const jwtSign = util.promisify(jwt.sign);
 
 // Get the currently authenticated user
 router.post("/authenticated", authenticateUser, (req, res) => {
-
-  res.json( req.user );
-
+  res.json(req.user);
 });
 
 /**
  * Log in an existing user by signing and returning a secure JWT token
  * for the client application to store and include with requests.
  */
-router.post("/login", validateBodyWith( loginValidator ), async (req, res) => {
-
+router.post("/login", validateBodyWith(loginValidator), async (req, res) => {
   const { email, password } = req.body;
 
   try {
-
-    const user =
-      await User
-        .findOne({ email })
-        // Restrict the data loaded from the user model
-        .select("name email password");
+    const user = await User.findOne({ email })
+      // Restrict the data loaded from the user model
+      .select("name email password");
 
     if (!user) {
       // User not found by email.
@@ -52,85 +46,78 @@ router.post("/login", validateBodyWith( loginValidator ), async (req, res) => {
       ...secureUser
     } = user._doc;
 
-    const isMatch = await bcrypt.compare( password, encryptedPassword );
-    
-    if( !isMatch ) {
+    const isMatch = await bcrypt.compare(password, encryptedPassword);
+
+    if (!isMatch) {
       // User's password is invalid.
       return res.status(404).json({ default: "Email or password is invalid." });
     }
 
     const payload = {
       id: secureUser._id,
-      email: secureUser.email
+      email: secureUser.email,
     };
 
     // Create a signed JWT token to send back to the client for reauthentication.
-    const token = await jwtSign(
-      payload,
-      process.env.JWT_SECRET,
-      {
-        expiresIn: 31556926 // 1 year in seconds
-      }
-    );
+    const token = await jwtSign(payload, process.env.JWT_SECRET, {
+      expiresIn: 31556926, // 1 year in seconds
+    });
 
     return res.json({
       success: true,
       token: "Bearer " + token,
       user: secureUser,
-      default: "great success"
-    })
-  
-
-  } catch( err ) {
-
+      default: "great success",
+    });
+  } catch (err) {
     console.log(err);
     res.status(500).json({ default: "Something went wrong trying to log in." });
-
   }
-
 });
 
 /**
  * Creates a new user for authentication
  */
-router.post("/register", validateBodyWith( registerValidator ), async (req, res) => {
+router.post(
+  "/register",
+  validateBodyWith(registerValidator),
+  async (req, res) => {
+    try {
+      const { email, password } = req.body;
 
-  try {
+      const user = await User.findOne({ email });
 
-    const { email, password } = req.body;
+      if (user) {
+        // User already exists error.
+        return res.status(400).json({ email: "Email already exists." });
+      }
 
-    const user = await User.findOne({ email });
+      const newUser = new User({
+        email,
+        password: await passwordHash(password),
+      });
 
-    if (user) {
-      // User already exists error.
-      return res.status(400).json({ email: "Email already exists." });
+      await newUser.save();
+
+      const {
+        password: encryptedPassword,
+        // User object without the password
+        ...secureUser
+      } = newUser._doc;
+
+      res
+        .status(200)
+        .json({ default: "You have successfully registered, please login!" });
+      // render login page -> how does this work with Redux???
+
+      res.json(secureUser);
+    } catch (err) {
+      console.log(err);
+      res
+        .status(500)
+        .json({ default: "Something went wrong creating your account." });
     }
-
-    const newUser = new User({
-      email,
-      password: await passwordHash( password )
-    });
-
-    await newUser.save();
-
-    const {
-      password: encryptedPassword,
-      // User object without the password
-      ...secureUser
-    } = newUser._doc;
-
-    res.status(200).json({default: "You have successfully registered, please login!"});
-    // render login page -> how does this work with Redux???
-
-    res.json( secureUser );
-
-  } catch( err ) {
-
-    console.log(err);
-    res.status(500).json({ default: "Something went wrong creating your account." });
-
   }
-
-});
+);
 
 module.exports = router;
