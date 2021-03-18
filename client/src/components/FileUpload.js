@@ -18,6 +18,8 @@ export default function FileUpload() {
   console.log("imageRef.current: " + imageRef.current);
 
   const [result, setResult] = React.useState("");
+  const [findings, setFindings] = React.useState("");
+  console.log("These are findings" + findings)
 
   function uploader(e) {
     const imageFile = e.target.files[0];
@@ -33,6 +35,7 @@ export default function FileUpload() {
     reader.readAsDataURL(imageFile);
     // console.log(result);
     console.log("Image file " + imageFile);
+    return imageFile
   }
 
   async function predict() {
@@ -63,6 +66,13 @@ export default function FileUpload() {
     // db(top5)
     // state save
     console.log(top3);
+    return top3[0].probability + ", " +top3[1].probability + ", " + top3[2].probability
+  }
+
+  const showResults = async () => setFindings( await predict() );
+
+  const saveResults = async () => {
+    // API.saveResults(findings, result)
   }
 
   // db function that takes in predict data and then
@@ -87,11 +97,15 @@ export default function FileUpload() {
           onChange={(e) => {
             setImage(e.target.files[0]);
             uploader(e);
-            console.log(e.target.files[0]);
+            console.log("from onClick"+e.target.files[0]);
+            console.log("JSON stuff" + image[0]);
           }}
         />
         {result && <img ref={imageRef} src={result} alt='' />}
         {result && <button onClick={predict}> Predict</button>}
+        {result && <button onClick={showResults}> Show Results</button>}
+        {findings && <button onClick={saveResults}> Save Results</button>}
+        {findings && <p> Findings are: {findings}</p>}
       </div>
     </>
   );
