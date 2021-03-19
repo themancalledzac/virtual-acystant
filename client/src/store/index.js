@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useContext } from "react";
 
-import { LOGIN_USER, LOGOUT_USER } from "./action";
+import { LOGIN_SIGNUP_SWITCH, LOGIN_USER, LOGOUT_USER } from "./action";
 
 const StoreContext = createContext({
   userAuth: {},
@@ -12,6 +12,9 @@ const reducer = (state, { type, payload }) => {
   switch (type) {
     case LOGIN_USER:
       return { ...state, userAuth: payload };
+
+    case LOGIN_SIGNUP_SWITCH:
+      return { ...state, loginSignup: !state.loginSignup };
 
     case LOGOUT_USER:
       return { ...state, userAuth: {} };
@@ -33,7 +36,7 @@ export const StoreProvider = ({ children }) => {
         city: "",
         state: "",
       },
-      images: [],
+      loginSignup: false,
     },
     headerCard: {
       home: {

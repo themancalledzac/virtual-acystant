@@ -2,46 +2,24 @@ import React, { useRef } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-// import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
-import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import doctorImage from "../assets/images/pexels-thirdman-53276471.jpg";
 import { useLogin } from "../utils/auth";
-
-// -----------------------------------------------------------------------------//
-//                                                                              //
-//                                      TODO                                    //
-//                                                                              //
-//        Component to inside LoginSignUp, state pending to show or hide        //
-//                                                                              //
-// -----------------------------------------------------------------------------//
-
-function Copyright() {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {"Copyright © "}
-      <Link color='inherit' href='https://material-ui.com/'>
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import { useStoreContext } from "../store";
+import { LOGIN_SIGNUP_SWITCH } from "../store/action";
+import { TextField } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
   },
   image: {
-    backgroundImage: { doctorImage },
+    backgroundImage: `url(${doctorImage})`,
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -94,6 +72,13 @@ export default function Login() {
     }
   };
 
+  const [, dispatch] = useStoreContext();
+  const loginSignupState = () => {
+    dispatch({
+      type: LOGIN_SIGNUP_SWITCH,
+    });
+  };
+
   return (
     <Grid container component='main' className={classes.root}>
       <CssBaseline />
@@ -116,35 +101,41 @@ export default function Login() {
             Sign in
           </Typography>
           <form className={classes.form} onSubmit={handleSubmit}>
-            <input
-              variant='outlined'
-              margin='normal'
-              required
-              fullWidth
-              type='text'
-              id='email'
-              ref={emailRef}
-              label='Email Address'
-              name='email'
-              autoComplete='email'
-              autoFocus
-            />
-            <input
-              variant='outlined'
-              margin='normal'
-              required
-              fullWidth
-              name='password'
-              ref={passwordRef}
-              label='Password'
-              type='password'
-              id='password'
-              autoComplete='current-password'
-            />
-            <FormControlLabel
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  variant='outlined'
+                  margin='normal'
+                  required
+                  fullWidth
+                  type='text'
+                  id='email'
+                  inputRef={emailRef}
+                  label='Email Address'
+                  name='email'
+                  autoComplete='email'
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant='outlined'
+                  margin='normal'
+                  required
+                  fullWidth
+                  name='password'
+                  inputRef={passwordRef}
+                  label='Password'
+                  type='password'
+                  id='password'
+                  autoComplete='current-password'
+                />
+              </Grid>
+            </Grid>
+            {/* <FormControlLabel
               control={<Checkbox value='remember' color='primary' />}
               label='Remember me'
-            />
+            /> */}
             <Button
               type='submit'
               fullWidth
@@ -155,20 +146,17 @@ export default function Login() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
+              {/* <Grid item xs>
                 <Link href='#' variant='body2'>
                   Forgot password?
                 </Link>
-              </Grid>
-              <Grid item>
-                <Link href='#' variant='body2'>
-                  {"Don't have an account? Sign Up"}
+              </Grid> */}
+              <Grid item container justify='flex-end'>
+                <Link href='#' onClick={loginSignupState} variant='body2'>
+                  Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
           </form>
         </div>
       </Grid>
