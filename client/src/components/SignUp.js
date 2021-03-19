@@ -2,9 +2,6 @@ import React, { useRef } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-// import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -14,34 +11,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import doctorImage from "../assets/images/pexels-thirdman-53276471.jpg";
 import { useLogin } from "../utils/auth";
 import API from "../utils/API";
-
-function Copyright() {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {"Copyright © "}
-      <Link color='inherit' href='https://material-ui.com/'>
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-// -----------------------------------------------------------------------------//
-//                                                                              //
-//                                      TODO                                    //
-//                                                                              //
-//           Component inside LoginSignUp, state pending to show or hide        //
-//                                                                              //
-// -----------------------------------------------------------------------------//
+import { useStoreContext } from "../store";
+import { LOGIN_SIGNUP_SWITCH } from "../store/action";
+import { TextField } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
   },
   image: {
-    backgroundImage: { doctorImage },
+    backgroundImage: `url(${doctorImage})`,
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -98,6 +77,13 @@ export default function SignUp() {
     }
   };
 
+  const [, dispatch] = useStoreContext();
+  const loginSignupState = () => {
+    dispatch({
+      type: LOGIN_SIGNUP_SWITCH,
+    });
+  };
+
   return (
     <Grid container component='main' className={classes.root}>
       <CssBaseline />
@@ -122,33 +108,8 @@ export default function SignUp() {
           </Typography>
           <form className={classes.form} onSubmit={handleSubmit}>
             <Grid container spacing={2}>
-              {/* <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete='fname'
-                  name='firstName'
-                  variant='outlined'
-                  required
-                  fullWidth
-                  id='firstName'
-                  label='First Name'
-                  autoFocus
-                  ref={firstNameRef}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant='outlined'
-                  required
-                  fullWidth
-                  id='lastName'
-                  label='Last Name'
-                  name='lastName'
-                  autoComplete='lname'
-                  ref={lastNameRef}
-                />
-  </Grid> */}
               <Grid item xs={12}>
-                <input
+                <TextField
                   variant='outlined'
                   type='text'
                   required
@@ -157,11 +118,11 @@ export default function SignUp() {
                   label='Email Address'
                   name='email'
                   autoComplete='email'
-                  ref={emailRef}
+                  inputRef={emailRef}
                 />
               </Grid>
               <Grid item xs={12}>
-                <input
+                <TextField
                   variant='outlined'
                   required
                   fullWidth
@@ -170,15 +131,7 @@ export default function SignUp() {
                   type='password'
                   id='password'
                   autoComplete='current-password'
-                  ref={passwordRef}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value='allowExtraEmails' color='primary' />
-                  }
-                  label='I want to receive inspiration, marketing promotions and updates via email.'
+                  inputRef={passwordRef}
                 />
               </Grid>
             </Grid>
@@ -193,7 +146,7 @@ export default function SignUp() {
             </Button>
             <Grid container justify='flex-end'>
               <Grid item>
-                <Link href='#' variant='body2'>
+                <Link href='#' onClick={loginSignupState} variant='body2'>
                   Already have an account? Sign in
                 </Link>
               </Grid>

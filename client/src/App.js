@@ -14,10 +14,8 @@ function App() {
 
   const [state] = useStoreContext();
   const useAuth = state.userAuth.token;
-  console.log(state.userAuth.token);
-  // console.log(state.userAuth.token.id);
+  // console.log(state.userAuth.token);
 
-  // TODO remove StoreProvider?
   return (
     <Router>
       <StoreProvider>{useAuth ? <Main /> : <LoginSignUp />}</StoreProvider>
