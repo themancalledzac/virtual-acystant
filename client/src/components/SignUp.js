@@ -14,6 +14,7 @@ import API from "../utils/API";
 import { useStoreContext } from "../store";
 import { LOGIN_SIGNUP_SWITCH } from "../store/action";
 import { TextField } from "@material-ui/core";
+import colors from "./colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: colors.pinkGrey,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -45,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    color: colors.white,
+    backgroundColor: colors.blue2,
+    "&:hover, &:focus": {
+      backgroundColor: colors.blue3,
+    },
   },
 }));
 
@@ -112,6 +118,7 @@ export default function SignUp() {
                 <TextField
                   variant='outlined'
                   type='text'
+                  margin='normal'
                   required
                   fullWidth
                   id='email'
@@ -124,6 +131,7 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   variant='outlined'
+                  margin='normal'
                   required
                   fullWidth
                   name='password'
@@ -139,7 +147,6 @@ export default function SignUp() {
               type='submit'
               fullWidth
               variant='contained'
-              color='primary'
               className={classes.submit}
             >
               Sign Up

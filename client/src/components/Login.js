@@ -13,6 +13,7 @@ import { useLogin } from "../utils/auth";
 import { useStoreContext } from "../store";
 import { LOGIN_SIGNUP_SWITCH } from "../store/action";
 import { TextField } from "@material-ui/core";
+import colors from "./colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: colors.pinkGrey,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -44,6 +45,11 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    color: colors.white,
+    backgroundColor: colors.blue2,
+    "&:hover, &:focus": {
+      backgroundColor: colors.blue3,
+    },
   },
 }));
 
@@ -133,25 +139,15 @@ export default function Login() {
                 />
               </Grid>
             </Grid>
-            {/* <FormControlLabel
-              control={<Checkbox value='remember' color='primary' />}
-              label='Remember me'
-            /> */}
             <Button
               type='submit'
               fullWidth
               variant='contained'
-              color='primary'
               className={classes.submit}
             >
               Sign In
             </Button>
             <Grid container>
-              {/* <Grid item xs>
-                <Link href='#' variant='body2'>
-                  Forgot password?
-                </Link>
-              </Grid> */}
               <Grid item container justify='flex-end'>
                 <Link href='#' onClick={loginSignupState} variant='body2'>
                   Don't have an account? Sign Up
