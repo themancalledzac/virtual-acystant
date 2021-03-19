@@ -7,11 +7,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/virtualAcystant
 
 const userSeed = [
   {
-    firstName: "fakeFName",
-    lastName: "fakeLName",
-    password: "123",
     email: "fake@fake.com",
-    location: "Seattle",
+    password: "123",
     date: new Date(Date.now())
   }
 
