@@ -17,7 +17,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import GroupIcon from "@material-ui/icons/Group";
-import GitHubIcon from "@material-ui/icons/GitHub";
 import { Route, Switch, Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Home from "./HomePage";
@@ -25,6 +24,7 @@ import FileUpload from "../components/FileUpload";
 import colors from "../components/colors";
 import Doctor from "./DoctorPage";
 import About from "./AboutPage";
+import LogoutButton from "../components/LogoutButton"
 
 const drawerWidth = 240;
 
@@ -181,12 +181,7 @@ export default function Main() {
               <ListItemText primary={"Find A Doctor"} />
             </ListItem>
           </Link>
-          <ListItem button key={"Github"}>
-            <ListItemIcon>
-              <GitHubIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Github"} />
-          </ListItem>
+              <LogoutButton />
         </List>
       </Drawer>
       <main className={classes.content}>
