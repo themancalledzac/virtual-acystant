@@ -66,10 +66,13 @@ export default function FileUpload() {
     // db(top5)
     // state save
     console.log(top3);
-    return top3[0].probability + ", " +top3[1].probability + ", " + top3[2].probability
+    // return top3[0].probability + ", " +top3[1].probability + ", " + top3[2].probability
+    return top3
   }
 
   const showResults = async () => setFindings( await predict() );
+
+
 
   const saveResults = async () => {
     // API.saveResults(findings, result)
@@ -105,7 +108,10 @@ export default function FileUpload() {
         {result && <button onClick={predict}> Predict</button>}
         {result && <button onClick={showResults}> Show Results</button>}
         {findings && <button onClick={saveResults}> Save Results</button>}
-        {findings && <p> Findings are: {findings}</p>}
+        {/* {findings && <p> Findings are: {findings}</p>} */}
+        {findings && <h1> Findings are: </h1>}
+        {findings && findings.map((item, index) => (
+        <li key={index}> {item.className} with probability {item.probability}</li>))}
       </div>
     </>
   );

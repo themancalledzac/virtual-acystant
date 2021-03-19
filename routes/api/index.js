@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 const router = require("express").Router();
 const userRoutes = require("./user");
 // const FileUpload = require("./FileUpload");
