@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import doctorImage from "../assets/images/pexels-thirdman-53276471.jpg";
+import doctorImage from "../assets/images/pexels-tima-miroshnichenko-5452201.jpg";
 import { useLogin } from "../utils/auth";
 import { useStoreContext } from "../store";
 import { LOGIN_SIGNUP_SWITCH } from "../store/action";
@@ -70,6 +70,7 @@ export default function Login() {
       // Handle error responses from the API
       if (err.response && err.response.data) console.log(err.response.data);
     }
+    window.location.reload(false);
   };
 
   const [, dispatch] = useStoreContext();
