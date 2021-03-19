@@ -20,8 +20,8 @@ const HeaderCard = (props) => {
   return (
     <>
       <Container className={classes.searchBar} maxWidth='md'>
+        <h2 className={classes.title}>{props.title}</h2>
         <Typography>
-          <h3 className={classes.title}>{props.title}</h3>
           <p>{props.paragraph}</p>
         </Typography>
       </Container>

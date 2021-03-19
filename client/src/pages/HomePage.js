@@ -3,6 +3,7 @@ import headerCardData from "../utils/headerCardData.json";
 
 import FileUpload from "../components/FileUpload";
 import { useStoreContext } from "../store";
+import PreviousResults from "../components/PreviousResults";
 
 const addUser = () => {
   // send data to backend
@@ -23,9 +24,8 @@ const Home = () => {
         paragraph={headerCardData.home.paragraph}
       />
       <FileUpload />
-      <form onSubmit={addUser}>
-        <input></input>
-      </form>
+      <PreviousResults />
+      {/* <form onSubmit={addUser}></form> */}
     </div>
   );
 };

@@ -24,7 +24,7 @@ import FileUpload from "../components/FileUpload";
 import colors from "../components/colors";
 import Doctor from "./DoctorPage";
 import About from "./AboutPage";
-import LogoutButton from "../components/LogoutButton"
+import LogoutButton from "../components/LogoutButton";
 
 const drawerWidth = 240;
 
@@ -181,7 +181,7 @@ export default function Main() {
               <ListItemText primary={"Find A Doctor"} />
             </ListItem>
           </Link>
-              <LogoutButton />
+          <LogoutButton />
         </List>
       </Drawer>
       <main className={classes.content}>
@@ -196,7 +196,7 @@ export default function Main() {
           {/* <Route exact path='/fileUpload' component={FileUpload} /> */}
           <Route exact path='/fileUpload' component={FileUpload} />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </div>
   );
