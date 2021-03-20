@@ -48,12 +48,13 @@ class API {
     return this.axios.post("/api/authenticated");
   }
 
-  getWikipedia() {
-    return axios.get("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles=melanoma&exsentences=5");
-  }
+  // getWikipedia() {
+  //   return axios.get("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles=melanoma&exsentences=5");
+  // }
+  
 }
 
-// export default new API();
+export default new API();
 
 // export default {
 //   // Gets all posts
@@ -74,8 +75,4 @@ class API {
 //   },
 // };
 
-export default {
-  getWikipedia: function() {
-    return axios.get("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles=melanoma&exsentences=5");
-  }
-};
+

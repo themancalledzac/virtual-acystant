@@ -2,7 +2,7 @@ import HeaderCard from "../components/HeaderCard";
 import headerCardData from "../utils/headerCardData.json";
 
 import FileUpload from "../components/FileUpload";
-import Wikipedia from "../components/Wikipedia";
+// import Wikipedia from "../components/Wikipedia";
 import { useStoreContext } from "../store";
 
 const addUser = () => {
@@ -24,7 +24,7 @@ const Home = () => {
         paragraph={headerCardData.home.paragraph}
       />
       <FileUpload />
-      <Wikipedia />
+      {/* <Wikipedia /> */}
       <form onSubmit={addUser}>
         <input></input>
       </form>
