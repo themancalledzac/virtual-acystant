@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const router = require("express").Router();
 const imageController = require("../../controllers/imageController");
 

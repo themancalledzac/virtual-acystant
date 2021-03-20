@@ -48,9 +48,9 @@ class API {
     return this.axios.post("/api/authenticated");
   }
 
-  // getWikipedia() {
-  //   return axios.get("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles=melanoma&exsentences=5");
-  // }
+  getWiki( className ) {
+    return this.axios.get("/api/wiki/" + className);
+  }
   
 }
 

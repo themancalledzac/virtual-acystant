@@ -8,11 +8,12 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import doctorImage from "../assets/images/pexels-thirdman-53276471.jpg";
+import doctorImage from "../assets/images/pexels-tima-miroshnichenko-5452201.jpg";
 import { useLogin } from "../utils/auth";
 import { useStoreContext } from "../store";
 import { LOGIN_SIGNUP_SWITCH } from "../store/action";
 import { TextField } from "@material-ui/core";
+import colors from "./colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: colors.pinkGrey,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -44,6 +45,11 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    color: colors.white,
+    backgroundColor: colors.blue2,
+    "&:hover, &:focus": {
+      backgroundColor: colors.blue3,
+    },
   },
 }));
 
@@ -70,6 +76,7 @@ export default function Login() {
       // Handle error responses from the API
       if (err.response && err.response.data) console.log(err.response.data);
     }
+    window.location.reload(false);
   };
 
   const [, dispatch] = useStoreContext();
@@ -132,25 +139,15 @@ export default function Login() {
                 />
               </Grid>
             </Grid>
-            {/* <FormControlLabel
-              control={<Checkbox value='remember' color='primary' />}
-              label='Remember me'
-            /> */}
             <Button
               type='submit'
               fullWidth
               variant='contained'
-              color='primary'
               className={classes.submit}
             >
               Sign In
             </Button>
             <Grid container>
-              {/* <Grid item xs>
-                <Link href='#' variant='body2'>
-                  Forgot password?
-                </Link>
-              </Grid> */}
               <Grid item container justify='flex-end'>
                 <Link href='#' onClick={loginSignupState} variant='body2'>
                   Don't have an account? Sign Up

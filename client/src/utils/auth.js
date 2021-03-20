@@ -137,5 +137,6 @@ export const useLogout = () => {
     dispatch({ type: LOGOUT_USER });
 
     history.push("/");
+    window.location.reload(false);
   };
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
 const passport = require("passport");
@@ -14,6 +15,11 @@ router
   .get(userController.findById)
   .put(userController.update)
   .delete(userController.remove);
+
+router
+  .route("/test")
+  .get(userController.test)
+  // .post(passport.authenticate('jwt', {session: false}), userController.create);
 
 module.exports = router;
 

@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 require("dotenv").config();
 
 const passport = require("passport");
 
 const express = require("express");
-const routes = require("./routes/api");
+const routes = require("./routes");
 
 const mongoose = require("mongoose");
 const formidable = require("formidable");
@@ -26,7 +27,9 @@ app.use(passport.initialize());
 passport.use(require("./config/jwtPassportStrategy"));
 
 // Add routes, both API and view
-app.use("/api", require("./routes/authentication"));
+app.use(routes);
+// app.use("/api", require("./routes/authentication"));
+
 
 // Connect to the Mongo DB
 mongoose.connect(

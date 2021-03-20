@@ -3,14 +3,16 @@ import API from "../utils/API";
 
 export default function Wikipedia() {
 
-    const result = API.getWikipedia();
+    const wiki = function( pClassName ) {
+        API.getWiki( pClassName );
+    };
 
-    console.log(JSON.stringify(result));
+    let wikiReturn = wiki("melanoma");
 
     return (
         <form className="search">
             <div >
-                <p> Result is {JSON.stringify(result)} </p>
+                <p> Result is {wikiReturn} </p>
             </div>
         </form>
     );
