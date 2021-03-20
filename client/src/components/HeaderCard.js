@@ -1,4 +1,4 @@
-import { Container, makeStyles, Typography } from "@material-ui/core";
+import { Container, Grid, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 import colors from "./colors";
 
@@ -7,11 +7,27 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(15),
     paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(5),
-    backgroundColor: colors.primary,
+    backgroundColor: colors.blue2,
     marginBottom: theme.spacing(15),
+    borderRadius: "4px",
   },
   title: {
-    padding: "10px",
+    padding: "0px 10px 10px 5px",
+    marginTop: "0px",
+    color: colors.white,
+  },
+  image: {
+    maxHeight: "500px",
+    maxWidth: "100%",
+    borderRadius: "5px",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
+  paragraph: {
+    padding: "15px",
+    borderRadius: "5px",
+    backgroundColor: colors.white,
   },
 }));
 
@@ -20,10 +36,21 @@ const HeaderCard = (props) => {
   return (
     <>
       <Container className={classes.searchBar} maxWidth='md'>
-        <h2 className={classes.title}>{props.title}</h2>
-        <Typography>
-          <p>{props.paragraph}</p>
-        </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={8} s={true}>
+            <h2 className={classes.title}>{props.title}</h2>
+            <Typography className={classes.paragraph}>
+              <p>{props.paragraph}</p>
+            </Typography>
+          </Grid>
+          <Grid item xs={4} s={true}>
+            <img
+              className={classes.image}
+              src={props.image}
+              alt='headerImage'
+            />
+          </Grid>
+        </Grid>
       </Container>
     </>
   );

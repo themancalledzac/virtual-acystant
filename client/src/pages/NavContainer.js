@@ -90,8 +90,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     color: colors.darkGrey,
-    fontSize: "30px",
-    textDecoration: "underline",
+    fontSize: "25px",
   },
 }));
 
@@ -129,7 +128,7 @@ export default function Main() {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' noWrap style={{ marginRight: "2rem" }}>
-            Virtual a<span className={classes.title}>cyst</span>ant
+            Virtual A<span className={classes.title}>(cyst)</span>ant
           </Typography>
         </Toolbar>
       </AppBar>

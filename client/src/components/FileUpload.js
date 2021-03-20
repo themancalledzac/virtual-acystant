@@ -17,8 +17,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(15),
     paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(5),
-    backgroundColor: colors.primary,
+    backgroundColor: colors.blue2,
     marginBottom: theme.spacing(15),
+    borderRadius: "5px",
   },
   title: {
     padding: "10px",
@@ -94,7 +95,7 @@ export default function FileUpload() {
       })
       .slice(0, 3);
     // ???
-    dispatch({ type: RETURN_DATA, payload: { top3 } });
+    // dispatch({ type: RETURN_DATA, payload: { top3 } });
 
     console.log(top3);
     // return top3[0].probability + ", " +top3[1].probability + ", " + top3[2].probability
@@ -171,10 +172,12 @@ export default function FileUpload() {
           <Grid item xs>
             <h2 className={classes.title}>Results</h2>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste
-              veniam quis error. Accusamus similique animi fugit necessitatibus
-              eum repellat asperiores dignissimos, temporibus reprehenderit
-              dolorum ab aliquam. Qui quas ex fuga.
+              Here lies what we will assume is a API call to find information on
+              whichever diseas in the findings portion of this card we have
+              clicked.l Lorem, ipsum dolor sit amet consectetur adipisicing
+              elit. Iste veniam quis error. Accusamus similique animi fugit
+              necessitatibus eum repellat asperiores dignissimos, temporibus
+              reprehenderit dolorum ab aliquam. Qui quas ex fuga.
               {/* {diseaseLookupResults} */}
             </p>
           </Grid>
