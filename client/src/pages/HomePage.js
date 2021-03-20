@@ -3,6 +3,8 @@ import headerCardData from "../utils/headerCardData.json";
 
 import FileUpload from "../components/FileUpload";
 import { useStoreContext } from "../store";
+import PreviousResults from "../components/PreviousResults";
+import doctorImage from "../assets/images/pexels-anthony-shkraba-5214995.jpg";
 
 const addUser = () => {
   // send data to backend
@@ -21,11 +23,11 @@ const Home = () => {
       <HeaderCard
         title={headerCardData.home.title}
         paragraph={headerCardData.home.paragraph}
+        image={doctorImage}
       />
       <FileUpload />
-      <form onSubmit={addUser}>
-        <input></input>
-      </form>
+      <PreviousResults />
+      {/* <form onSubmit={addUser}></form> */}
     </div>
   );
 };

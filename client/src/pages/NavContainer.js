@@ -18,13 +18,12 @@ import HomeIcon from "@material-ui/icons/Home";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import GroupIcon from "@material-ui/icons/Group";
 import { Route, Switch, Link } from "react-router-dom";
-import Footer from "../components/Footer";
 import Home from "./HomePage";
 import FileUpload from "../components/FileUpload";
 import colors from "../components/colors";
 import Doctor from "./DoctorPage";
 import About from "./AboutPage";
-import LogoutButton from "../components/LogoutButton"
+import LogoutButton from "../components/LogoutButton";
 
 const drawerWidth = 240;
 
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
   },
   appBar: {
-    backgroundColor: colors.orange,
+    backgroundColor: colors.blue2,
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -89,6 +88,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  title: {
+    color: colors.darkGrey,
+    fontSize: "25px",
+  },
 }));
 
 export default function Main() {
@@ -112,7 +115,7 @@ export default function Main() {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        <Toolbar style={{ justifyContent: "space-between" }}>
           <IconButton
             color='inherit'
             aria-label='open drawer'
@@ -124,9 +127,8 @@ export default function Main() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' noWrap>
-            Virtual A
-            <span style={{ color: "#0000a0", fontSize: "50px" }}>cyst</span> ant
+          <Typography variant='h6' noWrap style={{ marginRight: "2rem" }}>
+            Virtual A<span className={classes.title}>(cyst)</span>ant
           </Typography>
         </Toolbar>
       </AppBar>
@@ -153,6 +155,7 @@ export default function Main() {
           </IconButton>
         </div>
         <Divider />
+
         <List>
           <Link to={"/"}>
             <ListItem button key={"Home"}>
@@ -181,7 +184,7 @@ export default function Main() {
               <ListItemText primary={"Find A Doctor"} />
             </ListItem>
           </Link>
-              <LogoutButton />
+          <LogoutButton />
         </List>
       </Drawer>
       <main className={classes.content}>
@@ -196,7 +199,7 @@ export default function Main() {
           {/* <Route exact path='/fileUpload' component={FileUpload} /> */}
           <Route exact path='/fileUpload' component={FileUpload} />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </div>
   );
