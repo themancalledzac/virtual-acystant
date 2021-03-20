@@ -37,13 +37,12 @@ const HeaderCard = (props) => {
     <>
       <Container className={classes.searchBar} maxWidth='md'>
         <Grid container spacing={2}>
-          <Grid item xs={8} s={true}>
+          <Grid item xs={12} sm={8}>
             <h2 className={classes.title}>{props.title}</h2>
-            <Typography className={classes.paragraph}>
-              <p>{props.paragraph}</p>
-            </Typography>
+
+            <p className={classes.paragraph}>{props.paragraph}</p>
           </Grid>
-          <Grid item xs={4} s={true}>
+          <Grid item xs={12} sm={4}>
             <img
               className={classes.image}
               src={props.image}
