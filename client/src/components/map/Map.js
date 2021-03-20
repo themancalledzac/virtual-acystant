@@ -1,18 +1,12 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-// import "./map.css";
-import { Icon } from '@iconify/react'
-import locationIcon from '@iconify/icons-mdi/map-marker'
-
-const location = {
-    address: '1354 Aloha St, Seattle, WA 98109',
-    lat: 47.62731,
-    lng: -122.33016,
-  }
+import "./map.css";
+import { Icon } from '@iconify/react';
+import mapMarkerAlt from '@iconify-icons/fa-solid/map-marker-alt';
 
 const LocationPin = ({ text }) => (
 <div className="pin">
-    <Icon icon={locationIcon} className="pin-icon" />
+    <Icon icon={mapMarkerAlt} className="pin-icon" />
     <p className="pin-text">{text}</p>
 </div>
 )

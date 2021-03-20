@@ -21,6 +21,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@iconify-icons/fa-solid": "^1.1.1",
+    "@iconify/react": "^1.1.4",
     "concurrently": "^6.0.0",
     "eslint": "^7.22.0",
     "eslint-config-standard": "^16.0.2",
