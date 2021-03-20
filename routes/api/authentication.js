@@ -1,7 +1,3 @@
-<<<<<<< HEAD:routes/authentication.js
-=======
-/* eslint-disable no-unused-vars */
->>>>>>> main:routes/api/authentication.js
 /* eslint-disable no-undef */
 const express = require("express");
 const router = express.Router();
