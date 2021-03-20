@@ -39,6 +39,7 @@
     "express": "^4.16.3",
     "fastest-validator": "^1.10.0",
     "formidable": "^1.2.2",
+    "google-map-react": "^2.1.9",
     "if-env": "^1.0.4",
     "jwt-decode": "^3.1.2",
     "mongoose": "^5.3.16",
