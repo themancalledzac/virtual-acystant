@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 const path = require("path");
 const router = require("express").Router();
-const userRoutes = require("./User");
+const apiRoutes = require("./api");
 
 // API Routes
-router.use("/api", userRoutes);
+router.use("/api", apiRoutes);
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {

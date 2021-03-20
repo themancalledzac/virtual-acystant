@@ -81,6 +81,7 @@ export default function SignUp() {
       // Handle error responses from the API. This will include
       if (err.response && err.response.data) console.log(err.response.data);
     }
+    window.location.reload(false);
   };
 
   const [, dispatch] = useStoreContext();

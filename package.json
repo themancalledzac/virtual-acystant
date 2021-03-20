@@ -23,7 +23,6 @@
   "devDependencies": {
     "@iconify-icons/fa-solid": "^1.1.1",
     "@iconify/react": "^1.1.4",
-    "concurrently": "^6.0.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.22.0",
     "eslint-config-standard": "^16.0.2",
@@ -39,6 +38,8 @@
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "concurrently": "^6.0.0",
+    "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "fastest-validator": "^1.10.0",
     "formidable": "^1.2.2",
@@ -48,7 +49,6 @@
     "mongoose": "^5.3.16",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "react-router-dom": "^5.2.0",
     "seedrandom": "^3.0.5"
   },
   "bugs": {
