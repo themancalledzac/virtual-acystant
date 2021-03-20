@@ -24,20 +24,21 @@
     "@iconify-icons/fa-solid": "^1.1.1",
     "@iconify/react": "^1.1.4",
     "concurrently": "^6.0.0",
+    "dotenv": "^8.2.0",
     "eslint": "^7.22.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.22.0",
-    "nodemon": "^1.18.7"
+    "nodemon": "^1.18.7",
+    "react-native-dotenv": "^2.5.3"
   },
   "dependencies": {
     "@tensorflow/tfjs": "^3.2.0",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
-    "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "fastest-validator": "^1.10.0",
     "formidable": "^1.2.2",
