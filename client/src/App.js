@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import LoginSignUp from "./components/LoginSignUp";
@@ -9,12 +9,17 @@ import { StoreProvider, useStoreContext } from "./store/index.js";
 import { useAuthTokenStore } from "./utils/auth";
 
 function App() {
+  const store = useAuthTokenStore();
+  console.log(store);
   // Use the hook to reauthenticate stored tokens.
-  useAuthTokenStore();
 
   const [state] = useStoreContext();
   const useAuth = state.userAuth.token;
   // console.log(state.userAuth.token);
+
+  if (store === false) {
+    return null;
+  }
 
   return (
     <Router>
@@ -24,19 +29,3 @@ function App() {
 }
 
 export default App;
-
-// --------------------------------------------------------------------------------------------------------//
-
-// {isLoggedIn ? <Main /> : <LoginSignUp />}
-// user authentication is a local state that starts as false, prompting Login page to start.
-// Login page has the logic to change to true, which prompts the Login page to hide, and Main to show.
-// --------------------------------------------------------------------------------------------------------//
-//   return (
-//     <Router>
-//       <StoreProvider>
-//         {isLoggedIn ? <Login /> : <Main />}
-//       </StoreProvider>
-//     </Router>
-//   );
-// }
-// --------------------------------------------------------------------------------------------------------//
