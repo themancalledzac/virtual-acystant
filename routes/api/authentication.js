@@ -101,6 +101,7 @@ router.post(
       await newUser.save();
 
       const {
+        // eslint-disable-next-line no-unused-vars
         password: encryptedPassword,
         // User object without the password
         ...secureUser
