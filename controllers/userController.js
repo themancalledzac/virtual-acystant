@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const db = require("../models");
 
 // we define methods for the userController
