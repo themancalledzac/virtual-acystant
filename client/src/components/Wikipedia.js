@@ -6,7 +6,18 @@ export default function Wikipedia( props ) {
     const [wiki, setWiki] = useState("");
 
     useEffect(() =>   {
-        wikiSend( props.diseaseName )
+        if (props.diseaseName === "Melanocytic Nevi") {
+            wikiSend("Melanocytic nevus");
+        } else if (props.diseaseName === "Benign Keratosis") {
+            wikiSend("Seborrheic keratosis");
+        } else if (props.diseaseName === "Actinic Keratoses (Solar Keratoses) or intraepithelial Carcinoma (Bowenâ€™s disease)") {
+            wikiSend("Actinic keratosis");
+        } else if (props.diseaseName === "Vascular skin lesion") {
+            wikiSend("Nevus");
+        }else {
+            wikiSend( props.diseaseName )
+        }
+        
     }, [] )
 
     const wikiSend = function( skinCondition ) {
