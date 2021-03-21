@@ -2,7 +2,10 @@
 /* eslint-disable no-unused-vars */
 const router = require("express").Router();
 const userRoutes = require("./user");
-const wikiRoutes = require("./wiki");
+const findingsRoutes = require("./findings")
+const authRoutes = require("./authentication")
+const wikiRoutes = require("./wiki")
+
 // const FileUpload = require("./FileUpload");
 const passport = require("passport");
 // const imageProcessing = require("./imageProcessing");
@@ -10,5 +13,10 @@ const passport = require("passport");
 router.use("/user", userRoutes);
 router.use("/wiki", wikiRoutes);
 // router.use("/FileUpload", FileUpload);
+
+router.use("/predictions", findingsRoutes);
+// router.use("/FileUpload", FileUpload);
+
+router.use("/auth", authRoutes);
 
 module.exports = router;

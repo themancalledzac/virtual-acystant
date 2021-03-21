@@ -28,7 +28,6 @@ const Home = () => {
         image={doctorImage}
       />
       <FileUpload />
-      < Wikipedia />
       <PreviousResults />
       {/* <form onSubmit={addUser}></form> */}
     </div>

@@ -10,6 +10,8 @@ import {
 import colors from "./colors";
 import { useStoreContext } from "../store";
 import { RETURN_DATA } from "../store/action";
+import API from "../utils/API"
+import Wikipedia from "./Wikipedia"
 
 // -------------------------------- PAGE STYLING----------------------------------------//
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +55,8 @@ export default function FileUpload() {
   const [result, setResult] = React.useState("");
   const [findings, setFindings] = React.useState("");
   console.log("These are findings" + findings);
+
+  const [predicting, setPredicting] = React.useState(false);
 
   function uploader(e) {
     const imageFile = e.target.files[0];
@@ -98,6 +102,7 @@ export default function FileUpload() {
     // dispatch({ type: RETURN_DATA, payload: { top3 } });
 
     console.log(top3);
+    const preds = await setFindings(top3)
     // return top3[0].probability + ", " +top3[1].probability + ", " + top3[2].probability
     // -----------------------------GLOBALSTATE SAVE -------------------------------------//
     return top3;
@@ -107,8 +112,15 @@ export default function FileUpload() {
 
   // dispatch({ type: RETURN_DATA, payload: findings });
 
-  const saveResults = async () => {
-    // API.saveResults(findings, result)
+  const saveResults = async (event) => {
+    event.preventDefault();
+    try {
+      const savedResults = await API.savePredictions({findings})
+      console.log(savedResults)     
+    } catch (error) {
+      console.log(error)
+      
+    }
   };
 
   // db function that takes in predict data and then
@@ -155,10 +167,18 @@ export default function FileUpload() {
                 className={classes.image}
               />
             )}
-            {result && <button onClick={predict}> Predict</button>}
-            {result && <button onClick={showResults}> Show Results</button>}
-            {findings && <button onClick={saveResults}> Save Results</button>}
-            {/* {findings && <p> Findings are: {findings}</p>} */}
+            {result && !predicting &&
+            <>{result && <h3> Please click Predict button and wait while your image is being processed</h3>}
+            {result && <button onClick= {() => {
+              predict()
+              setPredicting(true)
+            }
+              
+              }> Predict</button>}</> }
+            {predicting && !findings && <h3>Processing results</h3>}
+
+          </Grid>
+          <Grid item xs>
             {findings && <h1> Findings are: </h1>}
             {findings &&
               findings.map((item, index) => (
@@ -168,18 +188,16 @@ export default function FileUpload() {
                   {item.probability.toFixed(3) * 100 + "%"}
                 </li>
               ))}
-          </Grid>
-          <Grid item xs>
-            <h2 className={classes.title}>Results</h2>
-            <p>
-              Here lies what we will assume is a API call to find information on
-              whichever diseas in the findings portion of this card we have
-              clicked.l Lorem, ipsum dolor sit amet consectetur adipisicing
-              elit. Iste veniam quis error. Accusamus similique animi fugit
-              necessitatibus eum repellat asperiores dignissimos, temporibus
-              reprehenderit dolorum ab aliquam. Qui quas ex fuga.
-              {/* {diseaseLookupResults} */}
-            </p>
+            {findings && <button onClick={saveResults}> Save Results</button>}
+
+            <h2 className={classes.title}>Wikipedia lookup</h2>
+            {findings && 
+              <p>
+                Wikipedia description of top finding:
+                < Wikipedia diseaseName = { findings[0].className } />
+              </p>
+            }
+
           </Grid>
         </Grid>
       </Container>

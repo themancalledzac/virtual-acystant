@@ -1,20 +1,21 @@
+/* eslint-disable no-undef */
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const util = require("util");
 
-const passwordHash = require("../config/passwordHash");
+const passwordHash = require("../../config/passwordHash");
 
 // Get middleware
-const authenticateUser = require("./middleware/authenticateUser");
-const validateBodyWith = require("./middleware/validateBodyWith");
+const authenticateUser = require("../middleware/authenticateUser");
+const validateBodyWith = require("../middleware/validateBodyWith");
 
 // Data validators
-const { loginValidator, registerValidator } = require("./validation");
+const { loginValidator, registerValidator } = require("../validation");
 
 // Load User model
-const { User } = require("../models");
+const { User } = require("../../models");
 
 const jwtSign = util.promisify(jwt.sign);
 

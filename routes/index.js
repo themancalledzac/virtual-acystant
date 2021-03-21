@@ -1,10 +1,10 @@
+/* eslint-disable no-undef */
 const path = require("path");
 const router = require("express").Router();
-const userRoutes = require("./api");
-// const wikiRoutes = require("./api/wiki");
+const apiRoutes = require("./api");
 
 // API Routes
-router.use("/api", userRoutes);
+router.use("/api", apiRoutes);
 
 // router.use("/api/wiki", wikiRoutes);
 

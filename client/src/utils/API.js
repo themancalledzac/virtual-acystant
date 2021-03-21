@@ -30,7 +30,7 @@ class API {
    * @returns {Promise}
    */
   register(userData) {
-    return this.axios.post("/api/register", userData);
+    return this.axios.post("/api/auth/register", userData);
   }
 
   /**
@@ -41,17 +41,21 @@ class API {
    * @returns {Promise}
    */
   login(userData) {
-    return this.axios.post("/api/login", userData);
+    return this.axios.post("/api/auth/login", userData);
   }
 
   authenticated() {
-    return this.axios.post("/api/authenticated");
+    return this.axios.post("/api/auth/authenticated");
   }
 
-  getWiki( className ) {
-    return this.axios.get("/api/wiki/" + className);
+  getWiki( skinCondition ) {
+    return axios.get("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&titles=" + skinCondition + "&exsentences=5&explaintext=1");
   }
   
+  savePredictions(predictions) {
+    return this.axios.post("/api/predictions", predictions);
+  }
+
 }
 
 export default new API();
