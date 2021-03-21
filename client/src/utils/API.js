@@ -47,6 +47,11 @@ class API {
   authenticated() {
     return this.axios.post("/api/auth/authenticated");
   }
+
+  getWiki( skinCondition ) {
+    return axios.get("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&titles=" + skinCondition + "&exsentences=5&explaintext=1");
+  }
+  
   savePredictions(predictions) {
     return this.axios.post("/api/predictions", predictions);
   }
@@ -73,3 +78,5 @@ export default new API();
 //     return axios.post("/api/posts", postData);
 //   },
 // };
+
+

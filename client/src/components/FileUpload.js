@@ -11,6 +11,7 @@ import colors from "./colors";
 import { useStoreContext } from "../store";
 import { RETURN_DATA } from "../store/action";
 import API from "../utils/API"
+import Wikipedia from "./Wikipedia"
 
 // -------------------------------- PAGE STYLING----------------------------------------//
 const useStyles = makeStyles((theme) => ({
@@ -189,16 +190,13 @@ export default function FileUpload() {
               ))}
             {findings && <button onClick={saveResults}> Save Results</button>}
 
-            <h2 className={classes.title}>Results</h2>
-            <p>
-              Here lies what we will assume is a API call to find information on
-              whichever diseas in the findings portion of this card we have
-              clicked.l Lorem, ipsum dolor sit amet consectetur adipisicing
-              elit. Iste veniam quis error. Accusamus similique animi fugit
-              necessitatibus eum repellat asperiores dignissimos, temporibus
-              reprehenderit dolorum ab aliquam. Qui quas ex fuga.
-              {/* {diseaseLookupResults} */}
-            </p>
+            <h2 className={classes.title}>Wikipedia lookup</h2>
+            {findings && 
+              <p>
+                Wikipedia description of top finding:
+                < Wikipedia diseaseName = { findings[0].className } />
+              </p>
+            }
 
           </Grid>
         </Grid>

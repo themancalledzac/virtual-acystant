@@ -16,6 +16,11 @@ router
   .put(userController.update)
   .delete(userController.remove);
 
+router
+  .route("/test")
+  .get(userController.test)
+  // .post(passport.authenticate('jwt', {session: false}), userController.create);
+
 module.exports = router;
 
 // api router
