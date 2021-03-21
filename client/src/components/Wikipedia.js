@@ -14,11 +14,12 @@ export default function Wikipedia( props ) {
             wikiSend("Actinic keratosis");
         } else if (props.diseaseName === "Vascular skin lesion") {
             wikiSend("Nevus");
+        }else if (props.diseaseName === "Basal Cell Carcinoma") {
+            wikiSend("Basal-cell carcinoma");
         }else {
             wikiSend( props.diseaseName )
         }
-        
-    }, [] )
+    }, )
 
     const wikiSend = function( skinCondition ) {
         

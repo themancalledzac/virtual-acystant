@@ -193,7 +193,7 @@ export default function FileUpload() {
             <h2 className={classes.title}>Wikipedia lookup</h2>
             {findings && 
               <p>
-                Wikipedia description of top finding:
+                Wikipedia description of { findings[0].className }:
                 < Wikipedia diseaseName = { findings[0].className } />
               </p>
             }
