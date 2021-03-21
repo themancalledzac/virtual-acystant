@@ -48,6 +48,7 @@ class API {
     return this.axios.post("/api/auth/authenticated");
   }
 
+  // API call to wikipedia with skinCondition passed through based on props
   getWiki( skinCondition ) {
     return axios.get("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&titles=" + skinCondition + "&exsentences=5&explaintext=1");
   }

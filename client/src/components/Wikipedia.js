@@ -3,8 +3,11 @@ import API from "../utils/API";
 
 export default function Wikipedia( props ) {
 
+    // set state of the wiki element for rendering
     const [wiki, setWiki] = useState("");
 
+    // Useeffect to call wikisend to trigger API call to wikipedia
+    // Some classNames do not have corresponding wiki articles and require different search terms
     useEffect(() =>   {
         if (props.diseaseName === "Melanocytic Nevi") {
             wikiSend("Melanocytic nevus");
@@ -21,29 +24,23 @@ export default function Wikipedia( props ) {
         }
     }, )
 
+    // Send wiki triggers API call using the utils.API class
     const wikiSend = function( skinCondition ) {
         
         API.getWiki( skinCondition ).then(( {data} ) => {
 
-            // const parsedWiki = JSON.parse(data);
-            console.log( data );
-            // setWiki( data.query.pages[0].extract )
-
+            // results come back with multiple pages
+            // must be iterated over to build our wiki state
             for (var i in data.query.pages) {
-                // console.log( data.query.pages[i].extract );
+
                 setWiki( data.query.pages[i].extract )
             }
-
-            console.log(wiki);
 
         }).catch(err=>console.log(err));
 
     };
 
-    // let wikiReturn = wikiSend( "melanoma" );
-
-    // console.log( wiki );
-
+    // return wiki state for rendering in the findings card
     return (
         <div>
             {wiki} 
