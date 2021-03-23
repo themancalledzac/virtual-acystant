@@ -6,6 +6,7 @@ import {
   makeStyles,
   TextField,
   Typography,
+  Button
 } from "@material-ui/core";
 import colors from "./colors";
 import { useStoreContext } from "../store";
@@ -150,6 +151,13 @@ export default function FileUpload() {
               label='Image Upload'
               autoFocus
             />
+            <Button variant="contained" color="secondary" onClick= {() => {
+              setResult("")
+              setPredicting(false)
+              setFindings("")
+            }
+              
+              }> Clear</Button>
             {result && (
               <img
                 ref={imageRef}
@@ -160,12 +168,12 @@ export default function FileUpload() {
             )}
             {result && !predicting &&
             <>{result && <h3> Please click Predict button and wait while your image is being processed</h3>}
-            {result && <button onClick= {() => {
+            {result && <Button variant="contained" color="primary" onClick= {() => {
               predict()
               setPredicting(true)
             }
               
-              }> Predict</button>}</> }
+              }> Predict</Button>}</> }
             {predicting && !findings && <h3>Processing results</h3>}
 
           </Grid>
@@ -179,8 +187,8 @@ export default function FileUpload() {
                   {(item.probability*100).toFixed(3) + "%"}
                 </li>
               ))}
-            {findings && <button onClick={saveResults}> Save Results</button>}
-            {findings && <button onClick={refreshPage}> Refresh the Page</button>}
+            {findings && <Button variant="contained" color="primary" onClick={saveResults}> Save Results</Button>}
+            {findings && <Button variant="contained" color="primary" onClick={refreshPage}> Refresh the Page</Button>}
 
             {/* once findings are rendered build out the wikipedia results tab*/}
             {findings && <h2 className={classes.title}> Wikipedia lookup </h2>}
