@@ -190,10 +190,11 @@ export default function FileUpload() {
               ))}
             {findings && <button onClick={saveResults}> Save Results</button>}
 
-            <h2 className={classes.title}>Wikipedia lookup</h2>
+            {/* once findings are rendered build out the wikipedia results tab*/}
+            {findings && <h2 className={classes.title}> Wikipedia lookup </h2>}
             {findings && 
               <p>
-                Wikipedia description of top finding:
+                Wikipedia description of { findings[0].className }:
                 < Wikipedia diseaseName = { findings[0].className } />
               </p>
             }
