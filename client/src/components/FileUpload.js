@@ -65,10 +65,7 @@ export default function FileUpload() {
     reader.addEventListener("load", (e) => {
       setResult(e.target.result);
     });
-    // save to cloudinary or aws
-    // db image url save
-    // create and pass down image ID
-    // result
+
     reader.readAsDataURL(imageFile);
     // console.log(result);
     console.log("Image file " + imageFile);
@@ -123,17 +120,11 @@ export default function FileUpload() {
     }
   };
 
-  // db function that takes in predict data and then
-  // calls state function to save data
+  function refreshPage(){ 
+    window.location.reload(); 
+}
 
-  // function loadData(top3, result) {
-  //   API.uploadData(top3, result)
-  //     .then((res) => stateChange())
-  //     .catch((err) => console.log(err));
-  // }
 
-  // call to update local state
-  // function stateChange() {};
 
   const classes = useStyles();
 
@@ -185,10 +176,11 @@ export default function FileUpload() {
                 <li key={index}>
                   {" "}
                   {item.className} with a probability of{" "}
-                  {item.probability.toFixed(3) * 100 + "%"}
+                  {(item.probability*100).toFixed(3) + "%"}
                 </li>
               ))}
             {findings && <button onClick={saveResults}> Save Results</button>}
+            {findings && <button onClick={refreshPage}> Refresh the Page</button>}
 
             {/* once findings are rendered build out the wikipedia results tab*/}
             {findings && <h2 className={classes.title}> Wikipedia lookup </h2>}
@@ -206,29 +198,4 @@ export default function FileUpload() {
   );
 }
 
-// <div className='image'>
-//   <h2> Upload skin image</h2>
-//   <input
-//     type='file'
-//     ref={imageRef}
-//     onChange={(e) => {
-//       setImage(e.target.files[0]);
-//       uploader(e);
-//       console.log("from onClick" + e.target.files[0]);
-//       console.log("JSON stuff" + image[0]);
-//     }}
-//   />
-//   {result && <img ref={imageRef} src={result} alt='' />}
-//   {result && <button onClick={predict}> Predict</button>}
-//   {result && <button onClick={showResults}> Show Results</button>}
-//   {findings && <button onClick={saveResults}> Save Results</button>}
-//   {/* {findings && <p> Findings are: {findings}</p>} */}
-//   {findings && <h1> Findings are: </h1>}
-//   {findings &&
-//     findings.map((item, index) => (
-//       <li key={index}>
-//         {" "}
-//         {item.className} with probability {item.probability}
-//       </li>
-//     ))}
-// </div>;
+
