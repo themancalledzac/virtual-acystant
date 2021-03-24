@@ -14,6 +14,7 @@ import { RETURN_DATA } from "../store/action";
 import API from "../utils/API"
 import Wikipedia from "./Wikipedia"
 import WikiCard from "./WikiCard"
+import LoadResults from "./LoadResults";
 
 // -------------------------------- PAGE STYLING----------------------------------------//
 const useStyles = makeStyles((theme) => ({
@@ -261,6 +262,9 @@ export default function FileUpload() {
           { findings && !showMore && !showMore1 && showMore2 &&
             <WikiCard diseaseNameSearch = { findings[2].className }/> 
           }
+        </Grid>
+        <Grid>
+          <LoadResults />
         </Grid>
       </Container>
     </>
