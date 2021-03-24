@@ -1,42 +1,42 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/API";
 
-export default function Wikipedia( props ) {
+export default function WikiCard( props ) {
 
     // set state of the wiki element for rendering
-    const [wiki, setWiki] = useState("");
+    const [wiki1, setWiki1] = useState("");
 
     // Useeffect to call wikisend to trigger API call to wikipedia
     // Some classNames do not have corresponding wiki articles and require different search terms
     useEffect(() =>   {
-        if (props.diseaseName === "Melanocytic Nevi") {
+        if (props.diseaseNameSearch === "Melanocytic Nevi") {
             wikiSend("Melanocytic nevus");
-        } else if (props.diseaseName === "Benign Keratosis") {
+        } else if (props.diseaseNameSearch === "Benign Keratosis") {
             wikiSend("Seborrheic keratosis");
-        } else if (props.diseaseName === "Actinic Keratoses (Solar Keratoses) or intraepithelial Carcinoma (Bowenâ€™s disease)") {
+        } else if (props.diseaseNameSearch === "Actinic Keratoses (Solar Keratoses) or intraepithelial Carcinoma (Bowenâ€™s disease)") {
             wikiSend("Actinic keratosis");
-        } else if (props.diseaseName === "Vascular skin lesion") {
+        } else if (props.diseaseNameSearch === "Vascular skin lesion") {
             wikiSend("Nevus");
-        }else if (props.diseaseName === "Basal Cell Carcinoma") {
+        }else if (props.diseaseNameSearch === "Basal Cell Carcinoma") {
             wikiSend("Basal-cell carcinoma");
         }else {
-            wikiSend( props.diseaseName )
+            wikiSend( props.diseaseNameSearch )
         }
     }, )
 
     // Send wiki triggers API call using the utils.API class
-    const wikiSend = function( skinCondition ) {
+    const wikiSend = function( skinDescription ) {
         
-        API.getWiki1( skinCondition ).then(( {data} ) => {
+        API.getWiki2( skinDescription ).then(( {data} ) => {
 
             // results come back with multiple pages
             // must be iterated over to build our wiki state
             for (var i in data.query.pages) {
 
-                setWiki( data.query.pages[i].extract )
-            }
+                console.log("wikicard being called" + i);
 
-            console.log("Wikipedia being called")
+                setWiki1( data.query.pages[i].extract )
+            }
 
         }).catch(err=>console.log(err));
 
@@ -45,7 +45,7 @@ export default function Wikipedia( props ) {
     // return wiki state for rendering in the findings card
     return (
         <div>
-            {wiki} 
+            {wiki1} 
         </div>
     );
     

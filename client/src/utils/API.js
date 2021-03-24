@@ -49,12 +49,21 @@ class API {
   }
 
   // API call to wikipedia with skinCondition passed through based on props
-  getWiki( skinCondition ) {
-    return axios.get("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&titles=" + skinCondition + "&exsentences=5&explaintext=1");
+  getWiki1( skinCondition ) {
+    return axios.get("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&titles=" + skinCondition + "&exsentences=1&explaintext=1");
+  }
+
+  // API call to wikipedia with skinCondition passed through based on props
+  getWiki2( skinDescription ) {
+    return axios.get("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&titles=" + skinDescription + "&exsentences=25&explaintext=1");
   }
   
   savePredictions(predictions) {
     return this.axios.post("/api/predictions", predictions);
+  }
+
+  loadPredictions() {
+    return this.axios.get("/api/predictions");
   }
 
 }

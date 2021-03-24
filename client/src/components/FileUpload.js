@@ -6,12 +6,15 @@ import {
   makeStyles,
   TextField,
   Typography,
+  Button
 } from "@material-ui/core";
 import colors from "./colors";
 import { useStoreContext } from "../store";
 import { RETURN_DATA } from "../store/action";
 import API from "../utils/API"
 import Wikipedia from "./Wikipedia"
+import WikiCard from "./WikiCard"
+import LoadResults from "./LoadResults";
 
 // -------------------------------- PAGE STYLING----------------------------------------//
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +56,9 @@ export default function FileUpload() {
   console.log("imageRef.current: " + imageRef.current);
 
   const [result, setResult] = React.useState("");
+  const [showMore, setShowMore] = React.useState("");
+  const [showMore1, setShowMore1] = React.useState("");
+  const [showMore2, setShowMore2] = React.useState("");
   const [findings, setFindings] = React.useState("");
   console.log("These are findings" + findings);
 
@@ -65,10 +71,7 @@ export default function FileUpload() {
     reader.addEventListener("load", (e) => {
       setResult(e.target.result);
     });
-    // save to cloudinary or aws
-    // db image url save
-    // create and pass down image ID
-    // result
+
     reader.readAsDataURL(imageFile);
     // console.log(result);
     console.log("Image file " + imageFile);
@@ -123,17 +126,14 @@ export default function FileUpload() {
     }
   };
 
-  // db function that takes in predict data and then
-  // calls state function to save data
+  function refreshPage(){ 
+    window.location.reload(); 
+}
 
-  // function loadData(top3, result) {
-  //   API.uploadData(top3, result)
-  //     .then((res) => stateChange())
-  //     .catch((err) => console.log(err));
-  // }
+// function readMore(){
+//   setShowMore("");
+// }
 
-  // call to update local state
-  // function stateChange() {};
 
   const classes = useStyles();
 
@@ -159,6 +159,16 @@ export default function FileUpload() {
               label='Image Upload'
               autoFocus
             />
+                        <Button variant="contained" color="secondary" onClick= {() => {
+              setResult("")
+              setPredicting(false)
+              setFindings("")
+              setShowMore(false)
+              setShowMore1(false)
+              setShowMore2(false)
+            }
+              
+              }> Clear</Button>
             {result && (
               <img
                 ref={imageRef}
@@ -169,12 +179,12 @@ export default function FileUpload() {
             )}
             {result && !predicting &&
             <>{result && <h3> Please click Predict button and wait while your image is being processed</h3>}
-            {result && <button onClick= {() => {
+            {result && <Button variant="contained" color="primary" onClick= {() => {
               predict()
               setPredicting(true)
             }
               
-              }> Predict</button>}</> }
+          }> Predict</Button>}</> }
             {predicting && !findings && <h3>Processing results</h3>}
 
           </Grid>
@@ -185,50 +195,80 @@ export default function FileUpload() {
                 <li key={index}>
                   {" "}
                   {item.className} with a probability of{" "}
-                  {item.probability.toFixed(3) * 100 + "%"}
+                  {(item.probability*100).toFixed(3) + "%"}
                 </li>
               ))}
-            {findings && <button onClick={saveResults}> Save Results</button>}
+            {findings && <Button variant="contained" color="primary" onClick={saveResults}> Save Results</Button>}
+            {findings && <Button variant="contained" color="primary" onClick={refreshPage}> Refresh the Page</Button>}
 
             {/* once findings are rendered build out the wikipedia results tab*/}
-            {findings && <h2 className={classes.title}> Wikipedia lookup </h2>}
+            {findings && <h1 className={classes.title}> Wikipedia lookup: </h1>}
             {findings && 
-              <p>
-                Wikipedia description of { findings[0].className }:
+              <li>
+                Wikipedia description of { findings[0].className }: 
+                {findings && <Button color="primary" onClick= {() => {
+                  setShowMore(true)
+                  setShowMore1(false)
+                  setShowMore2(false)
+                }}> Show More </Button>}
                 < Wikipedia diseaseName = { findings[0].className } />
-              </p>
+              </li>
+            }
+            {findings && 
+              <li>
+                Wikipedia description of { findings[1].className }: 
+                {findings && <Button color="primary" onClick= {() => {
+                  setShowMore(false)
+                  setShowMore1(true)
+                  setShowMore2(false)
+                }}> Show More </Button>}
+                < Wikipedia diseaseName = { findings[1].className } />
+              </li>
+            }
+            {findings && 
+              <li>
+                Wikipedia description of { findings[2].className }: 
+                {findings && <Button color="primary" onClick= {() => {
+                  setShowMore(false)
+                  setShowMore1(false)
+                  setShowMore2(true)
+                }}> Show More </Button>}
+                < Wikipedia diseaseName = { findings[2].className } />
+              </li>
             }
 
           </Grid>
+        </Grid>
+        <Grid>
+          { findings && showMore && !showMore1 && !showMore2 &&
+            <h1> Description of { findings[0].className } </h1>
+          }
+          { findings && showMore && !showMore1 && !showMore2 &&
+            <WikiCard diseaseNameSearch = { findings[0].className }/> 
+          }
+
+          {/* for finding[1] */}
+          { findings && !showMore && showMore1 && !showMore2 &&
+            <h1> Description of { findings[1].className } </h1>
+          }
+          { findings && !showMore && showMore1 && !showMore2 &&
+            <WikiCard diseaseNameSearch = { findings[1].className }/> 
+          }
+
+          {/* for finding[2] */}
+          { findings && !showMore && !showMore1 && showMore2 &&
+            <h1> Description of { findings[2].className } </h1>
+          }
+          { findings && !showMore && !showMore1 && showMore2 &&
+            <WikiCard diseaseNameSearch = { findings[2].className }/> 
+          }
+        </Grid>
+        <Grid>
+          <LoadResults />
         </Grid>
       </Container>
     </>
   );
 }
 
-// <div className='image'>
-//   <h2> Upload skin image</h2>
-//   <input
-//     type='file'
-//     ref={imageRef}
-//     onChange={(e) => {
-//       setImage(e.target.files[0]);
-//       uploader(e);
-//       console.log("from onClick" + e.target.files[0]);
-//       console.log("JSON stuff" + image[0]);
-//     }}
-//   />
-//   {result && <img ref={imageRef} src={result} alt='' />}
-//   {result && <button onClick={predict}> Predict</button>}
-//   {result && <button onClick={showResults}> Show Results</button>}
-//   {findings && <button onClick={saveResults}> Save Results</button>}
-//   {/* {findings && <p> Findings are: {findings}</p>} */}
-//   {findings && <h1> Findings are: </h1>}
-//   {findings &&
-//     findings.map((item, index) => (
-//       <li key={index}>
-//         {" "}
-//         {item.className} with probability {item.probability}
-//       </li>
-//     ))}
-// </div>;
+
