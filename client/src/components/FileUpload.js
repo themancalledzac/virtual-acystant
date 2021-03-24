@@ -13,6 +13,7 @@ import { useStoreContext } from "../store";
 import { RETURN_DATA } from "../store/action";
 import API from "../utils/API"
 import Wikipedia from "./Wikipedia"
+import WikiCard from "./WikiCard"
 
 // -------------------------------- PAGE STYLING----------------------------------------//
 const useStyles = makeStyles((theme) => ({
@@ -54,6 +55,9 @@ export default function FileUpload() {
   console.log("imageRef.current: " + imageRef.current);
 
   const [result, setResult] = React.useState("");
+  const [showMore, setShowMore] = React.useState("");
+  const [showMore1, setShowMore1] = React.useState("");
+  const [showMore2, setShowMore2] = React.useState("");
   const [findings, setFindings] = React.useState("");
   console.log("These are findings" + findings);
 
@@ -125,6 +129,9 @@ export default function FileUpload() {
     window.location.reload(); 
 }
 
+// function readMore(){
+//   setShowMore("");
+// }
 
 
   const classes = useStyles();
@@ -151,10 +158,13 @@ export default function FileUpload() {
               label='Image Upload'
               autoFocus
             />
-            <Button variant="contained" color="secondary" onClick= {() => {
+                        <Button variant="contained" color="secondary" onClick= {() => {
               setResult("")
               setPredicting(false)
               setFindings("")
+              setShowMore(false)
+              setShowMore1(false)
+              setShowMore2(false)
             }
               
               }> Clear</Button>
@@ -173,7 +183,7 @@ export default function FileUpload() {
               setPredicting(true)
             }
               
-              }> Predict</Button>}</> }
+          }> Predict</Button>}</> }
             {predicting && !findings && <h3>Processing results</h3>}
 
           </Grid>
@@ -191,15 +201,66 @@ export default function FileUpload() {
             {findings && <Button variant="contained" color="primary" onClick={refreshPage}> Refresh the Page</Button>}
 
             {/* once findings are rendered build out the wikipedia results tab*/}
-            {findings && <h2 className={classes.title}> Wikipedia lookup </h2>}
+            {findings && <h1 className={classes.title}> Wikipedia lookup: </h1>}
             {findings && 
-              <p>
-                Wikipedia description of { findings[0].className }:
+              <li>
+                Wikipedia description of { findings[0].className }: 
+                {findings && <Button color="primary" onClick= {() => {
+                  setShowMore(true)
+                  setShowMore1(false)
+                  setShowMore2(false)
+                }}> Show More </Button>}
                 < Wikipedia diseaseName = { findings[0].className } />
-              </p>
+              </li>
+            }
+            {findings && 
+              <li>
+                Wikipedia description of { findings[1].className }: 
+                {findings && <Button color="primary" onClick= {() => {
+                  setShowMore(false)
+                  setShowMore1(true)
+                  setShowMore2(false)
+                }}> Show More </Button>}
+                < Wikipedia diseaseName = { findings[1].className } />
+              </li>
+            }
+            {findings && 
+              <li>
+                Wikipedia description of { findings[2].className }: 
+                {findings && <Button color="primary" onClick= {() => {
+                  setShowMore(false)
+                  setShowMore1(false)
+                  setShowMore2(true)
+                }}> Show More </Button>}
+                < Wikipedia diseaseName = { findings[2].className } />
+              </li>
             }
 
           </Grid>
+        </Grid>
+        <Grid>
+          { findings && showMore && !showMore1 && !showMore2 &&
+            <h1> Description of { findings[0].className } </h1>
+          }
+          { findings && showMore && !showMore1 && !showMore2 &&
+            <WikiCard diseaseNameSearch = { findings[0].className }/> 
+          }
+
+          {/* for finding[1] */}
+          { findings && !showMore && showMore1 && !showMore2 &&
+            <h1> Description of { findings[1].className } </h1>
+          }
+          { findings && !showMore && showMore1 && !showMore2 &&
+            <WikiCard diseaseNameSearch = { findings[1].className }/> 
+          }
+
+          {/* for finding[2] */}
+          { findings && !showMore && !showMore1 && showMore2 &&
+            <h1> Description of { findings[2].className } </h1>
+          }
+          { findings && !showMore && !showMore1 && showMore2 &&
+            <WikiCard diseaseNameSearch = { findings[2].className }/> 
+          }
         </Grid>
       </Container>
     </>

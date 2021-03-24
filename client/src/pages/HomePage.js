@@ -28,7 +28,8 @@ const Home = () => {
         image={doctorImage}
       />
       <FileUpload />
-      <PreviousResults />
+      
+      {/* <PreviousResults /> */}
       {/* <form onSubmit={addUser}></form> */}
     </div>
   );
