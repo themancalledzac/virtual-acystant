@@ -62,6 +62,10 @@ class API {
     return this.axios.post("/api/predictions", predictions);
   }
 
+  loadPredictions() {
+    return this.axios.get("/api/predictions");
+  }
+
 }
 
 export default new API();
