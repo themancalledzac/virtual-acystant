@@ -5,8 +5,10 @@ import FileUpload from "../components/FileUpload";
 // import Wikipedia from "../components/Wikipedia";
 import { useStoreContext } from "../store";
 import PreviousResults from "../components/PreviousResults";
-import doctorImage from "../assets/images/pexels-anthony-shkraba-5214995.jpg";
+// import doctorImage from "../assets/images/pexels-anthony-shkraba-5214995.jpg";
+import backgroundImage from "../assets/images/pexels-karolina-grabowska-4021775.jpg";
 import Wikipedia from "../components/Wikipedia";
+
 
 const addUser = () => {
   // send data to backend
@@ -25,7 +27,7 @@ const Home = () => {
       <HeaderCard
         title={headerCardData.home.title}
         paragraph={headerCardData.home.paragraph}
-        image={doctorImage}
+        image={backgroundImage}
       />
       <FileUpload />
       

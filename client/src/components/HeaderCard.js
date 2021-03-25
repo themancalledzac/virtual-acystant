@@ -29,13 +29,16 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "5px",
     backgroundColor: colors.white,
   },
+  background: {
+    backgroundColor: colors.blue1
+  }
 }));
 
 const HeaderCard = (props) => {
   const classes = useStyles();
   return (
-    <>
-      <Container className={classes.searchBar} maxWidth='md'>
+    <div className={classes.background}>
+      {/* <Container className={classes.searchBar} maxWidth='md'> */}
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8}>
             <h2 className={classes.title}>{props.title}</h2>
@@ -50,8 +53,8 @@ const HeaderCard = (props) => {
             />
           </Grid>
         </Grid>
-      </Container>
-    </>
+      {/* </Container> */}
+    </div>
   );
 };
 

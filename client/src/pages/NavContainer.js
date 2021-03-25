@@ -30,6 +30,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    backgroundColor: colors.dark
   },
   appBar: {
     backgroundColor: colors.blue2,
@@ -201,6 +202,7 @@ export default function Main() {
         </Switch>
         {/* <Footer /> */}
       </main>
+
     </div>
   );
 }
