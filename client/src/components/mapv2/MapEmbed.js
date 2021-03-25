@@ -1,7 +1,5 @@
 import React from "react";
-
-import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
-
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import {
     Combobox,
@@ -10,9 +8,9 @@ import {
     ComboboxList,
     ComboboxOption
 } from "@reach/combobox";
-
 import "@reach/combobox/styles.css";
-import mapStyles from "./mapStyles";
+import MapStyles from "./mapStyles";
+import Markers from "./Markers";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -21,7 +19,7 @@ const mapContainerStyle = {
 };
 
 const options = {
-    styles: mapStyles,
+    styles: MapStyles,
     disableDefaultUI: true,
     zoomControl: true
 }
@@ -43,8 +41,8 @@ const Mapv2 = () => {
         mapRef.current = map;
     }, []);
     
-    const panMapTo = React.useCallback(({lat,  lng}) => {
-        mapRef.current.panTo({ lat,lng });
+    const panTo = React.useCallback(({lat, lng}) => {
+        mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
     }, []);
 
@@ -53,33 +51,44 @@ const Mapv2 = () => {
 
     return(
         <div>
-            <h1>Providers <span role="img" aria-label="stethoscope">🩺 </span></h1>
+            <h1 className="mapHeader">Providers <span role="img" aria-label="stethoscope">🩺 </span></h1>
 
-            <Search panTo={panMapTo} />
-            <Locate panTo={panMapTo} />
+            <Locate panTo={panTo} />
+            <Search panTo={panTo} />
 
             <GoogleMap 
+                id="map"
                 mapContainerStyle={mapContainerStyle} 
-                zoom={8} 
+                zoom={13} 
                 center={center}
                 options={options}
-                // onLoad={onMapLoad}
-            ></GoogleMap>
+                onLoad={onMapLoad}
+            >
+                {Markers.map(marker => {
+                    return (
+                        <Marker
+                        key={marker.id}
+                        position={{lat: marker.latitude, lng: marker.longitude}}
+                        />
+                    )
+                })}
+
+            </GoogleMap>
         </div>
-    )
+    );
 }
 
-function Locate({panMapTo}) {
-    return(
+function Locate({ panTo }) {
+    return (
         <button className="locate" onClick={() => {
             navigator.geolocation.getCurrentPosition((position) => {
-                panMapTo({
+                panTo({
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 });
-            }, () => null, options);
+            }, () => null);
         }}>
-            <img src="compass.png" alt="compass - locate me" />
+            Near Me
         </button>
     )
 }
@@ -109,7 +118,7 @@ function Search({ panTo }) {
             }}
             >
                 <ComboboxInput value={value} onChange={(e) => {
-                    setValue(e.targe.value);
+                    setValue(e.target.value);
                     }}
                     disabled={!ready}
                     placeholder="Type a city"
