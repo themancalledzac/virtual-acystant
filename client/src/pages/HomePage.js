@@ -4,8 +4,9 @@ import headerCardData from "../utils/headerCardData.json";
 import FileUpload from "../components/FileUpload";
 // import Wikipedia from "../components/Wikipedia";
 import PreviousResults from "../components/PreviousResults";
-import doctorImage from "../assets/images/pexels-anthony-shkraba-5214995.jpg";
+import doctorImage from "../assets/VAbluewhitelogo.png";
 import Wikipedia from "../components/Wikipedia";
+import LoadResults from "../components/LoadResults";
 
 const Home = () => {
   return (
@@ -14,9 +15,10 @@ const Home = () => {
         title={headerCardData.home.title}
         paragraph={headerCardData.home.paragraph}
         image={doctorImage}
+        disclaimer={headerCardData.home.disclaimer}
       />
       <FileUpload />
-
+      <LoadResults />
       {/* <PreviousResults /> */}
       {/* <form onSubmit={addUser}></form> */}
     </div>

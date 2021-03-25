@@ -66,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   drawerClose: {
+    backgroundColor: colors.blue2,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -91,6 +92,13 @@ const useStyles = makeStyles((theme) => ({
   title: {
     color: colors.darkGrey,
     fontSize: "25px",
+  },
+  linkStyle: {
+    textDecoration: "none",
+    color: "inherit",
+    "&:hover": {
+      backgroundColor: "black",
+    },
   },
 }));
 
@@ -157,7 +165,7 @@ export default function Main() {
         <Divider />
 
         <List>
-          <Link to={"/"}>
+          <Link to={"/"} className={classes.linkStyle}>
             <ListItem button key={"Home"}>
               <ListItemIcon>
                 <HomeIcon />
@@ -168,7 +176,7 @@ export default function Main() {
         </List>
         <Divider />
         <List>
-          <Link to={"/about"}>
+          <Link to={"/about"} className={classes.linkStyle}>
             <ListItem button key={"About"}>
               <ListItemIcon>
                 <GroupIcon />
@@ -176,7 +184,7 @@ export default function Main() {
               <ListItemText primary={"About"} />
             </ListItem>
           </Link>
-          <Link to={"/doctor"}>
+          <Link to={"/doctor"} className={classes.linkStyle}>
             <ListItem button key={"Find A Doctor"}>
               <ListItemIcon>
                 <LocalHospitalIcon />

@@ -1,6 +1,6 @@
 import { Container, Grid, makeStyles } from "@material-ui/core";
 import React from "react";
-import { useStoreContext } from "../store";
+import { useStoreContext } from "../store/index";
 // import { useSelector } from "react-redux";
 import colors from "./colors";
 

@@ -3,7 +3,7 @@ import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 
 import api from "./API";
-import { useStoreContext } from "../store";
+import { useStoreContext } from "../store/index";
 // import { useSelector, useDispatch } from "react-redux";
 // import { LOGIN_USER, LOGOUT_USER } from "./actions";
 import { LOGIN_USER, LOGOUT_USER } from "../store/action";
