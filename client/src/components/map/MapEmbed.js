@@ -14,8 +14,8 @@ import Markers from "./Markers";
 
 const libraries = ["places"];
 const mapContainerStyle = {
-    height: "100vh",
-    width: "75vw"
+    height: "70vh",
+    width: "90vw"
 };
 
 const options = {
