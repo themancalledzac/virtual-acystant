@@ -8,7 +8,7 @@ import PreviousResults from "../components/PreviousResults";
 import doctorImage from "../assets/VAbluewhitelogo.png";
 import Wikipedia from "../components/Wikipedia";
 import LoadResults from "../components/LoadResults";
-import { useStoreContext } from "../store";
+import { useStoreContext } from "../store/index";
 
 const addUser = () => {
   // send data to backend
