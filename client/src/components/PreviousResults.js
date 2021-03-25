@@ -1,6 +1,7 @@
 import { Container, Grid, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useStoreContext } from "../store";
+// import { useSelector } from "react-redux";
 import colors from "./colors";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PreviousResults() {
   const [state] = useStoreContext();
+  // const probabilityData = useSelector((state) => state.probabilityDataState);
   const results = state.probabilityData;
   const classes = useStyles();
   return (
