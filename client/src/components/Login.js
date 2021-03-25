@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import doctorImage from "../assets/images/pexels-tima-miroshnichenko-5452201.jpg";
 import { useLogin } from "../utils/auth";
-import { useStoreContext } from "../store";
+import { useStoreContext } from "../store/index";
 import { LOGIN_SIGNUP_SWITCH } from "../store/action";
 import { TextField } from "@material-ui/core";
 import colors from "./colors";
