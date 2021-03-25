@@ -316,7 +316,7 @@ export default function FileUpload() {
           )}
         </Grid>
         <Grid>
-          <LoadResults />
+          {/* <LoadResults /> */}
         </Grid>
       </Container>
     </>

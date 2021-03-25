@@ -1,38 +1,60 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 // import { Grid, Grid, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
-import {Grid,Button, Container, ListItem, List} from "@material-ui/core";
+import {Grid,Button, Container, ListItem, List, makeStyles} from "@material-ui/core";
+import colors from "./colors";
 import API from "../utils/API";
 import "../index.css";
 
-class LoadResults extends Component {
-  state = {
-    results: {},
-    errorMessage: ""
-  };
+const useStyles = makeStyles((theme) => ({
+  searchBar: {
+    marginTop: theme.spacing(5),
+    paddingTop: theme.spacing(5),
+    paddingBottom: theme.spacing(5),
+    backgroundColor: colors.blue2,
+    marginBottom: theme.spacing(15),
+    borderRadius: "5px",
+  },
+  title: {
+    padding: "10px",
+  },
+  image: {
+    maxWidth: "400px",
+    maxHeight: "auto",
+  },
+  uploader: {
+    marginBottom: "20px",
+  },
+}));
 
-  componentDidMount() {
-    this.getAllResults();
-    console.log(this.getAllResults())
-  }
+export default function LoadResults() {
+  const classes = useStyles();
+  const [results, setResults] = useState({})
+  // state = {
 
-  getAllResults = () => {
+
+  const getAllResults = () => {
     API.loadPredictions()
-      .then(res => this.setState({ results: res.data }))
+      .then(res => setResults(res.data))
       .catch(err => console.log(err));
   };
+
+  useEffect(() =>   {
+    getAllResults()
+}, [])
+
  
 
 
-  render() {
+    
     return (
-      <Container >
-          <h1>All Saved Results (loaded from db)</h1> 
+      <Container maxWidth='lg' className = {classes.searchBar}>
+          <h1>All Saved Results</h1> 
         <Grid>
           <Grid item xs>
-            {this.state.results.length ? (
+            {results.length ? (
               <List>
-                {this.state.results.map(result => (
+                {results.map(result => (
                   <ListItem key={result._id}>
 
                     <h4>Saved Result as of {result.date} </h4>
@@ -50,6 +72,4 @@ class LoadResults extends Component {
       </Container>
     );
   }
-}
-
-export default LoadResults;
+// }
