@@ -30,7 +30,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    backgroundColor: colors.dark
+    backgroundColor: colors.white
   },
   appBar: {
     backgroundColor: colors.blue2,
@@ -186,11 +186,11 @@ export default function Main() {
             </ListItem>
           </Link>
           <Link to={"/doctor"} className={classes.linkStyle}>
-            <ListItem button key={"Find A Doctor"}>
+            <ListItem button key={"Find A Provider"}>
               <ListItemIcon>
                 <LocalHospitalIcon />
               </ListItemIcon>
-              <ListItemText primary={"Find A Doctor"} />
+              <ListItemText primary={"Find A Provider"} />
             </ListItem>
           </Link>
           <LogoutButton />

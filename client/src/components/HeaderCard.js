@@ -3,8 +3,7 @@ import {
   Container,
   Grid,
   makeStyles,
-  Modal,
-  Typography,
+  Modal
 } from "@material-ui/core";
 import React from "react";
 import colors from "./colors";
@@ -14,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5),
     paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(5),
-    // backgroundColor: colors.white,
+    backgroundColor: colors.white,
     marginBottom: theme.spacing(15),
     borderRadius: "4px",
   },
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "4.5em",
       color: colors.blue3,
       justifyContent: "flex-end",
-      textAlign: "right",
+      textAlign: "left",
     },
     [theme.breakpoints.up("md")]: {
       padding: "0px 10px 10px 5px",
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "4.5em",
       color: colors.dark,
       justifyContent: "flex-end",
-      textAlign: "right",
+      textAlign: "left",
     },
     [theme.breakpoints.up("lg")]: {
       padding: "0px 10px 10px 5px",
@@ -49,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "4.5em",
       color: colors.blue2,
       justifyContent: "flex-end",
-      textAlign: "right",
+      textAlign: "left",
     },
   },
   image: {
@@ -58,7 +57,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "5px",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    // backgroundPosition: "center",
     justifyContent: "center",
     "&:hover": {
       opacity: "85%",
@@ -115,7 +113,6 @@ const HeaderCard = (props) => {
     <div style={modalStyle} className={classes.paper}>
       <h2 id='simple-modal-title'>Disclaimer</h2>
       <p id='simple-modal-description'>{props.disclaimer}</p>
-      {/* <HeaderCard /> */}
     </div>
   );
 
@@ -147,7 +144,7 @@ const HeaderCard = (props) => {
               {props.paragraph}
               &nbsp;
               <Button variant='contained' onClick={handleOpen} style={{}}>
-                Open Modal
+                Disclaimer
               </Button>
               <Modal
                 open={open}

@@ -67,3 +67,4 @@ No installation required
 https://www.npmjs.com/package/google-map-react
 https://blog.logrocket.com/a-practical-guide-to-integrating-google-maps-in-react/
 https://iconify.design/icon-sets/
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
