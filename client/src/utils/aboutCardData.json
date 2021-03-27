@@ -1,0 +1,26 @@
+{
+  "kat": {
+      "name": "Kat Gomozova",
+      "github": "https://github.com/kgo87",
+      "linkedin": "https://www.linkedin.com/in/kgomozova",
+      "image": "../assets/images/kat-gomozova.png"
+  },
+  "macz": {
+    "name": "Macz Norton",
+    "github": "https://github.com/macz-norton",
+    "linkedin": "https://www.linkedin.com/in/macznorton",
+    "image": "../assets/images/macz-norton.jpg"
+  },
+  "max": {
+    "name": "Max Lechner",
+    "github": "https://github.com/maxlechner",
+    "linkedin": "https://www.linkedin.com/in/max-lechner",
+    "image": "../assets/images/max-lechner.jpg"
+  },
+  "zac": {
+    "name": "Zechariah Edens ",
+    "github": "https://github.com/themancalledzac",
+    "linkedin": "https://www.linkedin.com/in/zacedens",
+    "image": "../assets/images/zac-edens.jpeg"
+  }
+}
