@@ -46,8 +46,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   image: {
-    maxHeight: "85%",
-    maxWidth: "85%",
+    maxHeight: "100%",
+    maxWidth: "100%",
     borderRadius: "5px",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -55,8 +55,8 @@ const useStyles = makeStyles((theme) => ({
   },
   imageContainer: {
     [theme.breakpoints.down("xs")]: {
-      margin: "60px 60px",
-    },
+      margin: "65px 65px",
+    }
   },
   paragraph: {
     padding: "15px 15px 15px 0px",
