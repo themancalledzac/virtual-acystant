@@ -12,6 +12,8 @@ import { useStoreContext } from "../store/index";
 import API from "../utils/API";
 import Wikipedia from "./Wikipedia";
 import WikiCard from "./WikiCard";
+import CarouselImgController from "./carousel/CarouselImgController";
+
 
 // -------------------------------- PAGE STYLING----------------------------------------//
 const useStyles = makeStyles((theme) => ({
@@ -275,31 +277,67 @@ const showResults = async () => setFindings(await predict());
             )}
           </Grid>
         </Grid>
-        <Grid>
-          {findings && showMore && !showMore1 && !showMore2 && (
-            <h1> Description of {findings[0].className} </h1>
-          )}
-          {findings && showMore && !showMore1 && !showMore2 && (
-            <WikiCard diseaseNameSearch={findings[0].className} />
-          )}
+
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            {findings && showMore && !showMore1 && !showMore2 && (
+              <h1> Description of {findings[0].className} </h1>
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
+            {findings && showMore && !showMore1 && !showMore2 && (
+              < CarouselImgController diseaseImg={findings[0].className} />
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
+            {findings && showMore && !showMore1 && !showMore2 && (
+              <WikiCard diseaseNameSearch={findings[0].className} />
+            )}
+          </Grid>
+        </Grid>
+
 
           {/* for finding[1] */}
-          {findings && !showMore && showMore1 && !showMore2 && (
-            <h1> Description of {findings[1].className} </h1>
-          )}
-          {findings && !showMore && showMore1 && !showMore2 && (
-            <WikiCard diseaseNameSearch={findings[1].className} />
-          )}
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              {findings && !showMore && showMore1 && !showMore2 && (
+                <h1> Description of {findings[1].className} </h1>
+              )}
+            </Grid>
+            <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
+              {findings && !showMore && showMore1 && !showMore2 && (
+                < CarouselImgController diseaseImg={findings[1].className} />
+              )}
+            </Grid>
+            <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
+              {findings && !showMore && showMore1 && !showMore2 && (
+                <WikiCard diseaseNameSearch={findings[1].className} />
+              )}
+            </Grid>
+        </Grid> 
 
           {/* for finding[2] */}
-          {findings && !showMore && !showMore1 && showMore2 && (
-            <h1> Description of {findings[2].className} </h1>
-          )}
-          {findings && !showMore && !showMore1 && showMore2 && (
-            <WikiCard diseaseNameSearch={findings[2].className} />
-          )}
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              {findings && !showMore && !showMore1 && showMore2 && (
+                <h1> Description of {findings[2].className} </h1>
+              )}
+            </Grid>
+            <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
+              {findings && !showMore && !showMore1 && showMore2 && (
+                < CarouselImgController diseaseImg={findings[2].className} />
+              )}
+            </Grid>
+            <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
+              {findings && !showMore && !showMore1 && showMore2 && (
+                <WikiCard diseaseNameSearch={findings[2].className} />
+              )}
+            </Grid>
+          </Grid>
+
+        <Grid>
+          {/* <LoadResults /> */}
         </Grid>
-        <Grid>{/* <LoadResults /> */}</Grid>
       </Container>
     </>
   );
