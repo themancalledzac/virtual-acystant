@@ -139,8 +139,12 @@ const HeaderCard = (props) => {
 
             <p className={classes.paragraph}>
               {props.paragraph}
-              &nbsp;
-              <Button variant='contained' onClick={handleOpen} style={{}}>
+            </p>
+            <Button 
+            variant='contained' 
+            onClick={handleOpen} 
+            style={{}}
+            color='secondary'>
                 Disclaimer
               </Button>
               <Modal
@@ -151,7 +155,6 @@ const HeaderCard = (props) => {
               >
                 {body}
               </Modal>
-            </p>
           </Grid>
         </Grid>
       </Container>
