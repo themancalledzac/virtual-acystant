@@ -110,7 +110,6 @@ router.post(
       res
         .status(200)
         .json({ default: "You have successfully registered, please login!" });
-      // render login page -> how does this work with Redux???
 
       res.json(secureUser);
     } catch (err) {

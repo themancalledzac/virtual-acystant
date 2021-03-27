@@ -4,13 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import api from "./API";
 import { useStoreContext } from "../store/index";
-// import { useSelector, useDispatch } from "react-redux";
-// import { LOGIN_USER, LOGOUT_USER } from "./actions";
 import { LOGIN_USER, LOGOUT_USER } from "../store/action";
-
-// TODO
-// If you have already implemented your own global store, you will need to merge the two actions, LOGIN_USER and LOGOUT_USER, into your implementation.
-// You will also then need to make sure that the dispatch calls in utils/auth.js match how your store is set up.
 
 const setAuthToken = (token) => {
   storeAuthToken(token);
@@ -96,9 +90,7 @@ export const useAuthTokenStore = () => {
 };
 
 export const useIsAuthenticated = () => {
-  // redux trial and error
-  // const token = useSelector((state) => state.loginUserState.token);
-  // Anthony prebuilt 'global data' way of doing things
+
   const [
     {
       userAuth: { token },
@@ -109,7 +101,7 @@ export const useIsAuthenticated = () => {
 };
 
 export const useAuthenticatedUser = () => {
-  // const user = useSelector((state) => state.loginUserState.user);
+
   const [
     {
       userAuth: { user },
@@ -121,7 +113,6 @@ export const useAuthenticatedUser = () => {
 
 export const useLogin = () => {
   const [, dispatch] = useStoreContext();
-  // const dispatch = useDispatch();
 
   return async (credentials) => {
     const {
@@ -138,7 +129,6 @@ export const useLogin = () => {
 
 export const useLogout = () => {
   const [, dispatch] = useStoreContext();
-  // const dispatch = useDispatch();
   const history = useHistory();
 
   return () => {
