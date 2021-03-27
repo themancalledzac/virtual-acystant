@@ -21,7 +21,7 @@ const About = (props) => {
         disclaimer={headerCardData.disclaimer}
       />
       <Grid container spacing={3}> 
-        <Grid item xs={12} sm={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <MediaCard 
           nameTitle={aboutCardData.kat.name}
           headshot={Kat}
@@ -30,7 +30,7 @@ const About = (props) => {
           linkedin={aboutCardData.kat.linkedin}
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <MediaCard
           nameTitle={aboutCardData.max.name}
           headshot={Max}
@@ -39,7 +39,7 @@ const About = (props) => {
           linkedin={aboutCardData.max.linkedin}
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <MediaCard 
           nameTitle={aboutCardData.zac.name}
           headshot={Zac}
@@ -48,7 +48,7 @@ const About = (props) => {
           linkedin={aboutCardData.zac.linkedin}
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <MediaCard 
           nameTitle={aboutCardData.macz.name}
           headshot={Macz}

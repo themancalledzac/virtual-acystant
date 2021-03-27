@@ -19,13 +19,15 @@ const useStyles = makeStyles({
   
 });
 
+const noPointer = {cursor: 'default'};
+
 export default function MediaCard(props) {
   const classes = useStyles();
 
         return (
             <>
               <Card className={classes.root}>
-              <CardActionArea>
+              <CardActionArea style={noPointer}>
                   <CardMedia
                   component="img"
                   className={classes.media}
