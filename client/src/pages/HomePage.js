@@ -1,7 +1,6 @@
 import HeaderCard from "../components/HeaderCard";
 import headerCardData from "../utils/headerCardData.json";
 import React from "react";
-import { makeStyles } from "@material-ui/core";
 import FileUpload from "../components/FileUpload";
 // import Wikipedia from "../components/Wikipedia";
 

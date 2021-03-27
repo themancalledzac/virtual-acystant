@@ -31,6 +31,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    backgroundColor: colors.white
   },
   appBar: {
     backgroundColor: colors.blue2,
@@ -210,16 +211,21 @@ export default function Main() {
               <ListItemText primary={"About"} />
             </ListItem>
           </Link>
+<<<<<<< HEAD
           <Link
             to={"/doctor"}
             className={classes.linkStyle}
             onClick={handleDrawerClose}
           >
             <ListItem button key={"Find A Doctor"}>
+=======
+          <Link to={"/doctor"} className={classes.linkStyle}>
+            <ListItem button key={"Find A Provider"}>
+>>>>>>> main
               <ListItemIcon>
                 <LocalHospitalIcon />
               </ListItemIcon>
-              <ListItemText primary={"Find A Doctor"} />
+              <ListItemText primary={"Find A Provider"} />
             </ListItem>
           </Link>
           <LogoutButton />
@@ -241,6 +247,7 @@ export default function Main() {
         </Switch>
         {/* <Footer /> */}
       </main>
+
     </div>
   );
 }

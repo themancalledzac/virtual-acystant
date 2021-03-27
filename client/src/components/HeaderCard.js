@@ -1,11 +1,4 @@
-import {
-  Button,
-  Container,
-  Grid,
-  makeStyles,
-  Modal,
-  Typography,
-} from "@material-ui/core";
+import { Button, Container, Grid, makeStyles, Modal } from "@material-ui/core";
 import React from "react";
 import colors from "./colors";
 
@@ -14,13 +7,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5),
     paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(5),
-    // backgroundColor: colors.white,
-    marginBottom: theme.spacing(15),
+    backgroundColor: colors.white,
+    marginBottom: theme.spacing(10),
     borderRadius: "4px",
   },
   title: {
     [theme.breakpoints.down("xs")]: {
-      padding: "0px 10px 10px 5px",
+      padding: "0px 10px 0px 5px",
       marginTop: "0px",
       fontSize: "4em",
       color: colors.blue3,
@@ -28,41 +21,37 @@ const useStyles = makeStyles((theme) => ({
       textAlign: "center",
     },
     [theme.breakpoints.up("sm")]: {
-      padding: "0px 10px 10px 5px",
+      padding: "0px 10px 0px 5px",
       marginTop: "0px",
       fontSize: "4.5em",
-      color: colors.blue3,
+      color: colors.blue2,
       justifyContent: "flex-end",
-      textAlign: "right",
+      textAlign: "left",
     },
     [theme.breakpoints.up("md")]: {
-      padding: "0px 10px 10px 5px",
+      padding: "0px 10px 0px 5px",
       marginTop: "0px",
       fontSize: "4.5em",
       color: colors.blue3,
       justifyContent: "flex-end",
-      textAlign: "right",
+      textAlign: "left",
     },
     [theme.breakpoints.up("lg")]: {
-      padding: "0px 10px 10px 5px",
+      padding: "0px 10px 0px 5px",
       marginTop: "0px",
       fontSize: "4.5em",
       color: colors.blue3,
       justifyContent: "flex-end",
-      textAlign: "right",
+      textAlign: "left",
     },
   },
   image: {
-    maxHeight: "100%",
-    maxWidth: "100%",
+    maxHeight: "80%",
+    maxWidth: "80%",
     borderRadius: "5px",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    // backgroundPosition: "center",
     justifyContent: "center",
-    "&:hover": {
-      opacity: "85%",
-    },
   },
   imageContainer: {
     [theme.breakpoints.down("xs")]: {
@@ -70,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paragraph: {
-    padding: "15px",
+    padding: "15px 15px 15px 0px",
     borderRadius: "5px",
     fontSize: "1.5em",
   },
@@ -81,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+  },
+  background: {
+    backgroundColor: colors.blue1,
   },
 }));
 
@@ -112,7 +104,6 @@ const HeaderCard = (props) => {
     <div style={modalStyle} className={classes.paper}>
       <h2 id='simple-modal-title'>Disclaimer</h2>
       <p id='simple-modal-description'>{props.disclaimer}</p>
-      {/* <HeaderCard /> */}
     </div>
   );
 
