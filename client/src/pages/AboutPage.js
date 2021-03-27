@@ -1,5 +1,6 @@
 import React from "react";
 import HeaderCard from "../components/HeaderCard";
+// import TeammateCard from "../components/TeammateCard";
 import headerCardData from "../utils/headerCardData.json";
 import AboutCard from "../components/AboutCard";
 import AboutCardData from "../utils/aboutCardData";

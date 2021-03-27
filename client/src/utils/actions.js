@@ -1,6 +1,23 @@
-export const CHANGE_LOGGED_IN_STATE = () => {
+export const LOGIN_USER = () => {
   return {
-    type: "CHANGE_LOGGED_IN_STATE",
+    type: "LOGIN_USER",
+    payload: {},
+  };
+};
+export const LOGOUT_USER = () => {
+  return {
+    type: "LOGOUT_USER",
+  };
+};
+export const RETURN_DATA = () => {
+  return {
+    type: "RETURN_DATA",
+  };
+};
+
+export const LOGIN_SIGNUP_SWITCH = () => {
+  return {
+    type: "LOGIN_SIGNUP_SWITCH",
   };
 };
 
