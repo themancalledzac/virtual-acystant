@@ -1,6 +1,9 @@
 import React from "react";
 import HeaderCard from "../components/HeaderCard";
 import headerCardData from "../utils/headerCardData.json";
+import AboutCard from "../components/AboutCard";
+import AboutCardData from "../utils/aboutCardData";
+import { modelNames } from "mongoose";
 
 const About = (props) => {
   return (
@@ -9,6 +12,20 @@ const About = (props) => {
         title={headerCardData.about.title}
         paragraph={headerCardData.about.paragraph}
       />
+      {AboutCardData.map(
+        ({ name, github, linkedin, image }) => {
+          return (
+            <AboutCard 
+            image={image}
+            title={name}
+            href={linkedin}
+            href={github}
+          />
+          )
+        }
+      )
+      }
+
     </div>
   );
 };
