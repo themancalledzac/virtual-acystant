@@ -49,6 +49,7 @@
     "mongoose": "^5.3.16",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "react-material-ui-carousel": "^2.2.1",
     "seedrandom": "^3.0.5"
   },
   "bugs": {

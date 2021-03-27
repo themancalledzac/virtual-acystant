@@ -15,6 +15,7 @@ import API from "../utils/API"
 import Wikipedia from "./Wikipedia"
 import WikiCard from "./WikiCard"
 import LoadResults from "./LoadResults";
+import CarouselImg from "./carousel/CarouselImg";
 
 // -------------------------------- PAGE STYLING----------------------------------------//
 const useStyles = makeStyles((theme) => ({
@@ -239,7 +240,15 @@ export default function FileUpload() {
 
           </Grid>
         </Grid>
-        <Grid>
+        <Grid> 
+          { findings && showMore && !showMore1 && !showMore2 &&
+            <h1> Images of { findings[0].className } </h1>
+          }
+          <br></br>
+          {findings && (showMore || showMore1 || showMore2 ) &&
+            < CarouselImg />
+          }
+          <br></br>
           { findings && showMore && !showMore1 && !showMore2 &&
             <h1> Description of { findings[0].className } </h1>
           }
