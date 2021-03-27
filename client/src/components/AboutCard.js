@@ -21,31 +21,28 @@ export default function MediaCard(props) {
   const classes = useStyles();
         return (
             <div>
-            {AboutCardData.map(
-                ({ name, github, linkedin, image }) => {
-                    <Card className={classes.root}>
-                    <CardActionArea>
-                        <CardMedia
-                        className={classes.media}
-                        image={props.image}
-                        title={props.name}
-                        />
-                        <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            {props.name}
-                        </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary" href={props.github} target="_blank">
-                        GitHub
-                        </Button>
-                        <Button size="small" color="primary" href={props.linkedin} target="_blank">
-                        LinkedIn
-                        </Button>
-                    </CardActions>
-                    </Card>
-          );
+              <Card className={classes.root}>
+              <CardActionArea>
+                  <CardMedia
+                  className={classes.media}
+                  image={props.image}
+                  title={props.name}
+                  />
+                  <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                      {props.name}
+                  </Typography>
+                  </CardContent>
+              </CardActionArea>
+              <CardActions>
+                  <Button size="small" color="primary" href={props.github} target="_blank">
+                  GitHub
+                  </Button>
+                  <Button size="small" color="primary" href={props.linkedin} target="_blank">
+                  LinkedIn
+                  </Button>
+              </CardActions>
+              </Card>
           </div>
-    });
+    );
 }
