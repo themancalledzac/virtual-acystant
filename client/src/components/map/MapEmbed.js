@@ -29,7 +29,7 @@ const center = {
     lng: -122.3321
 }
 
-const Mapv2 = () => {
+const MapEmbed = () => {
 
     const { isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY,
@@ -51,8 +51,6 @@ const Mapv2 = () => {
 
     return(
         <div>
-            <h1 className="mapHeader">Providers <span role="img" aria-label="stethoscope">🩺 </span></h1>
-
             <Locate panTo={panTo} />
             <Search panTo={panTo} />
 
@@ -135,4 +133,4 @@ function Search({ panTo }) {
     );
 }
 
-export default Mapv2;
+export default MapEmbed;

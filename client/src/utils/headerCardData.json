@@ -2,17 +2,17 @@
   "home": {
     "title": "Virtual A(cyst)ant",
     "paragraph": "Curious about that skin blemish? With Virtual Acystant, you can upload an image of your skin issue and understand if it might be best to see a provider. We provide information on the top hits, with a second page for looking for and contacting a provider in your area.",
-    "disclaimer": "This content is not intended to be a substitute for professional medial advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition."
+      "disclaimer": "This content is not intended to be a substitute for professional medial advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition."
 
   },
   "about": {
     "title": "About Virtual A(cyst)ant",
     "paragraph": "Learn more about the application and the team who built it.",
-    "disclaimer": "This content is not intended to be a substitute for professional medial advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition."
+      "disclaimer": "This content is not intended to be a substitute for professional medial advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition."
   },
   "doctor": {
     "title": "Provider Search",
     "paragraph": "Search for a provider who specializes in skin conditions in your area.",
-    "disclaimer": "That this content is not intended to be a substitute for professional medial advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition."
+      "disclaimer": "That this content is not intended to be a substitute for professional medial advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition."
   }
 }
