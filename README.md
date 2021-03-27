@@ -69,3 +69,4 @@ https://blog.logrocket.com/a-practical-guide-to-integrating-google-maps-in-react
 https://iconify.design/icon-sets/
 <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 <div>Icons made by <a href="" title="Pause08">Pause08</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+https://snazzymaps.com/style/287670/no-levels

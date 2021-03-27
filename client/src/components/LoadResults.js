@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import { Grid, Grid, Container } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
-import {Grid,Button, Container, ListItem, List, makeStyles} from "@material-ui/core";
+import {Grid, Container, ListItem, List, makeStyles} from "@material-ui/core";
 import colors from "./colors";
 import API from "../utils/API";
 import "../index.css";
@@ -43,10 +41,6 @@ export default function LoadResults() {
     getAllResults()
 }, [])
 
- 
-
-
-    
     return (
       <Container maxWidth='lg' className = {classes.searchBar}>
           <h1>All Saved Results</h1> 
@@ -72,4 +66,3 @@ export default function LoadResults() {
       </Container>
     );
   }
-// }

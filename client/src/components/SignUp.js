@@ -12,8 +12,6 @@ import doctorImage from "../assets/images/pexels-tima-miroshnichenko-5452201.jpg
 import { useLogin } from "../utils/auth";
 import API from "../utils/API";
 import { useStoreContext } from "../store/index";
-// import { useDispatch } from "react-redux";
-// import { LOGIN_STATE } from "../utils/actions";
 import { LOGIN_SIGNUP_SWITCH } from "../store/action";
 import { TextField } from "@material-ui/core";
 import colors from "./colors";
@@ -86,10 +84,9 @@ export default function SignUp() {
     window.location.reload(false);
   };
 
-  // const dispatch = useDispatch();
   const [, dispatch] = useStoreContext();
   const loginSignupState = () => {
-    // dispatch(LOGIN_USER);
+
     dispatch({
       type: LOGIN_SIGNUP_SWITCH,
     });

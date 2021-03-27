@@ -4,17 +4,13 @@ import {
   Container,
   Grid,
   makeStyles,
-  TextField,
-  Typography,
-  Button,
+  Button
 } from "@material-ui/core";
 import colors from "./colors";
 import { useStoreContext } from "../store/index";
-import { RETURN_DATA } from "../store/action";
 import API from "../utils/API";
 import Wikipedia from "./Wikipedia";
 import WikiCard from "./WikiCard";
-import LoadResults from "./LoadResults";
 
 // -------------------------------- PAGE STYLING----------------------------------------//
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
 // import * from "../../../tfjs-models/model.json"
 export default function FileUpload() {
   const [, dispatch] = useStoreContext();
-  // const [state, dispatch] = useStoreContext();
   const CLASSES = {
     0: "Actinic Keratoses (Solar Keratoses) or intraepithelial Carcinoma (Bowenâ€™s disease)",
     1: "Basal Cell Carcinoma",
@@ -72,7 +67,6 @@ export default function FileUpload() {
     });
 
     reader.readAsDataURL(imageFile);
-    // console.log(result);
     console.log("Image file " + imageFile);
     return imageFile;
   }
@@ -100,8 +94,6 @@ export default function FileUpload() {
         return b.probability - a.probability;
       })
       .slice(0, 3);
-    // ???
-    // dispatch({ type: RETURN_DATA, payload: { top3 } });
 
     console.log(top3);
     const preds = await setFindings(top3);
@@ -110,7 +102,7 @@ export default function FileUpload() {
     return top3;
   }
 
-  const showResults = async () => setFindings(await predict());
+const showResults = async () => setFindings(await predict());
 
   // dispatch({ type: RETURN_DATA, payload: findings });
 
@@ -127,10 +119,6 @@ export default function FileUpload() {
   function refreshPage() {
     window.location.reload();
   }
-
-  // function readMore(){
-  //   setShowMore("");
-  // }
 
   const classes = useStyles();
 
