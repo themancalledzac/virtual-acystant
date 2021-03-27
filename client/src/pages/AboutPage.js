@@ -3,7 +3,7 @@ import HeaderCard from "../components/HeaderCard";
 import headerCardData from "../utils/headerCardData.json";
 import aboutCardData from "../utils/aboutCardData.json";
 import MediaCard from "../components/AboutCard";
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid";
 import logo from "../assets/images/VAbluewhitelogo.png";
 import Kat from "../assets/images/kat-gomozova.png";
 import Macz from "../assets/images/macz-norton.jpg";
@@ -11,7 +11,7 @@ import Max from "../assets/images/max-lechner.jpg";
 import Zac from "../assets/images/zac-edens.jpeg";
 
 
-const About = (props) => {
+const About = () => {
   return (
     <div>
       <HeaderCard

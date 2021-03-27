@@ -4,7 +4,8 @@ import {
   Container,
   Grid,
   makeStyles,
-  Button
+  Button, 
+  Input
 } from "@material-ui/core";
 import colors from "./colors";
 import { useStoreContext } from "../store/index";
@@ -129,7 +130,7 @@ const showResults = async () => setFindings(await predict());
           <Grid item xs>
             <h2 className={classes.title}>Upload Skin Image</h2>
 
-            <input
+            <Input
               className={classes.uploader}
               type='file'
               inputRef={imageRef}
@@ -138,11 +139,8 @@ const showResults = async () => setFindings(await predict());
                 uploader(e);
               }}
               variant='outlined'
-              margin='normal'
               required
-              fullWidth
               label='Image Upload'
-              autoFocus
             />
             <Button
               variant='contained'
@@ -301,9 +299,7 @@ const showResults = async () => setFindings(await predict());
             <WikiCard diseaseNameSearch={findings[2].className} />
           )}
         </Grid>
-        <Grid>
-          {/* <LoadResults /> */}
-        </Grid>
+        <Grid>{/* <LoadResults /> */}</Grid>
       </Container>
     </>
   );
