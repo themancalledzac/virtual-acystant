@@ -1,5 +1,5 @@
 import React from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import {
     Combobox,
@@ -80,7 +80,9 @@ const MapEmbed = () => {
                         <Marker
                         key={marker.id}
                         position={{lat: marker.latitude, lng: marker.longitude}}
-                        />
+                        >
+                            
+                        </Marker>
                     )
                 })}
 
