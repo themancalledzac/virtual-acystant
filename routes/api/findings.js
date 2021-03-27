@@ -3,7 +3,6 @@ const router = require("express").Router();
 const passport = require("passport");
 const findingsController = require("../../controllers/findingsController");
 
-
 // Matches with "/api/predictions"
 router
   .route("/")
@@ -11,4 +10,3 @@ router
   .post(passport.authenticate('jwt', {session: false}), findingsController.create);
 
 module.exports = router; 
-

@@ -26,9 +26,6 @@ app.use(passport.initialize());
 // Passport config
 passport.use(require("./config/jwtPassportStrategy"));
 
-// Add routes, both API and view
-// app.use("/api", require("./routes/authentication"));
-
 app.use(routes);
 
 // Connect to the Mongo DB

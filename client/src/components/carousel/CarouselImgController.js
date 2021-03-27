@@ -6,7 +6,6 @@ import CarouselImgBCC from "../carousel/CarouselImgBCC";
 import CarouselImgBK from "../carousel/CarouselImgBK";
 import CarouselImgDF from "../carousel/CarouselImgDF";
 import CarouselImgVSC from "../carousel/CarouselImgVSC";
-import Carousel from "react-material-ui-carousel";
 
 export default function CarouselImgController( props ) {
 

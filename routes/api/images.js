@@ -2,7 +2,6 @@
 const router = require("express").Router();
 const imageController = require("../../controllers/imageController");
 
-
 // Matches with "/api/images"
 router
   .route("/")

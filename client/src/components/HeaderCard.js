@@ -1,10 +1,4 @@
-import {
-  Button,
-  Container,
-  Grid,
-  makeStyles,
-  Modal
-} from "@material-ui/core";
+import { Button, Container, Grid, makeStyles, Modal } from "@material-ui/core";
 import React from "react";
 import colors from "./colors";
 
@@ -21,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       padding: "0px 10px 0px 5px",
       marginTop: "0px",
-      fontSize: "4.5em",
-      color: colors.blue2,
+      fontSize: "4em",
+      color: colors.blue3,
       justifyContent: "center",
       textAlign: "center",
     },
@@ -38,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
       padding: "0px 10px 0px 5px",
       marginTop: "0px",
       fontSize: "4.5em",
-      color: colors.blue2,
+      color: colors.blue3,
       justifyContent: "flex-end",
       textAlign: "left",
     },
@@ -46,14 +40,14 @@ const useStyles = makeStyles((theme) => ({
       padding: "0px 10px 0px 5px",
       marginTop: "0px",
       fontSize: "4.5em",
-      color: colors.blue2,
+      color: colors.blue3,
       justifyContent: "flex-end",
       textAlign: "left",
     },
   },
   image: {
-    maxHeight: "80%",
-    maxWidth: "80%",
+    maxHeight: "100%",
+    maxWidth: "100%",
     borderRadius: "5px",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -61,8 +55,8 @@ const useStyles = makeStyles((theme) => ({
   },
   imageContainer: {
     [theme.breakpoints.down("xs")]: {
-      margin: "60px 60px",
-    },
+      margin: "65px 65px",
+    }
   },
   paragraph: {
     padding: "15px 15px 15px 0px",
@@ -71,15 +65,15 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     position: "absolute",
-    width: 400,
+    width: 300,
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
   background: {
-    backgroundColor: colors.blue1
-  }
+    backgroundColor: colors.blue1,
+  },
 }));
 
 function getModalStyle() {
@@ -115,19 +109,9 @@ const HeaderCard = (props) => {
 
   return (
     <>
-      <Container
-        className={classes.searchBar}
-        maxWidth='lg'
-        alignContent='center'
-      >
-        <Grid container spacing={4}>
-          <Grid
-            item
-            xs={12}
-            sm={4}
-            alignContent='center'
-            className={classes.imageContainer}
-          >
+      <Container className={classes.searchBar} maxWidth='lg'>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={4} className={classes.imageContainer}>
             <img
               className={classes.image}
               src={props.image}
@@ -139,8 +123,12 @@ const HeaderCard = (props) => {
 
             <p className={classes.paragraph}>
               {props.paragraph}
-              &nbsp;
-              <Button variant='contained' onClick={handleOpen} style={{}}>
+            </p>
+            <Button 
+            variant='contained' 
+            onClick={handleOpen} 
+            style={{}}
+            color='secondary'>
                 Disclaimer
               </Button>
               <Modal
@@ -151,7 +139,6 @@ const HeaderCard = (props) => {
               >
                 {body}
               </Modal>
-            </p>
           </Grid>
         </Grid>
       </Container>

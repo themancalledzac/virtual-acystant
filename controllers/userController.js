@@ -1,9 +1,6 @@
 /* eslint-disable no-undef */
 const db = require("../models");
 
-// we define methods for the userController
-// preliminary controller, just a few thoughts to go towards
-
 module.exports = {  
   // Our initial login will most likely find our user by our login ID, find our user, and res.json our user
   findById: function (req, res) {
