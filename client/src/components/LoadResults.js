@@ -50,25 +50,28 @@ export default function LoadResults() {
     return (
       <Container maxWidth='lg' className = {classes.searchBar}>
           <h1>All Saved Results</h1> 
-        <Grid>
-          <Grid item xs>
+        {/* <Grid container spacing={2}> */}
+          {/* <Grid item xs> */}
             {results.length ? (
-              <List>
+              <div>
                 {results.map(result => (
-                  <ListItem key={result._id}>
-
-                    <h4>Saved Result as of {result.date} </h4>
+                  <Grid style={{ justifyContent: "space-between" }} container spacing={10} key={result._id}>
+                    <Grid item xs={12} sm={6}>
+                    <h4>Saved Result as of {(result.date).slice(0, -14)} </h4></Grid>
+                    <Grid item xs={12} sm={6} >
                     <li >{result.findings[0].className} with probability {((result.findings[0].probability)*100).toFixed(3)} %</li>
                     <li >{result.findings[1].className} with probability {((result.findings[1].probability)*100).toFixed(3)} %</li>
                     <li >{result.findings[2].className} with probability {((result.findings[2].probability)*100).toFixed(3)} %</li>
-                  </ListItem>
+                    </Grid>
+                  </Grid>
                 ))}
-              </List>
+                <br></br>
+              </div>
             ) : (
               <p className="search__form--alert">It looks like you don't have any saved results!</p>
               )}
-          </Grid>
-        </Grid>
+          {/* </Grid> */}
+        {/* </Grid> */}
       </Container>
     );
   }

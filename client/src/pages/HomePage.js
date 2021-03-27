@@ -37,12 +37,11 @@ const Home = () => {
         <Button
           variant='contained'
           color='primary'
-          onClick={() => toggleShow(!show)}
-        >
+          onClick={() => toggleShow(!show)}>
           saved results: {show ? "hide" : "show"}
         </Button>
-        {show && <LoadResults />}
       </Container>
+      {show && <LoadResults />}
       {/* <PreviousResults /> */}
       {/* <form onSubmit={addUser}></form> */}
     </div>
