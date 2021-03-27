@@ -13,7 +13,7 @@ const About = (props) => {
         title={headerCardData.about.title}
         paragraph={headerCardData.about.paragraph}
         image={logo}
-        disclaimer={headerCardData.about.disclaimer}
+        disclaimer={headerCardData.disclaimer}
       />
       <Grid container spacing={3}> 
         <Grid item xs={12} sm={12} md={3}>
