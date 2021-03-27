@@ -7,6 +7,7 @@ import {
   TextField,
   Typography,
   Button,
+  Input,
 } from "@material-ui/core";
 import colors from "./colors";
 import { useStoreContext } from "../store/index";
@@ -143,7 +144,7 @@ export default function FileUpload() {
           <Grid item xs>
             <h2 className={classes.title}>Upload Skin Image</h2>
 
-            <input
+            <Input
               className={classes.uploader}
               type='file'
               inputRef={imageRef}
@@ -152,11 +153,8 @@ export default function FileUpload() {
                 uploader(e);
               }}
               variant='outlined'
-              margin='normal'
               required
-              fullWidth
               label='Image Upload'
-              autoFocus
             />
             <Button
               variant='contained'
@@ -315,9 +313,7 @@ export default function FileUpload() {
             <WikiCard diseaseNameSearch={findings[2].className} />
           )}
         </Grid>
-        <Grid>
-          {/* <LoadResults /> */}
-        </Grid>
+        <Grid>{/* <LoadResults /> */}</Grid>
       </Container>
     </>
   );
