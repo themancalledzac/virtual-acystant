@@ -4,6 +4,7 @@ import HeaderCard from "../components/HeaderCard";
 import headerCardData from "../utils/headerCardData.json";
 import AboutCard from "../components/AboutCard";
 import AboutCardData from "../utils/aboutCardData";
+import logo from "../assets/images/VAbluewhitelogo.png";
 import { modelNames } from "mongoose";
 
 const About = (props) => {
@@ -12,6 +13,7 @@ const About = (props) => {
       <HeaderCard
         title={headerCardData.about.title}
         paragraph={headerCardData.about.paragraph}
+        image={logo}
       />
       {AboutCardData.map(
         ({ name, github, linkedin, image }) => {
