@@ -1,13 +1,23 @@
 import HeaderCard from "../components/HeaderCard";
 import headerCardData from "../utils/headerCardData.json";
 import React from "react";
+import { Container, Button, makeStyles } from "@material-ui/core";
 import FileUpload from "../components/FileUpload";
-// import Wikipedia from "../components/Wikipedia";
+import logo from "../assets/images/VAbluewhitelogo.png";
+import LoadResults from "../components/LoadResults";
+import { useStoreContext } from "../store/index";
+import colors from "../components/colors";
 
-import logo from "../assets/VAbluewhitelogo.png";
-import Results from "../components/Results";
+const useStyles = makeStyles(() => ({
+  buttonStyle: {
+    color: colors.blue3,
+  },
+}));
 
 const Home = () => {
+  const [state] = useStoreContext();
+  const classes = useStyles();
+  const [show, toggleShow] = React.useState(true);
   return (
     <>
       <HeaderCard
@@ -18,7 +28,18 @@ const Home = () => {
       />
 
       <FileUpload />
-      <Results />
+      <Container maxWidth='lg'>
+        <Button
+          variant='contained'
+          className={classes.buttonStyle}
+          onClick={() => toggleShow(!show)}
+        >
+          saved results: {show ? "hide" : "show"}
+        </Button>
+      </Container>
+      {show && <LoadResults />}
+      {/* <PreviousResults /> */}
+      {/* <form onSubmit={addUser}></form> */}
     </>
   );
 };

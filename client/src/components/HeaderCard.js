@@ -46,8 +46,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   image: {
-    maxHeight: "80%",
-    maxWidth: "80%",
+    maxHeight: "100%",
+    maxWidth: "100%",
     borderRadius: "5px",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
