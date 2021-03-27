@@ -3,21 +3,9 @@ import headerCardData from "../utils/headerCardData.json";
 import React from "react";
 import { Container, Button } from "@material-ui/core";
 import FileUpload from "../components/FileUpload";
-// import Wikipedia from "../components/Wikipedia";
-import PreviousResults from "../components/PreviousResults";
 import logo from "../assets/images/VAbluewhitelogo.png";
-import Wikipedia from "../components/Wikipedia";
 import LoadResults from "../components/LoadResults";
 import { useStoreContext } from "../store/index";
-
-const addUser = () => {
-  // send data to backend
-  // util/API.js file
-  // dispatch({
-  //   type: ADD_USER,
-  //   payload: newUser
-  // })
-};
 
 const Home = () => {
   const [state] = useStoreContext();
@@ -42,8 +30,6 @@ const Home = () => {
         </Button>
         {show && <LoadResults />}
       </Container>
-      {/* <PreviousResults /> */}
-      {/* <form onSubmit={addUser}></form> */}
     </div>
   );
 };
