@@ -6,16 +6,17 @@ import {
   makeStyles,
   TextField,
   Typography,
-  Button
+  Button,
 } from "@material-ui/core";
 import colors from "./colors";
-import { useStoreContext } from "../store";
+import { useStoreContext } from "../store/index";
 import { RETURN_DATA } from "../store/action";
-import API from "../utils/API"
-import Wikipedia from "./Wikipedia"
-import WikiCard from "./WikiCard"
+import API from "../utils/API";
+import Wikipedia from "./Wikipedia";
+import WikiCard from "./WikiCard";
 import LoadResults from "./LoadResults";
-import CarouselImg from "./carousel/CarouselImg";
+import CarouselImgController from "./carousel/CarouselImgController";
+
 
 // -------------------------------- PAGE STYLING----------------------------------------//
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 // import * from "../../../tfjs-models/model.json"
 export default function FileUpload() {
   const [, dispatch] = useStoreContext();
+  // const [state, dispatch] = useStoreContext();
   const CLASSES = {
     0: "Actinic Keratoses (Solar Keratoses) or intraepithelial Carcinoma (Bowenâ€™s disease)",
     1: "Basal Cell Carcinoma",
@@ -106,7 +108,7 @@ export default function FileUpload() {
     // dispatch({ type: RETURN_DATA, payload: { top3 } });
 
     console.log(top3);
-    const preds = await setFindings(top3)
+    const preds = await setFindings(top3);
     // return top3[0].probability + ", " +top3[1].probability + ", " + top3[2].probability
     // -----------------------------GLOBALSTATE SAVE -------------------------------------//
     return top3;
@@ -119,28 +121,26 @@ export default function FileUpload() {
   const saveResults = async (event) => {
     event.preventDefault();
     try {
-      const savedResults = await API.savePredictions({findings})
-      console.log(savedResults)     
+      const savedResults = await API.savePredictions({ findings });
+      console.log(savedResults);
     } catch (error) {
-      console.log(error)
-      
+      console.log(error);
     }
   };
 
-  function refreshPage(){ 
-    window.location.reload(); 
-}
+  function refreshPage() {
+    window.location.reload();
+  }
 
-// function readMore(){
-//   setShowMore("");
-// }
-
+  // function readMore(){
+  //   setShowMore("");
+  // }
 
   const classes = useStyles();
 
   return (
     <>
-      <Container className={classes.searchBar} maxWidth='md'>
+      <Container className={classes.searchBar} maxWidth='lg'>
         <Grid container spacing={2}>
           <Grid item xs>
             <h2 className={classes.title}>Upload Skin Image</h2>
@@ -160,16 +160,21 @@ export default function FileUpload() {
               label='Image Upload'
               autoFocus
             />
-                        <Button variant="contained" color="secondary" onClick= {() => {
-              setResult("")
-              setPredicting(false)
-              setFindings("")
-              setShowMore(false)
-              setShowMore1(false)
-              setShowMore2(false)
-            }
-              
-              }> Clear</Button>
+            <Button
+              variant='contained'
+              color='secondary'
+              onClick={() => {
+                setResult("");
+                setPredicting(false);
+                setFindings("");
+                setShowMore(false);
+                setShowMore1(false);
+                setShowMore2(false);
+              }}
+            >
+              {" "}
+              Clear
+            </Button>
             {result && (
               <img
                 ref={imageRef}
@@ -178,16 +183,31 @@ export default function FileUpload() {
                 className={classes.image}
               />
             )}
-            {result && !predicting &&
-            <>{result && <h3> Please click Predict button and wait while your image is being processed</h3>}
-            {result && <Button variant="contained" color="primary" onClick= {() => {
-              predict()
-              setPredicting(true)
-            }
-              
-          }> Predict</Button>}</> }
+            {result && !predicting && (
+              <>
+                {result && (
+                  <h3>
+                    {" "}
+                    Please click Predict button and wait while your image is
+                    being processed
+                  </h3>
+                )}
+                {result && (
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    onClick={() => {
+                      predict();
+                      setPredicting(true);
+                    }}
+                  >
+                    {" "}
+                    Predict
+                  </Button>
+                )}
+              </>
+            )}
             {predicting && !findings && <h3>Processing results</h3>}
-
           </Grid>
           <Grid item xs>
             {findings && <h1> Findings are: </h1>}
@@ -196,88 +216,120 @@ export default function FileUpload() {
                 <li key={index}>
                   {" "}
                   {item.className} with a probability of{" "}
-                  {(item.probability*100).toFixed(3) + "%"}
+                  {(item.probability * 100).toFixed(3) + "%"}
                 </li>
               ))}
-            {findings && <Button variant="contained" color="primary" onClick={saveResults}> Save Results</Button>}
-            {findings && <Button variant="contained" color="primary" onClick={refreshPage}> Refresh the Page</Button>}
+            {findings && (
+              <Button variant='contained' color='primary' onClick={saveResults}>
+                {" "}
+                Save Results
+              </Button>
+            )}
+            {findings && (
+              <Button variant='contained' color='primary' onClick={refreshPage}>
+                {" "}
+                Refresh the Page
+              </Button>
+            )}
 
             {/* once findings are rendered build out the wikipedia results tab*/}
             {findings && <h1 className={classes.title}> Wikipedia lookup: </h1>}
-            {findings && 
+            {findings && (
               <li>
-                Wikipedia description of { findings[0].className }: 
-                {findings && <Button color="primary" onClick= {() => {
-                  setShowMore(true)
-                  setShowMore1(false)
-                  setShowMore2(false)
-                }}> Show More </Button>}
-                < Wikipedia diseaseName = { findings[0].className } />
+                Wikipedia description of {findings[0].className}:
+                {findings && (
+                  <Button
+                    color='primary'
+                    onClick={() => {
+                      setShowMore(true);
+                      setShowMore1(false);
+                      setShowMore2(false);
+                    }}
+                  >
+                    {" "}
+                    Show More{" "}
+                  </Button>
+                )}
+                <Wikipedia diseaseName={findings[0].className} />
               </li>
-            }
-            {findings && 
+            )}
+            {findings && (
               <li>
-                Wikipedia description of { findings[1].className }: 
-                {findings && <Button color="primary" onClick= {() => {
-                  setShowMore(false)
-                  setShowMore1(true)
-                  setShowMore2(false)
-                }}> Show More </Button>}
-                < Wikipedia diseaseName = { findings[1].className } />
+                Wikipedia description of {findings[1].className}:
+                {findings && (
+                  <Button
+                    color='primary'
+                    onClick={() => {
+                      setShowMore(false);
+                      setShowMore1(true);
+                      setShowMore2(false);
+                    }}
+                  >
+                    {" "}
+                    Show More{" "}
+                  </Button>
+                )}
+                <Wikipedia diseaseName={findings[1].className} />
               </li>
-            }
-            {findings && 
+            )}
+            {findings && (
               <li>
-                Wikipedia description of { findings[2].className }: 
-                {findings && <Button color="primary" onClick= {() => {
-                  setShowMore(false)
-                  setShowMore1(false)
-                  setShowMore2(true)
-                }}> Show More </Button>}
-                < Wikipedia diseaseName = { findings[2].className } />
+                Wikipedia description of {findings[2].className}:
+                {findings && (
+                  <Button
+                    color='primary'
+                    onClick={() => {
+                      setShowMore(false);
+                      setShowMore1(false);
+                      setShowMore2(true);
+                    }}
+                  >
+                    {" "}
+                    Show More{" "}
+                  </Button>
+                )}
+                <Wikipedia diseaseName={findings[2].className} />
               </li>
-            }
-
+            )}
           </Grid>
         </Grid>
-        <Grid> 
-          { findings && showMore && !showMore1 && !showMore2 &&
-            <h1> Images of { findings[0].className } </h1>
-          }
-          <br></br>
-          {findings && (showMore || showMore1 || showMore2 ) &&
-            < CarouselImg />
-          }
-          <br></br>
-          { findings && showMore && !showMore1 && !showMore2 &&
-            <h1> Description of { findings[0].className } </h1>
-          }
-          { findings && showMore && !showMore1 && !showMore2 &&
-            <WikiCard diseaseNameSearch = { findings[0].className }/> 
-          }
+        <Grid>
+          {findings && showMore && !showMore1 && !showMore2 && (
+            <h1> Description of {findings[0].className} </h1>
+          )}
+          {findings && showMore && !showMore1 && !showMore2 && (
+            < CarouselImgController diseaseImg={findings[0].className} />
+          )}
+          {findings && showMore && !showMore1 && !showMore2 && (
+            <WikiCard diseaseNameSearch={findings[0].className} />
+          )}
 
           {/* for finding[1] */}
-          { findings && !showMore && showMore1 && !showMore2 &&
-            <h1> Description of { findings[1].className } </h1>
-          }
-          { findings && !showMore && showMore1 && !showMore2 &&
-            <WikiCard diseaseNameSearch = { findings[1].className }/> 
-          }
+          {findings && !showMore && showMore1 && !showMore2 && (
+            <h1> Description of {findings[1].className} </h1>
+          )}
+          {findings && !showMore && showMore1 && !showMore2 && (
+            < CarouselImgController diseaseImg={findings[1].className} />
+          )}
+          {findings && !showMore && showMore1 && !showMore2 && (
+            <WikiCard diseaseNameSearch={findings[1].className} />
+          )}
 
           {/* for finding[2] */}
-          { findings && !showMore && !showMore1 && showMore2 &&
-            <h1> Description of { findings[2].className } </h1>
-          }
-          { findings && !showMore && !showMore1 && showMore2 &&
-            <WikiCard diseaseNameSearch = { findings[2].className }/> 
-          }
+          {findings && !showMore && !showMore1 && showMore2 && (
+            <h1> Description of {findings[2].className} </h1>
+          )}
+          {findings && !showMore && !showMore1 && showMore2 && (
+            < CarouselImgController diseaseImg={findings[2].className} />
+          )}
+          {findings && !showMore && !showMore1 && showMore2 && (
+            <WikiCard diseaseNameSearch={findings[2].className} />
+          )}
         </Grid>
         <Grid>
-          <LoadResults />
+          {/* <LoadResults /> */}
         </Grid>
       </Container>
     </>
   );
 }
-
-
