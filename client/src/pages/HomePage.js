@@ -21,7 +21,6 @@ const addUser = () => {
 
 const Home = () => {
   const [state] = useStoreContext();
-  console.log(state);
   const [show, toggleShow] = React.useState(true);
 
   return (

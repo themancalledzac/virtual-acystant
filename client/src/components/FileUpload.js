@@ -54,14 +54,12 @@ export default function FileUpload() {
 
   const [image, setImage] = React.useState("");
   const imageRef = React.useRef();
-  console.log("imageRef.current: " + imageRef.current);
 
   const [result, setResult] = React.useState("");
   const [showMore, setShowMore] = React.useState("");
   const [showMore1, setShowMore1] = React.useState("");
   const [showMore2, setShowMore2] = React.useState("");
   const [findings, setFindings] = React.useState("");
-  console.log("These are findings" + findings);
 
   const [predicting, setPredicting] = React.useState(false);
 

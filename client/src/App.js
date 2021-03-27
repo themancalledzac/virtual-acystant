@@ -10,12 +10,10 @@ import { useAuthTokenStore } from "./utils/auth";
 
 function App() {
   const store = useAuthTokenStore();
-  console.log(store);
   // Use the hook to reauthenticate stored tokens.
 
   const [state] = useStoreContext();
   const useAuth = state.userAuth.token;
-  // console.log(state.userAuth.token);
 
   if (store === false) {
     return null;

@@ -78,9 +78,9 @@ const MapEmbed = () => {
                 {Markers.map(marker => {
                     return (
                         <Marker
-                        title={marker.provider}
                         key={marker.id}
                         position={{lat: marker.latitude, lng: marker.longitude}}
+                        onMouseOver=
                         />
                     )
                 })}
