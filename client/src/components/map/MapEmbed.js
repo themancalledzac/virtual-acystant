@@ -80,7 +80,6 @@ const MapEmbed = () => {
                         <Marker
                         key={marker.id}
                         position={{lat: marker.latitude, lng: marker.longitude}}
-                        onMouseOver=
                         />
                     )
                 })}

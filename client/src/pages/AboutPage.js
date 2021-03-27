@@ -5,6 +5,11 @@ import aboutCardData from "../utils/aboutCardData.json";
 import MediaCard from "../components/AboutCard";
 import Grid from '@material-ui/core/Grid';
 import logo from "../assets/images/VAbluewhitelogo.png";
+import Kat from "../assets/images/kat-gomozova.png";
+import Macz from "../assets/images/macz-norton.jpg";
+import Max from "../assets/images/max-lechner.jpg";
+import Zac from "../assets/images/zac-edens.jpeg";
+
 
 const About = (props) => {
   return (
@@ -19,25 +24,16 @@ const About = (props) => {
         <Grid item xs={12} sm={12} md={3}>
           <MediaCard 
           nameTitle={aboutCardData.kat.name}
-          headshot={aboutCardData.kat.image}
+          headshot={Kat}
           name={aboutCardData.kat.name}
           github={aboutCardData.kat.github}
           linkedin={aboutCardData.kat.linkedin}
           />
         </Grid>
         <Grid item xs={12} sm={12} md={3}>
-          <MediaCard 
-          nameTitle={aboutCardData.macz.name}
-          headshot={aboutCardData.macz.image}
-          name={aboutCardData.macz.name}
-          github={aboutCardData.macz.github}
-          linkedin={aboutCardData.macz.linkedin}
-          />
-        </Grid>
-        <Grid item xs={12} sm={12} md={3}>
           <MediaCard
           nameTitle={aboutCardData.max.name}
-          headshot={aboutCardData.max.image}
+          headshot={Max}
           name={aboutCardData.max.name}
           github={aboutCardData.max.github}
           linkedin={aboutCardData.max.linkedin}
@@ -46,10 +42,19 @@ const About = (props) => {
         <Grid item xs={12} sm={12} md={3}>
           <MediaCard 
           nameTitle={aboutCardData.zac.name}
-          headshot={aboutCardData.zac.image}
+          headshot={Zac}
           name={aboutCardData.zac.name}
           github={aboutCardData.zac.github}
           linkedin={aboutCardData.zac.linkedin}
+          />
+        </Grid>
+        <Grid item xs={12} sm={12} md={3}>
+          <MediaCard 
+          nameTitle={aboutCardData.macz.name}
+          headshot={Macz}
+          name={aboutCardData.macz.name}
+          github={aboutCardData.macz.github}
+          linkedin={aboutCardData.macz.linkedin}
           />
         </Grid>
       </Grid>
