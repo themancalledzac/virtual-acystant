@@ -36,6 +36,7 @@ const searchOptions = {
     styles: SearchStyles
 }
 
+// MapEmbed full component
 const MapEmbed = () => {
 
     const { isLoaded, loadError} = useLoadScript({
@@ -89,6 +90,7 @@ const MapEmbed = () => {
     );
 }
 
+// Near me functionality
 function Locate({ panTo }) {
     return (
         <Button className="locate" onClick={() => {
@@ -104,6 +106,7 @@ function Locate({ panTo }) {
     )
 }
 
+// Search functionality
 function Search({ panTo }) {
 
     const { ready, value, suggestions: {status, data}, setValue, clearSuggestions} = usePlacesAutocomplete({
