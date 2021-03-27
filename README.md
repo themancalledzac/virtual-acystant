@@ -32,7 +32,7 @@
 
 ## Description
 
-Final Group project that uses machine learning to detect, based off a user uploaded image, what would be the most statistically likely skin cancer, along with a maps page to help locate a doctor.  All use cases are hypothetical and are not to be used in place of a doctor.
+An application that uses machine learning to detect, based off a user uploaded image, what would be the most statistically likely skin cancer, along with a maps page to help locate a doctor.  All use cases are hypothetical and are not to be used in place of a doctor.
 
 ## User Story
 
@@ -48,25 +48,71 @@ No installation required
 
 ## Usage
 
-- Live application:
-- Repository: https://github.com/themancalledzac/virtual-acystant
+* Live application: https://virtual-acystant.herokuapp.com/
+* Repository: https://github.com/themancalledzac/virtual-acystant
+
+![Home Page][insert screenshot]
+![Find A Provider page][insert screenshot]
+
 
 ## Contributing
+Kat Gomozova
+[https://github.com/kgo87](https://github.com/kgo87)
 
+Max Lechner
+[www..github.com/maxlechner](https://github.com/maxlechner)
 
-- Max Lechner
-  [www..github.com/maxlechner](https://github.com/maxlechner)
-- Zac Edens
+Zac Edens
 [www.github.com/themancalledzac](https://github.com/themancalledzac)
 
-## Technologies Used
+Macz Norton
+[https://github.com/macz-norton](https://github.com/macz-norton)
+
+## Key Technologies Used
+
+Machine Learning
+* [@tensorflow/tfjs]()
+
+Authentication
+* [body-parser]()
+* [concurrently]()
+* [bcrypt]()
+* [express]()
+* [fastest-validator]()
+* [formidable]()
+* [if-env]()
+* [jwt-decode]
+* [passport]()
+* [passwport-jwt]()
+
+Database
+* [mongoose]()
+* [seedrandom]()
+
+User Interface
+* [Material UI]()
+
+Google Maps
+* [Combobox]()
+* [React Google Maps]()
+* [Places Autocomplete]()
+
+Google Maps APIs
+* [Maps JavaScript API]()
+* [Places Autocomplete API]()
+* [Geocode API]()
+
+Others
+* [axios]()
+
+Development Dependencies
+* [dotenv]()
+* [eslint]()
+* [nodemon]()
+* [react-native-dotenv]()
 
 ## Credits
-
-
-https://www.npmjs.com/package/google-map-react
-https://blog.logrocket.com/a-practical-guide-to-integrating-google-maps-in-react/
-https://iconify.design/icon-sets/
-<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-<div>Icons made by <a href="" title="Pause08">Pause08</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-https://snazzymaps.com/style/287670/no-levels
+* [The HAM10000 dataset, a large collection of multi-source dermatoscopic images of common pigmented skin lesions, Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DBW86T)
+* [Snazzy Maps, No Levels Map](https://snazzymaps.com/style/287670/no-levels)
+* [Google Maps & Google Places in React Tutorial, Leigh Halliday](https://www.youtube.com/watch?v=WZcxJGmLbSo)
+* [Pause08 & Freepick, Freepick Icons from Flaticon](https://www.flaticon.com/)
