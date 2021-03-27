@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   GoogleMap,
   useLoadScript,
-  Marker
+  Marker,
+  InfoWindow
 } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -46,6 +47,16 @@ const searchOptions = {
 // MapEmbed full component
 const MapEmbed = () => {
 
+    const [showInfo, setShowInfo] = useState(false);
+
+    const mouseOver = (event) => {
+        setShowInfo(true)
+    }
+
+    const mouseExit = (event) => {
+        setShowInfo(false)
+    }
+    
     const { isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY,
         libraries,
@@ -88,7 +99,14 @@ const MapEmbed = () => {
                         <Marker
                         key={marker.id}
                         position={{lat: marker.latitude, lng: marker.longitude}}
-                        />
+                        onMouseOver={mouseOver} 
+                        onMouseOut={mouseExit}>
+                          {showInfo && (
+                            <InfoWindow>
+                              <h4>{marker.provider}</h4>
+                            </InfoWindow>
+                          )}
+                        </Marker>
                     )
                 })}
 
