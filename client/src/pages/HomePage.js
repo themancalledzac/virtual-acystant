@@ -5,7 +5,7 @@ import { Container, Button } from "@material-ui/core";
 import FileUpload from "../components/FileUpload";
 // import Wikipedia from "../components/Wikipedia";
 import PreviousResults from "../components/PreviousResults";
-import doctorImage from "../assets/VAbluewhitelogo.png";
+import logo from "../assets/images/VAbluewhitelogo.png";
 import Wikipedia from "../components/Wikipedia";
 import LoadResults from "../components/LoadResults";
 import { useStoreContext } from "../store/index";
@@ -29,7 +29,7 @@ const Home = () => {
       <HeaderCard
         title={headerCardData.home.title}
         paragraph={headerCardData.home.paragraph}
-        image={doctorImage}
+        image={logo}
         disclaimer={headerCardData.home.disclaimer}
       />
       <FileUpload />
