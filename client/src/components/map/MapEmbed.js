@@ -2,8 +2,7 @@ import React from "react";
 import {
   GoogleMap,
   useLoadScript,
-  Marker,
-  InfoWindow,
+  Marker
 } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -44,53 +43,61 @@ const searchOptions = {
   styles: SearchStyles,
 };
 
+// MapEmbed full component
 const MapEmbed = () => {
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY,
-    libraries,
-  });
 
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
-    mapRef.current = map;
-  }, []);
+    const { isLoaded, loadError} = useLoadScript({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY,
+        libraries,
+    });
 
-  const panTo = React.useCallback(({ lat, lng }) => {
-    mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(14);
-  }, []);
+    const mapRef = React.useRef();
+    const onMapLoad = React.useCallback((map) => {
+        mapRef.current = map;
+    }, []);
+    
+    const panTo = React.useCallback(({lat, lng}) => {
+        mapRef.current.panTo({ lat, lng });
+        mapRef.current.setZoom(14);
+    }, []);
 
-  if (loadError) return "Error loading map";
-  if (!isLoaded) return "Loading map";
+    if (loadError) return "Error loading map";
+    if (!isLoaded) return "Loading map";
 
-  return (
-    <div>
-      <Grid>
-        <Search panTo={panTo} searchOptions={searchOptions} />
-        <Locate panTo={panTo} />
-      </Grid>
+    return(
+        <div>
 
-      <GoogleMap
-        id='map'
-        mapContainerStyle={mapContainerStyle}
-        zoom={13}
-        center={center}
-        options={options}
-        onLoad={onMapLoad}
-      >
-        {Markers.map((marker) => {
-          return (
-            <Marker
-              key={marker.id}
-              position={{ lat: marker.latitude, lng: marker.longitude }}
-            ></Marker>
-          );
-        })}
-      </GoogleMap>
-    </div>
-  );
-};
+            <Grid>
+                <Search 
+                panTo={panTo}
+                searchOptions={searchOptions}
+                />
+                <Locate panTo={panTo} />
+            </Grid>
 
+            <GoogleMap 
+                id="map"
+                mapContainerStyle={mapContainerStyle} 
+                zoom={13} 
+                center={center}
+                options={options}
+                onLoad={onMapLoad}
+            >
+                {Markers.map(marker => {
+                    return (
+                        <Marker
+                        key={marker.id}
+                        position={{lat: marker.latitude, lng: marker.longitude}}
+                        />
+                    )
+                })}
+
+            </GoogleMap>
+        </div>
+    );
+}
+
+// Near me functionality
 function Locate({ panTo }) {
   return (
     <Button
@@ -112,6 +119,7 @@ function Locate({ panTo }) {
   );
 }
 
+// Search functionality
 function Search({ panTo }) {
   const {
     ready,

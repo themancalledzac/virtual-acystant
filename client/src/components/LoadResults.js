@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import { Grid, Grid, Container } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
 import {
   Grid,
-  Button,
   Container,
-  ListItem,
-  List,
   makeStyles,
 } from "@material-ui/core";
-import colors from "./colors";
 import API from "../utils/API";
 import "../index.css";
 
@@ -38,7 +32,6 @@ export default function LoadResults() {
   const classes = useStyles();
   const [results, setResults] = useState({});
   const [show, toggleShow] = React.useState(true);
-  // state = {
 
   const getAllResults = () => {
     API.loadPredictions()
@@ -53,8 +46,6 @@ export default function LoadResults() {
   return (
     <Container maxWidth='lg' className={classes.searchBar}>
       <h1>All Saved Results</h1>
-      {/* <Grid container spacing={2}> */}
-      {/* <Grid item xs> */}
       {results.length ? (
         <div>
           {results.map((result) => (
@@ -90,9 +81,6 @@ export default function LoadResults() {
           It looks like you don't have any saved results!
         </p>
       )}
-      {/* </Grid> */}
-      {/* </Grid> */}
     </Container>
   );
 }
-// }

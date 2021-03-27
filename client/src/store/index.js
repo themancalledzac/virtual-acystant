@@ -36,18 +36,7 @@ const reducer = (state, { type, payload }) => {
 export const StoreProvider = ({ children }) => {
   const [store, dispatch] = useReducer(reducer, {
     userAuth: {},
-    // user: {
-    //   _id: 0,
-    //   firstName: "",
-    //   lastName: "",
-    //   email: "",
-    //   location: {
-    //     city: "",
-    //     state: "",
-    //   },
-    //   loginSignup: false,
-    // },
-    probabilityData: [],
+    probabilityData: []
   });
 
   return <Provider value={[store, dispatch]}>{children}</Provider>;

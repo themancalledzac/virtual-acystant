@@ -38,8 +38,6 @@ const Home = () => {
         </Button>
       </Container>
       {show && <LoadResults />}
-      {/* <PreviousResults /> */}
-      {/* <form onSubmit={addUser}></form> */}
     </>
   );
 };
