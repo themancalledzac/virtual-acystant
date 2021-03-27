@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       padding: "0px 10px 10px 5px",
       marginTop: "0px",
-      fontSize: "4.5em",
+      fontSize: "4em",
       color: colors.blue3,
       justifyContent: "center",
       textAlign: "center",
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
       padding: "0px 10px 10px 5px",
       marginTop: "0px",
       fontSize: "4.5em",
-      color: colors.dark,
+      color: colors.blue3,
       justifyContent: "flex-end",
       textAlign: "right",
     },
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
       padding: "0px 10px 10px 5px",
       marginTop: "0px",
       fontSize: "4.5em",
-      color: colors.blue2,
+      color: colors.blue3,
       justifyContent: "flex-end",
       textAlign: "right",
     },
@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     position: "absolute",
-    width: 400,
+    width: 300,
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
@@ -118,19 +118,9 @@ const HeaderCard = (props) => {
 
   return (
     <>
-      <Container
-        className={classes.searchBar}
-        maxWidth='lg'
-        alignContent='center'
-      >
-        <Grid container spacing={4}>
-          <Grid
-            item
-            xs={12}
-            sm={4}
-            alignContent='center'
-            className={classes.imageContainer}
-          >
+      <Container className={classes.searchBar} maxWidth='lg'>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={4} className={classes.imageContainer}>
             <img
               className={classes.image}
               src={props.image}
@@ -144,7 +134,7 @@ const HeaderCard = (props) => {
               {props.paragraph}
               &nbsp;
               <Button variant='contained' onClick={handleOpen} style={{}}>
-                Open Modal
+                Disclaimer
               </Button>
               <Modal
                 open={open}

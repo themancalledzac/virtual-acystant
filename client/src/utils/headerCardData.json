@@ -8,12 +8,12 @@
   "about": {
     "title": "About Page",
     "paragraph": "Hey what's going on this is project three's greatest team to date",
-        "disclaimer": "A reminder that this content is not intended to be a substitute for professional medial advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition."
+    "disclaimer": "A reminder that this content is not intended to be a substitute for professional medial advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition."
   },
   "doctor": {
     "title": "What doctor do you need?",
     "paragraph": "Disclaimer is,",
-        "disclaimer": "A reminder that this content is not intended to be a substitute for professional medial advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition."
+    "disclaimer": "A reminder that this content is not intended to be a substitute for professional medial advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition."
   }
   }
 

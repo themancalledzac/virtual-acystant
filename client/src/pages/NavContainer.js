@@ -18,12 +18,13 @@ import HomeIcon from "@material-ui/icons/Home";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import GroupIcon from "@material-ui/icons/Group";
 import { Route, Switch, Link } from "react-router-dom";
-import Home from "./HomePage";
 import FileUpload from "../components/FileUpload";
 import colors from "../components/colors";
+import Home from "./HomePage";
 import Doctor from "./DoctorPage";
 import About from "./AboutPage";
 import LogoutButton from "../components/LogoutButton";
+import { CssBaseline } from "@material-ui/core";
 
 const drawerWidth = 240;
 
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     backgroundColor: colors.blue2,
-    zIndex: theme.zIndex.drawer + 1,
+
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   menuButton: {
-    marginRight: 36,
+    marginRight: theme.spacing(2),
   },
   hide: {
     display: "none",
@@ -56,27 +57,37 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: "nowrap",
   },
-  drawerOpen: {
+  drawerPaper: {
     width: drawerWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
   },
-  drawerClose: {
-    backgroundColor: colors.blue2,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: "hidden",
-    width: theme.spacing(7),
-    [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9),
-    },
+  drawerHeader: {
+    display: "flex",
+    alignItems: "center",
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    justifyContent: "flex-end",
   },
+  // drawerOpen: {
+  //   width: drawerWidth,
+  //   transition: theme.transitions.create("width", {
+  //     easing: theme.transitions.easing.sharp,
+  //     duration: theme.transitions.duration.enteringScreen,
+  //   }),
+  // },
+  // drawerClose: {
+  //   backgroundColor: colors.blue2,
+  //   transition: theme.transitions.create("width", {
+  //     easing: theme.transitions.easing.sharp,
+  //     duration: theme.transitions.duration.leavingScreen,
+  //   }),
+  //   overflowX: "hidden",
+  //   width: theme.spacing(7),
+  //   [theme.breakpoints.up("sm")]: {
+  //     width: theme.spacing(9),
+  //   },
+  // },
   toolbar: {
     display: "flex",
     alignItems: "center",
@@ -88,6 +99,18 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    transition: theme.transitions.create("margin", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: -drawerWidth,
+  },
+  contentShift: {
+    transition: theme.transitions.create("margin", {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
   },
   title: {
     color: colors.darkGrey,
@@ -117,6 +140,7 @@ export default function Main() {
 
   return (
     <div className={classes.root}>
+      <CssBaseline />
       <AppBar
         position='fixed'
         className={clsx(classes.appBar, {
@@ -129,9 +153,7 @@ export default function Main() {
             aria-label='open drawer'
             onClick={handleDrawerOpen}
             edge='start'
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
+            className={clsx(classes.menuButton, open && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
@@ -141,31 +163,31 @@ export default function Main() {
         </Toolbar>
       </AppBar>
       <Drawer
-        variant='permanent'
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
+        className={classes.drawer}
+        variant='persistent'
+        anchor='left'
+        open={open}
         classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
+          paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.toolbar}>
+        <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
+            {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
             )}
           </IconButton>
         </div>
         <Divider />
 
         <List>
-          <Link to={"/"} className={classes.linkStyle}>
+          <Link
+            to={"/"}
+            className={classes.linkStyle}
+            onClick={handleDrawerClose}
+          >
             <ListItem button key={"Home"}>
               <ListItemIcon>
                 <HomeIcon />
@@ -176,7 +198,11 @@ export default function Main() {
         </List>
         <Divider />
         <List>
-          <Link to={"/about"} className={classes.linkStyle}>
+          <Link
+            to={"/about"}
+            className={classes.linkStyle}
+            onClick={handleDrawerClose}
+          >
             <ListItem button key={"About"}>
               <ListItemIcon>
                 <GroupIcon />
@@ -184,7 +210,11 @@ export default function Main() {
               <ListItemText primary={"About"} />
             </ListItem>
           </Link>
-          <Link to={"/doctor"} className={classes.linkStyle}>
+          <Link
+            to={"/doctor"}
+            className={classes.linkStyle}
+            onClick={handleDrawerClose}
+          >
             <ListItem button key={"Find A Doctor"}>
               <ListItemIcon>
                 <LocalHospitalIcon />
@@ -195,13 +225,15 @@ export default function Main() {
           <LogoutButton />
         </List>
       </Drawer>
-      <main className={classes.content}>
+      <main
+        className={clsx(classes.content, {
+          [classes.contentShift]: open,
+        })}
+      >
         <div className={classes.toolbar} />
         <Switch>
-          <Route exact path='/'>
-            {" "}
-            <Home />
-          </Route>
+          <Route exact path='/' component={Home} />
+
           <Route exact path='/doctor' component={Doctor} />
           <Route exact path='/about' component={About} />
           {/* <Route exact path='/fileUpload' component={FileUpload} /> */}
