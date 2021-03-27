@@ -10,7 +10,10 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import MapStyles from "./mapStyles";
+import SearchStyles from "./searchStyles.css";
 import Markers from "./Markers";
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -27,6 +30,10 @@ const options = {
 const center = {
     lat: 47.6062,
     lng: -122.3321
+}
+
+const searchOptions = {
+    styles: SearchStyles
 }
 
 const MapEmbed = () => {
@@ -51,8 +58,14 @@ const MapEmbed = () => {
 
     return(
         <div>
-            <Locate panTo={panTo} />
-            <Search panTo={panTo} />
+
+            <Grid>
+                <Search 
+                panTo={panTo}
+                searchOptions={searchOptions}
+                />
+                <Locate panTo={panTo} />
+            </Grid>
 
             <GoogleMap 
                 id="map"
@@ -78,7 +91,7 @@ const MapEmbed = () => {
 
 function Locate({ panTo }) {
     return (
-        <button className="locate" onClick={() => {
+        <Button className="locate" onClick={() => {
             navigator.geolocation.getCurrentPosition((position) => {
                 panTo({
                     lat: position.coords.latitude,
@@ -86,12 +99,13 @@ function Locate({ panTo }) {
                 });
             }, () => null);
         }}>
-            Near Me
-        </button>
+            Or Search Near Me 📍
+        </Button>
     )
 }
 
 function Search({ panTo }) {
+
     const { ready, value, suggestions: {status, data}, setValue, clearSuggestions} = usePlacesAutocomplete({
         requestOptions: {
             location: { lat: () => 47.6062, lng: () => -122.3321 },
