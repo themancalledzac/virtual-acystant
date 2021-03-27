@@ -8,7 +8,9 @@ import "./CarouselImg.css";
 export default function CarouselImgMn( ) {
 
     return (
-        <Carousel>
+        <Carousel
+            animation={"slide"}
+        >
             <div>
                 <img className="img" src={process.env.PUBLIC_URL + '/assets/images/melanoma/ISIC_0034145.jpg' } alt="logo"/>
                 <p className="title">Melanoma Image 1</p>

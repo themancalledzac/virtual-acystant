@@ -8,7 +8,9 @@ import "./CarouselImg.css";
 export default function CarouselImgMNVI( ) {
 
     return (
-        <Carousel>
+        <Carousel
+            animation={"slide"}
+        >
             <div>
                 <img className="img" src={process.env.PUBLIC_URL + '/assets/images/nv/ISIC_0033265.jpg' } alt="logo"/>
                 <p className="title">Melanomacytic Nevus Image 1</p>

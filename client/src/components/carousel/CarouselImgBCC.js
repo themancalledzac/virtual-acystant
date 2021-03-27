@@ -8,7 +8,9 @@ import "./CarouselImg.css";
 export default function CarouselImgBCC( ) {
 
     return (
-        <Carousel>
+        <Carousel
+            animation={"slide"}
+        >
             <div>
                 <img className="img" src={process.env.PUBLIC_URL + '/assets/images/bcc/ISIC_0032857.jpg' } alt="logo"/>
                 <p className="title">Basal Cell Carcinoma Image 1</p>

@@ -8,7 +8,9 @@ import "./CarouselImg.css";
 export default function CarouselImgVSC( ) {
 
     return (
-        <Carousel>
+        <Carousel
+            animation={"slide"}
+        >
             <div>
                 <img className="img" src={process.env.PUBLIC_URL + '/assets/images/vasc/ISIC_0032932.jpg' } alt="logo"/>
                 <p className="title">Vascular Skin Lesion Image 1</p>

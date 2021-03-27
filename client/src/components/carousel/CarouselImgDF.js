@@ -8,7 +8,9 @@ import "./CarouselImg.css";
 export default function CarouselImgDF( ) {
 
     return (
-        <Carousel>
+        <Carousel
+            animation={"slide"}
+        >
             <div>
                 <img className="img" src={process.env.PUBLIC_URL + '/assets/images/df/ISIC_0031429.jpg' } alt="logo"/>
                 <p className="title">Dermatofibroma Image 1</p>

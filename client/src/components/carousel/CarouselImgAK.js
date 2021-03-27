@@ -8,7 +8,9 @@ import "./CarouselImg.css";
 export default function CarouselImgAK( ) {
 
     return (
-        <Carousel>
+        <Carousel
+            animation={"slide"}
+        >
             <div>
                 <img className="img" src={process.env.PUBLIC_URL + '/assets/images/akiec/ISIC_0032437.jpg' } alt="logo"/>
                 <p className="title">Actinic Keratoses Image 1</p>

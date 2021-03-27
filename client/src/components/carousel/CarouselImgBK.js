@@ -8,7 +8,9 @@ import "./CarouselImg.css";
 export default function CarouselImgBK( ) {
 
     return (
-        <Carousel>
+        <Carousel
+            animation={"slide"}
+        >
             <div>
                 <img className="img" src={process.env.PUBLIC_URL + '/assets/images/bkl/ISIC_0031436.jpg' } alt="logo"/>
                 <p className="title">Benign Keratosis Image 1</p>
