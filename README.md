@@ -32,14 +32,14 @@
 
 ## Description
 
-An application that uses machine learning to detect, based off a user uploaded image, what would be the most statistically likely skin cancer, along with a maps page to help locate a doctor.  All use cases are hypothetical and are not to be used in place of a doctor.
+An application that uses machine learning to detect, based off a user uploaded image, what would be the most statistically likely skin cancer, along with a maps page to help locate a provider.  All use cases are hypothetical and are not to be used in place of a provider.
 
 ## User Story
 
 ```
 AS A person with an odd mark on my skin
 I WANT an app that, after uploading an image, will help me determine if my skin might be cancerous,
-SO THAT I can be given a map app to the nearest hospital.
+SO THAT I can be given a map app to the nearest provider.
 ```
 
 ## Installation
@@ -55,7 +55,6 @@ To use the application, users must first sign up with an email and password, the
 
 ### Home Page
 ![Home Page](https://user-images.githubusercontent.com/71162422/112768288-434cac80-8fd0-11eb-9faa-829b9be64a80.png)
-    width:40%;
 
 ### Upload Image & Results Section
 ![Upload Image & Results](https://user-images.githubusercontent.com/71162422/112768302-55c6e600-8fd0-11eb-9889-28d02f1130b8.png)
