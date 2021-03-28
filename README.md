@@ -26,9 +26,9 @@
 - [User Story](#user-story)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Key Technologies Used](#key-technologies-used)
 - [Contributing](#contributing)
-- [Code](#code)
-- [Questions](#questions)
+- [Credits](#credits)
 
 ## Description
 
@@ -51,65 +51,66 @@ No installation required
 * Live application: https://virtual-acystant.herokuapp.com/
 * Repository: https://github.com/themancalledzac/virtual-acystant
 
-![Home Page][insert screenshot]
-![Find A Provider page][insert screenshot]
+To use the application, users must first sign up with an email and password, then sign in to the application.
 
+### Home Page
+![Home Page](https://user-images.githubusercontent.com/71162422/112768288-434cac80-8fd0-11eb-9faa-829b9be64a80.png)
+    width:40%;
 
-## Contributing
-Kat Gomozova
-[https://github.com/kgo87](https://github.com/kgo87)
+### Upload Image & Results Section
+![Upload Image & Results](https://user-images.githubusercontent.com/71162422/112768302-55c6e600-8fd0-11eb-9889-28d02f1130b8.png)
 
-Max Lechner
-[www..github.com/maxlechner](https://github.com/maxlechner)
-
-Zac Edens
-[www.github.com/themancalledzac](https://github.com/themancalledzac)
-
-Macz Norton
-[https://github.com/macz-norton](https://github.com/macz-norton)
+### Find A Provider Page
+![Find A Provider page](https://user-images.githubusercontent.com/71162422/112768311-61b2a800-8fd0-11eb-80a6-183d796f67f0.png)
 
 ## Key Technologies Used
 
 Machine Learning
-* [@tensorflow/tfjs]()
+* [@tensorflow/tfjs](https://www.npmjs.com/package/@tensorflow/tfjs)
 
 Authentication
-* [body-parser]()
-* [concurrently]()
-* [bcrypt]()
-* [express]()
-* [fastest-validator]()
-* [formidable]()
-* [if-env]()
-* [jwt-decode]
-* [passport]()
-* [passwport-jwt]()
+* [body-parser](https://www.npmjs.com/package/body-parser)
+* [bcrypt](https://www.npmjs.com/package/bcrypt)
+* [fastest-validator](https://www.npmjs.com/package/fastest-validator)
+* [jwt-decode](https://www.npmjs.com/package/jwt-decode)
+* [Passport](http://www.passportjs.org/)
+* [passwport-jwt](http://www.passportjs.org/packages/passport-jwt/)
 
 Database
-* [mongoose]()
-* [seedrandom]()
+* [mongoose](https://mongoosejs.com/)
+* [seedrandom](https://www.npmjs.com/package/seedrandom)
 
 User Interface
-* [Material UI]()
+* [Material UI](https://material-ui.com/)
 
 Google Maps
-* [Combobox]()
-* [React Google Maps]()
-* [Places Autocomplete]()
+* [Combobox](https://reach.tech/combobox/)
+* [React Google Maps](https://www.npmjs.com/package/@react-google-maps/api)
+* [use-places-autocomplete](https://www.npmjs.com/package/use-places-autocomplete)
 
 Google Maps APIs
-* [Maps JavaScript API]()
-* [Places Autocomplete API]()
-* [Geocode API]()
+* [Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/overview)
+* [Places API](https://developers.google.com/maps/documentation/places/web-service/overview)
+* [Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview)
 
-Others
-* [axios]()
+Application
+* [axios](https://www.npmjs.com/package/axios)
+* [concurrently](https://www.npmjs.com/package/concurrently)
+* [express](https://www.npmjs.com/package/express)
+* [formidable](https://www.npmjs.com/package/formidable)
+* [if-env](https://www.npmjs.com/package/if-env)
 
 Development Dependencies
-* [dotenv]()
-* [eslint]()
-* [nodemon]()
-* [react-native-dotenv]()
+* [dotenv](https://www.npmjs.com/package/dotenv)
+* [ESlint](https://eslint.org/)
+* [nodemon](https://www.npmjs.com/package/nodemon)
+* [react-native-dotenv](https://www.npmjs.com/package/react-native-dotenv)
+
+## Contributing
+* Kat Gomozova [https://github.com/kgo87](https://github.com/kgo87)
+* Max Lechner [www..github.com/maxlechner](https://github.com/maxlechner)
+* Zac Edens [www.github.com/themancalledzac](https://github.com/themancalledzac)
+* Macz Norton [https://github.com/macz-norton](https://github.com/macz-norton)
 
 ## Credits
 * [The HAM10000 dataset, a large collection of multi-source dermatoscopic images of common pigmented skin lesions, Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DBW86T)
