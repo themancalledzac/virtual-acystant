@@ -102,6 +102,10 @@ Google Maps APIs
 * [Places Autocomplete API]()
 * [Geocode API]()
 
+Wikipedia API
+* [Wikimedia API]()
+* [Wikimedia SandBox]()
+
 Others
 * [axios]()
 
