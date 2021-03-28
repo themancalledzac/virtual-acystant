@@ -36,8 +36,8 @@ const options = {
 };
 
 const center = {
-  lat: 47.6062,
-  lng: -122.3321,
+  lat: 47.64602949823728,
+  lng: -122.33554871127474
 };
 
 const searchOptions = {
@@ -49,14 +49,14 @@ const MapEmbed = () => {
 
     const [showInfo, setShowInfo] = useState(false);
 
-    const mouseOver = (event) => {
+    const openInfo = (event) => {
         setShowInfo(true)
     }
 
-    const mouseExit = (event) => {
+    const closeInfo = (event) => {
         setShowInfo(false)
     }
-    
+
     const { isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY,
         libraries,
@@ -99,10 +99,10 @@ const MapEmbed = () => {
                         <Marker
                         key={marker.id}
                         position={{lat: marker.latitude, lng: marker.longitude}}
-                        onMouseOver={mouseOver} 
-                        onMouseOut={mouseExit}>
+                        onClick={() => openInfo(marker.id)}
+                        >
                           {showInfo && (
-                            <InfoWindow>
+                            <InfoWindow onCloseClick={() => closeInfo()}>
                               <h4>{marker.provider}</h4>
                             </InfoWindow>
                           )}
