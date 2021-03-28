@@ -92,6 +92,10 @@ Google Maps APIs
 * [Places API](https://developers.google.com/maps/documentation/places/web-service/overview)
 * [Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview)
 
+Wikipedia API
+* [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page)
+* [Mediawiki SandBox](https://www.mediawiki.org/wiki/Special:ApiSandbox)
+
 Application
 * [axios](https://www.npmjs.com/package/axios)
 * [concurrently](https://www.npmjs.com/package/concurrently)
