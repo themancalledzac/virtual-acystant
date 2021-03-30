@@ -114,7 +114,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
   },
   title: {
-    color: colors.darkGrey,
+    color: colors.pinkGrey,
     fontSize: "25px",
   },
   linkStyle: {

@@ -1,19 +1,12 @@
 import React from "react";
 import * as tf from "@tensorflow/tfjs";
-import {
-  Container,
-  Grid,
-  makeStyles,
-  Button, 
-  Input
-} from "@material-ui/core";
+import { Container, Grid, makeStyles, Button, Input } from "@material-ui/core";
 import colors from "./colors";
 import { useStoreContext } from "../store/index";
 import API from "../utils/API";
 import Wikipedia from "./Wikipedia";
 import WikiCard from "./WikiCard";
 import CarouselImgController from "./carousel/CarouselImgController";
-
 
 // -------------------------------- PAGE STYLING----------------------------------------//
 const useStyles = makeStyles((theme) => ({
@@ -34,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
   },
   uploader: {
     marginBottom: "20px",
+  },
+  clear: {
+    backgroundColor: colors.pinkGrey,
   },
 }));
 
@@ -105,7 +101,7 @@ export default function FileUpload() {
     return top3;
   }
 
-const showResults = async () => setFindings(await predict());
+  const showResults = async () => setFindings(await predict());
 
   // dispatch({ type: RETURN_DATA, payload: findings });
 
@@ -146,7 +142,7 @@ const showResults = async () => setFindings(await predict());
             />
             <Button
               variant='contained'
-              color='secondary'
+              className={classes.clear}
               onClick={() => {
                 setResult("");
                 setPredicting(false);
@@ -204,13 +200,24 @@ const showResults = async () => setFindings(await predict());
                 </li>
               ))}
             {findings && (
-              <Button variant='contained' color='primary' onClick={saveResults}>
+              <Button
+                variant='contained'
+                color='primary'
+                onClick={saveResults}
+                style={{ margin: "5px" }}
+              >
                 {" "}
                 Save Results
               </Button>
             )}
+
             {findings && (
-              <Button variant='contained' color='primary' onClick={refreshPage}>
+              <Button
+                variant='contained'
+                color='primary'
+                onClick={refreshPage}
+                style={{ margin: "5px" }}
+              >
                 {" "}
                 Refresh the Page
               </Button>
@@ -284,60 +291,57 @@ const showResults = async () => setFindings(await predict());
               <h1> Description of {findings[0].className} </h1>
             )}
           </Grid>
-          <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
+          <Grid item xs={12} sm={6} style={{ marginWidth: "10px" }}>
             {findings && showMore && !showMore1 && !showMore2 && (
-              < CarouselImgController diseaseImg={findings[0].className} />
+              <CarouselImgController diseaseImg={findings[0].className} />
             )}
           </Grid>
-          <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
+          <Grid item xs={12} sm={6} style={{ marginWidth: "10px" }}>
             {findings && showMore && !showMore1 && !showMore2 && (
               <WikiCard diseaseNameSearch={findings[0].className} />
             )}
           </Grid>
         </Grid>
 
-
-          {/* for finding[1] */}
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              {findings && !showMore && showMore1 && !showMore2 && (
-                <h1> Description of {findings[1].className} </h1>
-              )}
-            </Grid>
-            <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
-              {findings && !showMore && showMore1 && !showMore2 && (
-                < CarouselImgController diseaseImg={findings[1].className} />
-              )}
-            </Grid>
-            <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
-              {findings && !showMore && showMore1 && !showMore2 && (
-                <WikiCard diseaseNameSearch={findings[1].className} />
-              )}
-            </Grid>
-        </Grid> 
-
-          {/* for finding[2] */}
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              {findings && !showMore && !showMore1 && showMore2 && (
-                <h1> Description of {findings[2].className} </h1>
-              )}
-            </Grid>
-            <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
-              {findings && !showMore && !showMore1 && showMore2 && (
-                < CarouselImgController diseaseImg={findings[2].className} />
-              )}
-            </Grid>
-            <Grid item xs={12} sm={6} style={{marginWidth:"10px"}}>
-              {findings && !showMore && !showMore1 && showMore2 && (
-                <WikiCard diseaseNameSearch={findings[2].className} />
-              )}
-            </Grid>
+        {/* for finding[1] */}
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            {findings && !showMore && showMore1 && !showMore2 && (
+              <h1> Description of {findings[1].className} </h1>
+            )}
           </Grid>
-
-        <Grid>
-          {/* <LoadResults /> */}
+          <Grid item xs={12} sm={6} style={{ marginWidth: "10px" }}>
+            {findings && !showMore && showMore1 && !showMore2 && (
+              <CarouselImgController diseaseImg={findings[1].className} />
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6} style={{ marginWidth: "10px" }}>
+            {findings && !showMore && showMore1 && !showMore2 && (
+              <WikiCard diseaseNameSearch={findings[1].className} />
+            )}
+          </Grid>
         </Grid>
+
+        {/* for finding[2] */}
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            {findings && !showMore && !showMore1 && showMore2 && (
+              <h1> Description of {findings[2].className} </h1>
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6} style={{ marginWidth: "10px" }}>
+            {findings && !showMore && !showMore1 && showMore2 && (
+              <CarouselImgController diseaseImg={findings[2].className} />
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6} style={{ marginWidth: "10px" }}>
+            {findings && !showMore && !showMore1 && showMore2 && (
+              <WikiCard diseaseNameSearch={findings[2].className} />
+            )}
+          </Grid>
+        </Grid>
+
+        <Grid>{/* <LoadResults /> */}</Grid>
       </Container>
     </>
   );
