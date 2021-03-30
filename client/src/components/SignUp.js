@@ -86,7 +86,6 @@ export default function SignUp() {
 
   const [, dispatch] = useStoreContext();
   const loginSignupState = () => {
-
     dispatch({
       type: LOGIN_SIGNUP_SWITCH,
     });
@@ -114,6 +113,9 @@ export default function SignUp() {
           <Typography component='h1' variant='h5'>
             Sign up
           </Typography>
+          <h3 classname={classes.demo}>
+            For demo purposes only, please do not use as a medical resource.
+          </h3>
           <form className={classes.form} onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12}>

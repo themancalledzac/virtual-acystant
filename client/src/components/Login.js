@@ -50,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
     "&:hover, &:focus": {
       backgroundColor: colors.blue3,
     },
+    demo: {
+      color: colors.blue3,
+    },
   },
 }));
 
@@ -107,6 +110,9 @@ export default function Login() {
           <Typography component='h1' variant='h5'>
             Sign in
           </Typography>
+          <h3 classname={classes.demo}>
+            For demo purposes only, please do not use as a medical resource.
+          </h3>
           <form className={classes.form} onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
