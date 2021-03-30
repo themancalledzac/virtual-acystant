@@ -24,7 +24,7 @@ const Home = () => {
         title={headerCardData.home.title}
         paragraph={headerCardData.home.paragraph}
         image={logo}
-        disclaimer={headerCardData.home.disclaimer}
+        disclaimer={headerCardData.disclaimer}
       />
 
       <FileUpload />

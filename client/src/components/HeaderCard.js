@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   imageContainer: {
     [theme.breakpoints.down("xs")]: {
       margin: "65px 65px",
-    }
+    },
   },
   paragraph: {
     padding: "15px 15px 15px 0px",
@@ -65,14 +65,26 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     position: "absolute",
-    width: 300,
+    borderRadius: "7px",
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
-    boxShadow: theme.shadows[5],
+    boxShadow: theme.shadows[3],
     padding: theme.spacing(2, 4, 3),
+    [theme.breakpoints.up("sm")]: {
+      width: 500,
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: 350,
+    },
   },
   background: {
     backgroundColor: colors.blue1,
+  },
+  disclaimer: {
+    color: colors.pinkGrey,
+  },
+  disclaimerButton: {
+    backgroundColor: colors.pinkGrey,
   },
 }));
 
@@ -90,7 +102,7 @@ function getModalStyle() {
 const HeaderCard = (props) => {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleOpen = () => {
     setOpen(true);
@@ -102,7 +114,9 @@ const HeaderCard = (props) => {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id='simple-modal-title'>Disclaimer</h2>
+      <h2 id='simple-modal-title' className={classes.disclaimer}>
+        Disclaimer
+      </h2>
       <p id='simple-modal-description'>{props.disclaimer}</p>
     </div>
   );
@@ -121,24 +135,23 @@ const HeaderCard = (props) => {
           <Grid item xs={12} sm={8}>
             <h2 className={classes.title}>{props.title}</h2>
 
-            <p className={classes.paragraph}>
-              {props.paragraph}
-            </p>
-            <Button 
-            variant='contained' 
-            onClick={handleOpen} 
-            style={{}}
-            color='secondary'>
-                Disclaimer
-              </Button>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby='simple-modal-title'
-                aria-describedby='simple-modal-description'
-              >
-                {body}
-              </Modal>
+            <p className={classes.paragraph}>{props.paragraph}</p>
+            <Button
+              variant='contained'
+              onClick={handleOpen}
+              className={classes.disclaimerButton}
+            >
+              Disclaimer
+            </Button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              onClick={handleClose}
+              aria-labelledby='simple-modal-title'
+              aria-describedby='simple-modal-description'
+            >
+              {body}
+            </Modal>
           </Grid>
         </Grid>
       </Container>

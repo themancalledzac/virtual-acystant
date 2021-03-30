@@ -11,7 +11,7 @@ const Doctor = () => {
         title={headerCardData.doctor.title}
         paragraph={headerCardData.doctor.paragraph}
         image={searchImage}
-        disclaimer={headerCardData.doctor.disclaimer}
+        disclaimer={headerCardData.disclaimer}
       />
       <MapContainer />
     </div>
